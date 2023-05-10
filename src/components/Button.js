@@ -1,0 +1,29 @@
+import Link from "next/link";
+import React from "react";
+
+function Button() {
+  return (
+    <Link
+      href="/auth"
+      className="flex items-center bg-[#13167D] w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 text-white py-3 px-8 rounded-2xl gap-2 my-2"
+    >
+      Try It Free{" "}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="w-6 h-6"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+        />
+      </svg>
+    </Link>
+  );
+}
+
+export default Button;
