@@ -1,33 +1,14 @@
 "use client";
 import { cats, products } from "@/app/home/page";
 import Card from "@/components/Card";
-import Carousel from "@/components/Carousel";
 import React, { useEffect, useState } from "react";
-import {
-  BsChevronCompactLeft,
-  BsChevronCompactRight,
-  BsFacebook,
-  BsInstagram,
-  BsTiktok,
-  BsTwitter,
-} from "react-icons/bs";
+import { BsFacebook, BsInstagram, BsTiktok, BsTwitter } from "react-icons/bs";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 function Page() {
   const [slug, setSlug] = useState("dress");
   const [prods, setProds] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const prevSlide = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? prods.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-  };
-
-  const nextSlide = () => {
-    const isLastSlide = currentIndex === prods.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
 
   const filteredProds = (slug) => products.filter((p) => p.cat === slug);
 
@@ -116,22 +97,14 @@ function Page() {
         <div className="my-2">
           <p className="text-center font-bold mb-3">My Recommended Products</p>
           {prods.length > 0 && (
-            <div className="relative px-4 mt-8 mb-5">
-              <Card product={prods[currentIndex]} shop />
-              <div
-                className={`${
-                  prods.length == 1 && "hidden"
-                } absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer`}
-              >
-                <BsChevronCompactLeft size={30} onClick={prevSlide} />
-              </div>
-              <div
-                className={`${
-                  prods.length == 1 && "hidden"
-                } absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer`}
-              >
-                <BsChevronCompactRight size={30} onClick={nextSlide} />
-              </div>
+            <div className="mt-8 px-4 mb-8">
+              <Swiper spaceBetween={50} slidesPerView={1}>
+                {prods.map((product) => (
+                  <SwiperSlide key={product.id}>
+                    <Card product={product} shop />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
           )}
           {prods.length === 0 && (

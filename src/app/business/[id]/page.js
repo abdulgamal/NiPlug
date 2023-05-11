@@ -5,25 +5,60 @@ import Carousel from "@/components/Carousel";
 import { getDetails } from "../../../../requests";
 import { useParams } from "next/navigation";
 
+const product = {
+  name: "Loafers",
+  description:
+    "Starting with the basics, loafers are slip-on style shoes that do not have laces or any other fastenings. Think fancy slippers. Usually, loafers have a low or even no heel and are typically made using leather or suede.",
+  max_purchase: 5,
+  min_purchase: 1,
+  price: 25,
+  slug: "loafer",
+  sale_price: 20,
+  id: 25,
+  owner: {
+    name: "Tamacti Jun",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_nha-3LVIjOWvBJlDlmKmIIKrCu1mi_Pkxg&usqp=CAU",
+  },
+  images: [
+    {
+      id: 1,
+      url: "http://res.cloudinary.com/dinfpnmrf/image/upload/v1679598688/dukaapp/ajjp0m9lgmgwfxdiwgog.jpg",
+    },
+    {
+      id: 2,
+      url: "http://res.cloudinary.com/dinfpnmrf/image/upload/v1679598690/dukaapp/d8cujst1rp4oelfp8mcu.jpg",
+    },
+    {
+      id: 3,
+      url: "http://res.cloudinary.com/dinfpnmrf/image/upload/v1679598691/dukaapp/xvagvtt1mhpshsry7lvi.jpg",
+    },
+    {
+      id: 4,
+      url: "http://res.cloudinary.com/dinfpnmrf/image/upload/v1679598692/dukaapp/uxdvvkplx3yjcj8b2j2o.jpg",
+    },
+  ],
+};
+
 function Home() {
   const [last, setLast] = useState(5);
   const [isToggle, setIsToggle] = useState(false);
   const [open, setOpen] = useState(false);
-  const [product, setProduct] = useState(null);
+  // const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { id } = useParams();
+  // const { id } = useParams();
 
-  const fetchData = async (id) => {
-    setLoading(true);
-    try {
-      let { data } = await getDetails(id.split("_").join(" "));
-      setProduct(data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
+  // const fetchData = async (id) => {
+  //   setLoading(true);
+  //   try {
+  //     let { data } = await getDetails(id.split("_").join(" "));
+  //     setProduct(data);
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //     setLoading(false);
+  //   }
+  // };
   const handleOpen = () => {
     setLast(slides.length);
     setOpen(true);
@@ -33,11 +68,11 @@ function Home() {
     setOpen(false);
   };
 
-  useEffect(() => {
-    if (id) {
-      fetchData(id);
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   if (id) {
+  //     fetchData(id);
+  //   }
+  // }, [id]);
 
   return (
     <>
@@ -47,7 +82,7 @@ function Home() {
         <div className="overflow-hidden bg-white md:hidden rounded-b-lg">
           <div className="md:flex-1 h-96 md:h-auto">
             <Carousel>
-              {product?.images.map((image, i) => (
+              {product?.images?.map((image, i) => (
                 <img
                   src={image?.url}
                   key={i}
@@ -133,8 +168,8 @@ function Home() {
               </button>
             </div>
             <div className={`relative grid grid-cols-4 gap-4 rounded-lg`}>
-              {product?.images.length >= 5 &&
-                product?.images.slice(0, last).map((image, index) => (
+              {product?.images?.length >= 5 &&
+                product?.images?.slice(0, last).map((image, index) => (
                   <div
                     className={`${index === 0 && "col-span-2 row-span-2"}`}
                     key={index}
@@ -146,8 +181,8 @@ function Home() {
                     />
                   </div>
                 ))}
-              {product?.images.length == 4 &&
-                product?.images.slice(0, last).map((image, index) => (
+              {product?.images?.length == 4 &&
+                product?.images?.slice(0, last).map((image, index) => (
                   <div
                     className={`${
                       index === 0
@@ -165,8 +200,8 @@ function Home() {
                     />
                   </div>
                 ))}
-              {product?.images.length < 4 &&
-                product?.images.map((image, index) => (
+              {product?.images?.length < 4 &&
+                product?.images?.map((image, index) => (
                   <div key={index}>
                     <img
                       alt="gallery"
@@ -175,7 +210,7 @@ function Home() {
                     />
                   </div>
                 ))}
-              {product?.images.length > 5 &&
+              {product?.images?.length > 5 &&
                 (!open ? (
                   <button
                     onClick={handleOpen}
