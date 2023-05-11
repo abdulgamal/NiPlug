@@ -140,7 +140,7 @@ export default function Auth() {
           Continue with Google
         </button>
         <p className="text-center">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           {isLogin ? (
             <span
               className="font-medium text-indigo-600 hover:text-indigo-500 cursor-pointer"

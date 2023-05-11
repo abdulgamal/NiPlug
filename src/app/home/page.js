@@ -142,7 +142,7 @@ export const cats = [
   },
 ];
 
-export default () => {
+export default function Page() {
   return (
     <>
       <Navbar />
@@ -196,4 +196,4 @@ export default () => {
       <Footer />
     </>
   );
-};
+}
