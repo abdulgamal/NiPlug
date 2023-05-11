@@ -76,7 +76,6 @@ function Page() {
         </div>
         <div className="px-4 my-4">
           <select
-            multiple
             id="countries_multiple"
             value={slug}
             onChange={(e) => setSlug(e.target.value)}
