@@ -106,7 +106,6 @@ function Page() {
               <option
                 className="text-center py-2 mb-1"
                 key={cat?.id}
-                selected={slug}
                 value={cat?.slug}
               >
                 {cat?.title}
@@ -116,17 +115,27 @@ function Page() {
         </div>
         <div className="my-2">
           <p className="text-center font-bold mb-3">My Recommended Products</p>
-          <div className="relative px-4 mt-8">
-            <Card product={prods[currentIndex]} shop />
-            <div className="absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
-              <BsChevronCompactLeft size={30} onClick={prevSlide} />
+          {prods.length > 0 && (
+            <div className="relative px-4 mt-8 mb-5">
+              <Card product={prods[currentIndex]} shop />
+              <div
+                className={`${
+                  prods.length == 1 && "hidden"
+                } absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer`}
+              >
+                <BsChevronCompactLeft size={30} onClick={prevSlide} />
+              </div>
+              <div
+                className={`${
+                  prods.length == 1 && "hidden"
+                } absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer`}
+              >
+                <BsChevronCompactRight size={30} onClick={nextSlide} />
+              </div>
             </div>
-            <div className="absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
-              <BsChevronCompactRight size={30} onClick={nextSlide} />
-            </div>
-          </div>
-          <div className="grid grid-cols-1 gap-8 mt-8 px-4 mb-5">
-            {prods.length === 0 && (
+          )}
+          {prods.length === 0 && (
+            <div className="grid grid-cols-1 gap-8 mt-8 px-4 mb-5">
               <div className="relative block rounded-sm border-t-4 border-pink-600 p-4 shadow-md sm:p-6 lg:p-8">
                 <div className="flex items-center gap-4">
                   <svg
@@ -151,8 +160,8 @@ function Page() {
                   No products available at this time
                 </p>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
