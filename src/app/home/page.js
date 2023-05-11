@@ -26,6 +26,13 @@ export const products = [
     cat: "dress",
   },
   {
+    id: 13,
+    title: "Dope Mocassins",
+    img: "https://images.unsplash.com/photo-1678784973551-f38208de2529?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDgwfFM0TUtMQXNCQjc0fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    code: "Dope Mocassin",
+    cat: "dress",
+  },
+  {
     id: 4,
     title: "Kanisa",
     img: "https://images.unsplash.com/photo-1682789196658-ef1c03fd2110?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDI2fE04alZiTGJUUndzfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
@@ -37,6 +44,13 @@ export const products = [
     title: "Nuria Library",
     img: "https://images.unsplash.com/photo-1682445392345-e764214b10e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDM2fE04alZiTGJUUndzfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
     code: "Nuria",
+    cat: "hang",
+  },
+  {
+    id: 15,
+    title: "Borderless Barber Shop",
+    img: "https://images.unsplash.com/photo-1682957376808-dcb27d61f95e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDR8TThqVmJMYlRSd3N8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60",
+    code: "Borderless",
     cat: "hang",
   },
   {
@@ -58,7 +72,7 @@ export const products = [
     title: "Santorini",
     img: "https://images.unsplash.com/photo-1682700370797-f9905bf866b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDQyfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
     code: "Santorini",
-    cat: "Vacation",
+    cat: "vacation",
   },
   {
     id: 9,
@@ -75,6 +89,13 @@ export const products = [
     cat: "eat",
   },
   {
+    id: 14,
+    title: "Nodo Eggs",
+    img: "https://images.unsplash.com/photo-1636522637419-50322e27b0a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8eGpQUjRobGtCR0F8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60",
+    code: "Poached Eggs",
+    cat: "eat",
+  },
+  {
     id: 11,
     title: "Sharubati",
     img: "https://images.unsplash.com/photo-1681821671107-751c9f0ce619?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDEyfHhqUFI0aGxrQkdBfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
@@ -86,6 +107,13 @@ export const products = [
     title: "Kahawa Tungu",
     img: "https://images.unsplash.com/photo-1681477578092-979cc57ba5f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDE4fHhqUFI0aGxrQkdBfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
     code: "Kahwa Tungu",
+    cat: "drink",
+  },
+  {
+    id: 16,
+    title: "Sharubati",
+    img: "https://images.unsplash.com/photo-1681821671107-751c9f0ce619?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDEyfHhqUFI0aGxrQkdBfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    code: "Cocktail",
     cat: "drink",
   },
 ];

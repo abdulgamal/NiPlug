@@ -4,6 +4,8 @@ import Card from "@/components/Card";
 import React, { useEffect, useState } from "react";
 import { BsFacebook, BsInstagram, BsTiktok, BsTwitter } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Scrollbar } from "swiper";
+import "swiper/css/scrollbar";
 import "swiper/css";
 
 function Page() {
@@ -98,7 +100,12 @@ function Page() {
           <p className="text-center font-bold mb-3">My Recommended Products</p>
           {prods.length > 0 && (
             <div className="mt-8 px-4 mb-8">
-              <Swiper spaceBetween={50} slidesPerView={1}>
+              <Swiper
+                spaceBetween={10}
+                slidesPerView={1.5}
+                scrollbar={{ draggable: true }}
+                modules={[Scrollbar]}
+              >
                 {prods.map((product) => (
                   <SwiperSlide key={product.id}>
                     <Card product={product} shop />
