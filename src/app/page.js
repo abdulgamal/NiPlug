@@ -18,7 +18,7 @@ export default function Home() {
               </div>
               <p className="text-base md:text-2xl tracking-wider">
                 Make everything you promote on social searchable to help your
-                followers find exactly what they're looking for.
+                followers find exactly what they&apos;re looking for.
               </p>
             </div>
             <div className="mt-5">
@@ -40,7 +40,8 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-10 my-3">
             <div className="bg-white p-10 rounded-md h-[50vh] flex flex-col justify-around">
               <h5 className="font-bold text-gray-800 mb-5 text-lg md:text-2xl">
-                Your followers are always asking "where can I get that?" 🤔
+                Your followers are always asking &quot;where can I get
+                that?&quot; 🤔
               </h5>
               <p className="text-gray-500 tracking-wide">
                 We provide a way to link to any product, anywhere, right from
@@ -60,12 +61,12 @@ export default function Home() {
             </div>
             <div className="bg-white p-10 rounded-md h-[50vh] flex flex-col justify-around">
               <h5 className="font-bold text-gray-800 mb-5 text-lg md:text-2xl">
-                Your current link in bio is so stacked with links it's
+                Your current link in bio is so stacked with links it&apos;s
                 impossible to navigate 🤯
               </h5>
               <p className="text-gray-500 tracking-wide">
                 Get a single, clean, aesthetically pleasing search bar connected
-                to unlimited links (with the option to add permanent ones).{" "}
+                to unlimited links (with the option to add permanent ones).
               </p>
             </div>
           </div>
