@@ -18,14 +18,14 @@ function Card({ product, shop }) {
       {shop ? (
         <Link
           href="/business/loafer"
-          className="bg-blue-500 text-white px-5 py-1 mb-2 rounded-2xl w-full md:w-auto"
+          className="bg-[#060D50] text-white px-5 py-1 mb-2 rounded-2xl w-full md:w-auto"
         >
           Go To Link
         </Link>
       ) : (
         <Link
           href={`/profile/${product?.id}`}
-          className="bg-blue-500 text-white px-5 py-1 rounded-2xl w-full md:w-auto"
+          className="bg-[#060D50] text-white px-5 py-1 rounded-2xl w-full md:w-auto"
         >
           Add To Profile
         </Link>

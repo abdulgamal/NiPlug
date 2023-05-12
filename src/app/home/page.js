@@ -175,9 +175,31 @@ export default function Page() {
     <>
       <Navbar />
       <section className="bg-white">
-        <div className="container px-6 py-10 mx-auto">
+        <div className="container px-6 pb-10 mx-auto">
+          <div className="mb-4 flex justify-end">
+            <Link
+              href="/profile"
+              className="inline-flex items-center gap-0.5 rounded-full mt-2 bg-[#060D50] px-2 py-1 text-xs font-semibold text-white"
+            >
+              Skip to Profile
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                />
+              </svg>
+            </Link>
+          </div>
           <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl">
-            Choose from the categories
+            Choose Products/Services to Promote from categories below
           </h1>
 
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 lg:grid-cols-3">
@@ -197,7 +219,7 @@ export default function Page() {
                   </h2>
                   <Link
                     href={`/product/${cat.slug}`}
-                    className="inline-flex items-center gap-0.5 rounded-full mt-2 bg-blue-500 px-2 py-1 text-xs font-semibold text-white"
+                    className="inline-flex items-center gap-0.5 rounded-full mt-2 bg-[#060D50] px-2 py-1 text-xs font-semibold text-white"
                   >
                     Peep
                     <svg
