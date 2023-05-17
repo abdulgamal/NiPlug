@@ -69,7 +69,7 @@ function Checkout({ product, isToggle, setToggle }) {
           eventSource.close();
           notify("The payment has been successfully made");
           setMerchantId("");
-          router.replace(`/success/${orderID}`);
+          router.replace("/home");
           // Redirect here
         }
 
