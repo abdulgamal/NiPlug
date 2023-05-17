@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { checkoutHandle } from "../../requests";
 
 function Checkout({ product, isToggle, setToggle }) {
@@ -119,12 +119,12 @@ function Checkout({ product, isToggle, setToggle }) {
           <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
             <img
               className="rounded-t-lg min-w-full"
-              src={product?.images[0]?.url}
+              src={product?.image}
               alt=""
             />
             <div className="p-5">
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                {product?.name}
+                {product?.title}
               </h5>
               <div className="my-2">
                 <label
@@ -227,7 +227,7 @@ function Checkout({ product, isToggle, setToggle }) {
               <div className="flex gap-2 items-center mt-2">
                 <p className="font-bold text-gray-700">Total</p>
                 <p className="font-normal text-gray-700">
-                  {product?.sale_price * qty}
+                  {product?.price * qty}
                 </p>
               </div>
             </div>

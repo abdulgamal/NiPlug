@@ -5,7 +5,7 @@ function Button() {
   return (
     <Link
       href="/auth"
-      className="flex items-center bg-[#13167D] w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 text-white py-3 px-8 rounded-2xl gap-2 my-2"
+      className="flex items-center font-bold text-[#d4af37] w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 bg-[#1d7874] py-3 px-8 rounded-2xl gap-2 my-2"
     >
       Try It Free{" "}
       <svg

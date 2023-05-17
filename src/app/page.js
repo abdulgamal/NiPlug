@@ -11,8 +11,10 @@ export default function Home() {
           <div className="h-screen flex flex-col justify-center px-4">
             <div className="max-w-md">
               <div className="mb-5">
-                <p className="text-5xl font-bold tracking-widest">Not just a</p>
-                <p className="text-5xl my-3 font-bold tracking-widest">
+                <p className="text-5xl font-bold tracking-widest text-[#1d7874]">
+                  Not just a
+                </p>
+                <p className="text-5xl my-3 font-bold tracking-widest text-[#1d7874]">
                   link in bio
                 </p>
               </div>
@@ -24,7 +26,7 @@ export default function Home() {
             <div className="mt-5">
               <Button />
             </div>
-            <div className="flex items-center mt-4 gap-2 border border-gray-300 rounded-md p-1">
+            <div className="flex items-center mt-4 gap-2 border border-[#d4af37] rounded-md p-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -44,14 +46,14 @@ export default function Home() {
                 placeholder="Search or type a code"
                 className="bg-transparent flex-1 py-1 outline-none"
               />
-              <button className="p-1 bg-black">
+              <button className="p-1 bg-[#1d7874] rounded-md">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-5 h-5 text-gray-200"
+                  className="w-5 h-5 text-[#d4af37]"
                 >
                   <path
                     strokeLinecap="round"
@@ -71,12 +73,12 @@ export default function Home() {
           </div>
         </div>
         <div className="bg-[#F4F4F4] min-h-screen p-5 md:rounded-2xl my-10 flex flex-col justify-around items-center">
-          <h2 className="text-4xl text-center mb-3 font-bold text-gray-800">
+          <h2 className="text-4xl text-center mb-3 font-bold text-[#1d7874]">
             Any of these sound familiar?
           </h2>
           <div className="grid md:grid-cols-3 gap-10 my-3">
             <div className="bg-white p-10 rounded-md h-[50vh] flex flex-col justify-around">
-              <h5 className="font-bold text-gray-800 mb-5 text-lg md:text-2xl">
+              <h5 className="font-bold text-[#1d7874] text-center mb-5 text-lg md:text-2xl">
                 Your followers are always asking &quot;where can I get
                 that?&quot; 🤔
               </h5>
@@ -86,7 +88,7 @@ export default function Home() {
               </p>
             </div>
             <div className="bg-white p-10 rounded-md h-[50vh] flex flex-col justify-around">
-              <h5 className="font-bold text-gray-800 mb-5 text-lg md:text-2xl">
+              <h5 className="font-bold text-[#1d7874] text-center mb-5 text-lg md:text-2xl">
                 Your brand partners keep asking you to change your link in bio
                 😣
               </h5>
@@ -97,7 +99,7 @@ export default function Home() {
               </p>
             </div>
             <div className="bg-white p-10 rounded-md h-[50vh] flex flex-col justify-around">
-              <h5 className="font-bold text-gray-800 mb-5 text-lg md:text-2xl">
+              <h5 className="font-bold text-[#1d7874] text-center mb-5 text-lg md:text-2xl">
                 Your current link in bio is so stacked with links it&apos;s
                 impossible to navigate 🤯
               </h5>
@@ -111,10 +113,10 @@ export default function Home() {
         </div>
         <div className="my-12 min-h-screen grid md:grid-cols-2 gap-10">
           <div className="px-4 mb-4 pt-10">
-            <p className="text-2xl md:text-5xl font-bold tracking-widest">
+            <p className="text-2xl md:text-5xl text-[#1d7874] font-bold tracking-widest">
               With NiPlug,
             </p>
-            <p className="text-2xl md:text-5xl font-bold tracking-widest my-1 md:my-3">
+            <p className="text-2xl md:text-5xl text-[#1d7874] font-bold tracking-widest my-1 md:my-3">
               get ready for:
             </p>
             <div className="mt-5">
@@ -125,7 +127,7 @@ export default function Home() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6 text-[#F36050] font-bold"
+                  className="w-6 h-6 text-[#d4af37] font-bold"
                 >
                   <path
                     strokeLinecap="round"
@@ -144,7 +146,7 @@ export default function Home() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6 text-[#F36050] font-bold"
+                  className="w-6 h-6 text-[#d4af37] font-bold"
                 >
                   <path
                     strokeLinecap="round"
@@ -161,7 +163,7 @@ export default function Home() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6 text-[#F36050] font-bold"
+                  className="w-6 h-6 text-[#d4af37] font-bold"
                 >
                   <path
                     strokeLinecap="round"
@@ -180,7 +182,7 @@ export default function Home() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6 text-[#F36050] font-bold"
+                  className="w-6 h-6 text-[#d4af37] font-bold"
                 >
                   <path
                     strokeLinecap="round"
@@ -199,7 +201,7 @@ export default function Home() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6 text-[#F36050] font-bold"
+                  className="w-6 h-6 text-[#d4af37] font-bold"
                 >
                   <path
                     strokeLinecap="round"
@@ -222,7 +224,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="bg-gradient-to-br from-[#131569] to-[#151B7B] px-5 md:rounded-3xl mt-5 flex flex-col items-center justify-around py-10 min-h-screen">
+        <div className="bg-gradient-to-br from-[#1d7874] to-[#151B7B] px-5 md:rounded-3xl mt-5 flex flex-col items-center justify-around py-10 min-h-screen">
           <h2 className="text-gray-300 text-center font-bold text-3xl tracking-widest">
             How it works
           </h2>

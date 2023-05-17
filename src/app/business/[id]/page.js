@@ -2,63 +2,30 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Carousel from "@/components/Carousel";
-import { getDetails } from "../../../../requests";
+import { getCategories, getProduct } from "../../../../requests";
 import { useParams } from "next/navigation";
-
-const product = {
-  name: "Loafers",
-  description:
-    "Starting with the basics, loafers are slip-on style shoes that do not have laces or any other fastenings. Think fancy slippers. Usually, loafers have a low or even no heel and are typically made using leather or suede.",
-  max_purchase: 5,
-  min_purchase: 1,
-  price: 25,
-  slug: "loafer",
-  sale_price: 20,
-  id: 25,
-  owner: {
-    name: "Tamacti Jun",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_nha-3LVIjOWvBJlDlmKmIIKrCu1mi_Pkxg&usqp=CAU",
-  },
-  images: [
-    {
-      id: 1,
-      url: "http://res.cloudinary.com/dinfpnmrf/image/upload/v1679598688/dukaapp/ajjp0m9lgmgwfxdiwgog.jpg",
-    },
-    {
-      id: 2,
-      url: "http://res.cloudinary.com/dinfpnmrf/image/upload/v1679598690/dukaapp/d8cujst1rp4oelfp8mcu.jpg",
-    },
-    {
-      id: 3,
-      url: "http://res.cloudinary.com/dinfpnmrf/image/upload/v1679598691/dukaapp/xvagvtt1mhpshsry7lvi.jpg",
-    },
-    {
-      id: 4,
-      url: "http://res.cloudinary.com/dinfpnmrf/image/upload/v1679598692/dukaapp/uxdvvkplx3yjcj8b2j2o.jpg",
-    },
-  ],
-};
+import Checkout from "@/components/Checkout";
 
 function Home() {
   const [last, setLast] = useState(5);
   const [isToggle, setIsToggle] = useState(false);
   const [open, setOpen] = useState(false);
-  // const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(false);
-  // const { id } = useParams();
+  const { id } = useParams();
 
-  // const fetchData = async (id) => {
-  //   setLoading(true);
-  //   try {
-  //     let { data } = await getDetails(id.split("_").join(" "));
-  //     setProduct(data);
-  //     setLoading(false);
-  //   } catch (error) {
-  //     console.log(error);
-  //     setLoading(false);
-  //   }
-  // };
+  const fetchData = async (id) => {
+    setLoading(true);
+    try {
+      let { data } = await getProduct(id);
+      setProduct(data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
   const handleOpen = () => {
     setLast(slides.length);
     setOpen(true);
@@ -68,39 +35,46 @@ function Home() {
     setOpen(false);
   };
 
-  // useEffect(() => {
-  //   if (id) {
-  //     fetchData(id);
-  //   }
-  // }, [id]);
+  useEffect(() => {
+    if (id) {
+      fetchData(id);
+    }
+  }, [id]);
 
   return (
     <>
       <Navbar />
-      {/* <Checkout product={product} isToggle={isToggle} setToggle={setIsToggle} /> */}
+      <Checkout product={product} isToggle={isToggle} setToggle={setIsToggle} />
       {product && (
         <div className="overflow-hidden bg-white md:hidden rounded-b-lg">
           <div className="md:flex-1 h-96 md:h-auto">
             <Carousel>
-              {product?.images?.map((image, i) => (
+              {product?.image_gallery > 0 ? (
+                product?.image_gallery?.map((image, i) => (
+                  <img
+                    src={image}
+                    key={i}
+                    className="object-cover h-96 min-w-full"
+                  />
+                ))
+              ) : (
                 <img
-                  src={image?.url}
-                  key={i}
+                  src={product?.image}
                   className="object-cover h-96 min-w-full"
                 />
-              ))}
+              )}
             </Carousel>
           </div>
 
           <div className="p-6 md:flex-1 md:flex md:flex-col justify-center">
             <div>
-              <span className="text-xs font-medium text-blue-600 uppercase">
+              <span className="text-xs font-medium text-[#1d7874] uppercase">
                 Product
               </span>
               <h2 className="text-xl font-bold mb-1 text-gray-500 tracking-widest border-b-2 border-gray-200">
-                {product?.name}
+                {product?.title}
               </h2>
-              <p className="leading-relaxed">{product?.description}</p>
+              <p className="leading-relaxed">{product?.sort_description}</p>
             </div>
 
             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
@@ -114,7 +88,7 @@ function Home() {
                   alt=""
                 />
                 <div className="font-medium ">
-                  <div>{product?.owner?.name}</div>
+                  <div>{product?.owner}</div>
                   <div className="text-sm text-gray-500 ">
                     Owner of the Product
                   </div>
@@ -123,13 +97,13 @@ function Home() {
             </div>
             <div className="flex items-center">
               <p className="font-medium text-md mr-2 text-gray-400">Price:</p>
-              {product?.price > product?.sale_price ? (
+              {product?.discount_price > product?.price ? (
                 <>
                   <span className="title-font line-through font-medium mr-2 text-sm md:text-2xl text-gray-400">
-                    {product?.price}
+                    {product?.discount_price}
                   </span>
                   <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
-                    {product?.sale_price}
+                    {product?.price}
                   </span>
                 </>
               ) : (
@@ -139,7 +113,7 @@ function Home() {
               )}
               <button
                 onClick={() => setIsToggle(true)}
-                className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                className="flex ml-auto text-white bg-[#1d7874] border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
               >
                 Pay
               </button>
@@ -152,7 +126,7 @@ function Home() {
           <div className="container px-5 py-6 mx-auto flex flex-wrap">
             <div className="flex w-full mb-6 flex-wrap justify-between">
               <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-600 lg:w-1/3 lg:mb-0 mb-4">
-                {product?.name}
+                {product?.title}
               </h1>
               <button className="rounded-full w-10 h-10 bg-gray-300/40 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                 <svg
@@ -168,8 +142,8 @@ function Home() {
               </button>
             </div>
             <div className={`relative grid grid-cols-4 gap-4 rounded-lg`}>
-              {product?.images?.length >= 5 &&
-                product?.images?.slice(0, last).map((image, index) => (
+              {product?.image_gallery?.length >= 5 &&
+                product?.image_gallery?.slice(0, last).map((image, index) => (
                   <div
                     className={`${index === 0 && "col-span-2 row-span-2"}`}
                     key={index}
@@ -177,12 +151,12 @@ function Home() {
                     <img
                       alt="gallery"
                       className="w-full h-full object-cover object-center block"
-                      src={image?.url}
+                      src={image}
                     />
                   </div>
                 ))}
-              {product?.images?.length == 4 &&
-                product?.images?.slice(0, last).map((image, index) => (
+              {product?.image_gallery?.length == 4 &&
+                product?.image_gallery?.slice(0, last).map((image, index) => (
                   <div
                     className={`${
                       index === 0
@@ -196,21 +170,30 @@ function Home() {
                     <img
                       alt="gallery"
                       className="w-full h-full object-cover object-center block"
-                      src={image?.url}
+                      src={image}
                     />
                   </div>
                 ))}
-              {product?.images?.length < 4 &&
-                product?.images?.map((image, index) => (
+              {product?.image_gallery?.length < 4 &&
+                product?.image_gallery?.map((image, index) => (
                   <div key={index}>
                     <img
                       alt="gallery"
                       className="w-full h-full object-cover object-center block"
-                      src={image?.url}
+                      src={image}
                     />
                   </div>
                 ))}
-              {product?.images?.length > 5 &&
+              {product?.image_gallery?.length === 0 && (
+                <div>
+                  <img
+                    alt="gallery"
+                    className="w-full h-full object-cover object-center block"
+                    src={product?.image}
+                  />
+                </div>
+              )}
+              {product?.image_gallery?.length > 5 &&
                 (!open ? (
                   <button
                     onClick={handleOpen}
@@ -256,7 +239,7 @@ function Home() {
                 ))}
             </div>
             <div className="my-4 w-1/2">
-              <p className="leading-relaxed">{product?.description}</p>
+              <p className="leading-relaxed">{product?.sort_description}</p>
             </div>
             <div className="my-4 w-full flex justify-between border-t-2 border-gray-100 pt-3">
               <div className="flex items-center space-x-4">
@@ -269,7 +252,7 @@ function Home() {
                   alt=""
                 />
                 <div className="font-medium ">
-                  <div>{product?.owner?.name}</div>
+                  <div>{product?.owner}</div>
                   <div className="text-sm text-gray-500 ">
                     Owner of the Product
                   </div>
@@ -279,13 +262,13 @@ function Home() {
                 <p className="font-medium text-xs md:text-xl text-gray-400">
                   Price:
                 </p>
-                {product?.price > product?.sale_price ? (
+                {product?.discount_price > product?.price ? (
                   <>
                     <span className="title-font line-through font-medium text-xs md:text-xl text-gray-400">
-                      {product?.price}
+                      {product?.discount_price}
                     </span>
                     <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
-                      {product?.sale_price}
+                      {product?.price}
                     </span>
                   </>
                 ) : (
@@ -295,7 +278,7 @@ function Home() {
                 )}
                 <button
                   onClick={() => setIsToggle(true)}
-                  className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                  className="flex ml-auto text-white bg-[#1d7874] border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
                 >
                   Pay
                 </button>
@@ -333,7 +316,7 @@ function Home() {
             >
               <svg
                 aria-hidden="true"
-                className="w-8 h-8 mr-2 text-gray-200 animate-spin fill-blue-600"
+                className="w-8 h-8 mr-2 text-gray-200 animate-spin fill-[#1d7874]"
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
