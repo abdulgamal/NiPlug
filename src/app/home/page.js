@@ -225,7 +225,7 @@ export default function Page() {
           <div className="mb-4 flex justify-end">
             <Link
               href="/profile"
-              className="inline-flex items-center gap-0.5 rounded-full mt-2 bg-[#1d7874] px-2 py-1 text-xs font-bold text-[#d4af37]"
+              className="inline-flex items-center gap-0.5 rounded-full mt-2 bg-[#1d7874] px-2 py-1 text-xs font-bold text-white"
             >
               Skip to Profile
               <svg
@@ -269,7 +269,7 @@ export default function Page() {
                     </h2>
                     <Link
                       href={`/product/${cat.id}`}
-                      className="inline-flex items-center gap-0.5 rounded-full mt-2 bg-[#1d7874] px-2 py-1 text-xs font-bold text-[#d4af37]"
+                      className="inline-flex items-center gap-0.5 rounded-full mt-2 bg-[#1d7874] px-2 py-1 text-xs font-bold text-white"
                     >
                       Peep
                       <svg
@@ -278,7 +278,7 @@ export default function Page() {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="w-4 h-4 text-[#d4af37]"
+                        className="w-4 h-4 text-white"
                       >
                         <path
                           strokeLinecap="round"

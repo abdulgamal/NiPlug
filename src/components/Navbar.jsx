@@ -33,7 +33,7 @@ function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="/auth"
-              className="text-[#d4af37] bg-[#1d7874] py-1 px-6 rounded-3xl font-bold"
+              className="text-white bg-[#1d7874] py-1 px-6 rounded-3xl font-bold"
             >
               Log In
             </Link>
@@ -46,20 +46,30 @@ function Navbar() {
           </div>
         )}
       </nav>
-      <div class={`${!isOpen && "hidden"} container mx-auto w-full md:w-auto`}>
-        <ul class="font-medium flex flex-col justify-center items-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0">
+      <div
+        className={`${!isOpen && "hidden"} container mx-auto w-full md:w-auto`}
+      >
+        <ul className="font-medium flex flex-col justify-center items-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0">
           <li>
             <Link
               href="/profile"
-              class="block py-2 pl-3 pr-4 text-[#1d7874] rounded"
+              className="block py-2 pl-3 pr-4 text-[#1d7874] rounded"
             >
               Profile
             </Link>
           </li>
           <li>
+            <Link
+              href="/home"
+              className="block py-2 pl-3 pr-4 text-[#1d7874] rounded"
+            >
+              Add Items
+            </Link>
+          </li>
+          <li>
             <span
               onClick={handleLogOut}
-              class="block py-2 pl-3 pr-4 text-[#1d7874] rounded"
+              className="block py-2 pl-3 pr-4 text-[#1d7874] rounded cursor-pointer"
             >
               Logout
             </span>

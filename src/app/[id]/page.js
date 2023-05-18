@@ -1,5 +1,4 @@
 "use client";
-import { cats, products } from "@/app/home/page";
 import ProfileCard from "@/components/ProfileCard";
 import React, { useEffect, useState } from "react";
 import { BsFacebook, BsInstagram, BsTiktok, BsTwitter } from "react-icons/bs";
@@ -8,7 +7,7 @@ import { Scrollbar } from "swiper";
 import "swiper/css/scrollbar";
 import "swiper/css";
 import { useParams } from "next/navigation";
-import { fetchUserDetails, getCategories } from "../../../../requests";
+import { fetchUserDetails, getCategories } from "../../../requests";
 import Loading from "@/components/Loading";
 
 function Page() {
@@ -79,7 +78,7 @@ function Page() {
           />
           <div className="flex flex-col items-center mt-2 px-4">
             <p className="text-xl font-bold text-[#1d7874] my-2">
-              {info?.name}
+              {info?.username}
             </p>
             <div className="flex items-center mt-3 gap-10">
               <BsFacebook
@@ -183,7 +182,7 @@ function Page() {
                 >
                   {prods.map((product) => (
                     <SwiperSlide key={product.id}>
-                      <ProfileCard product={product} shop />
+                      <ProfileCard product={product} />
                     </SwiperSlide>
                   ))}
                 </Swiper>

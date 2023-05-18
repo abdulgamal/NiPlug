@@ -1,6 +1,9 @@
+"use client";
 import Button from "@/components/Button";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Lottie from "lottie-react";
+import banner from "../../public/banner.json";
 
 export default function Home() {
   return (
@@ -10,6 +13,7 @@ export default function Home() {
         <div className=" grid md:grid-cols-2 gap-10">
           <div className="h-screen flex flex-col justify-center px-4">
             <div className="max-w-md">
+              <Lottie animationData={banner} />
               <div className="mb-5">
                 <p className="text-5xl font-bold tracking-widest text-[#1d7874]">
                   Not just a
@@ -53,7 +57,7 @@ export default function Home() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-5 h-5 text-[#d4af37]"
+                  className="w-5 h-5 text-white"
                 >
                   <path
                     strokeLinecap="round"
@@ -64,7 +68,7 @@ export default function Home() {
               </button>
             </div>
           </div>
-          <div className="md:h-screen">
+          <div className="">
             <img
               src="banner1.webp"
               alt="banner-image"

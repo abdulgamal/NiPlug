@@ -49,6 +49,13 @@ export const getCatProducts = (id) => {
       console.error("Error:", error);
     });
 };
+export const getCatSubs = (id) => {
+  return fetch(`${BASE_URL}/subcategory/bycategory/${id}`)
+    .then((response) => response.json())
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
 
 export const getProduct = (id) => {
   return fetch(`${BASE_URL}/products/${id}`)
@@ -165,7 +172,7 @@ export const resetPassword = (data) => {
     });
 };
 export const verifyPassword = (data) => {
-  return fetch(`${BASE_URL}/verify/password`, {
+  return fetch(`${BASE_URL}/reset/verify`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

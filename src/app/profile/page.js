@@ -213,16 +213,15 @@ function Page() {
       <section className="bg-white min-h-screen">
         <div className="md:max-w-lg md:mx-auto w-full flex px-4 md:py-24 flex-col">
           <div className="">
-            <h2 className="text-[#060D50] font-bold text-xl mb-2">
+            <h2 className="text-[#1d7874] font-bold text-xl mb-2">
               Welcome to NiPlug
             </h2>
             <p className="text-gray-500 text-sm">Performance overview</p>
           </div>
           <div className="flex sm:w-auto my-3">
-            <Link
-              href={`/profile/${username}`}
-              className="rounded-none rounded-l-lg bg-gray-50 border text-[#060D50] block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
-            >{`${host}/profile/${username}`}</Link>
+            <div className="rounded-none rounded-l-lg flex bg-gray-50 border items-center gap-3 flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5">
+              {`${host}/${username}`}
+            </div>
             {copied ? (
               <span className="inline-flex items-center px-3 text-sm text-gray-600 bg-gray-200 border border-l-0 border-gray-300 rounded-r-md">
                 <svg
@@ -263,6 +262,12 @@ function Page() {
               </span>
             )}
           </div>
+          <Link
+            href={`/${username}`}
+            className="bg-[#1d7874] rounded-2xl py-1 px-7 text-white max-w-max"
+          >
+            Go To Link
+          </Link>
 
           <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200">
             <ul className="flex -mb-px">
@@ -599,7 +604,7 @@ function Page() {
                   </div>
                 )}
                 {loadingFile && (
-                  <div className="text-white flex flex-col items-center justify-center gap-2 bg-blue-700 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                  <div className="text-white flex flex-col items-center justify-center gap-2 bg-[#1d7874] font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -651,7 +656,7 @@ function Page() {
                 </div>
                 <button
                   type="submit"
-                  className="text-white inline-flex items-center justify-center gap-4 bg-[#060D50] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                  className="text-white inline-flex items-center justify-center gap-4 bg-[#1d7874] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
                 >
                   {loading && (
                     <svg
