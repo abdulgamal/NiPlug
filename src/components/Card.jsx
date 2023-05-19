@@ -16,9 +16,11 @@ function Card({ product, shop, token }) {
     try {
       setLoading(true);
       const response = await addToProfile(values, token);
-      console.log(response);
       if (response.code == 200) {
-        notify("Product added");
+        notify("Product added successfully");
+        setLoading(false);
+      } else {
+        notify(response.message);
         setLoading(false);
       }
     } catch (error) {

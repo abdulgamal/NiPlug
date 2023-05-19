@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Carousel from "@/components/Carousel";
-import { getCategories, getProduct } from "../../../../requests";
+import { getProduct } from "../../../../requests";
 import { useParams } from "next/navigation";
 import Checkout from "@/components/Checkout";
 
@@ -48,22 +48,22 @@ function Home() {
       {product && (
         <div className="overflow-hidden bg-white md:hidden rounded-b-lg">
           <div className="md:flex-1 h-96 md:h-auto">
-            <Carousel>
-              {product?.image_gallery > 0 ? (
-                product?.image_gallery?.map((image, i) => (
+            {product?.image_gallery > 0 ? (
+              <Carousel>
+                {product?.image_gallery?.map((image, i) => (
                   <img
                     src={image}
                     key={i}
                     className="object-cover h-96 min-w-full"
                   />
-                ))
-              ) : (
-                <img
-                  src={product?.image}
-                  className="object-cover h-96 min-w-full"
-                />
-              )}
-            </Carousel>
+                ))}
+              </Carousel>
+            ) : (
+              <img
+                src={product?.image}
+                className="object-cover h-96 min-w-full"
+              />
+            )}
           </div>
 
           <div className="p-6 md:flex-1 md:flex md:flex-col justify-center">

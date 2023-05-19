@@ -36,7 +36,8 @@ function Checkout({ product, isToggle, setToggle }) {
       mpesa_no: number,
       quantity: qty,
       shipping_address: shipping,
-      page_id: product?.id,
+      product_id: product?.product_id,
+      user_id: product?.user_id,
       instruction,
     };
     setLoading(true);
@@ -56,7 +57,7 @@ function Checkout({ product, isToggle, setToggle }) {
   useEffect(() => {
     if (merchantId) {
       const eventSource = new EventSource(
-        `https://app.dukaapp.com/api/v1/mpesa/status/${merchantId}`
+        `https://admin.niplug.com/api/v1/mpesa/status/${merchantId}`
       );
       eventSource.onmessage = (e) => {
         if (e.data === "END-OF-STREAM") {
@@ -69,8 +70,7 @@ function Checkout({ product, isToggle, setToggle }) {
           eventSource.close();
           notify("The payment has been successfully made");
           setMerchantId("");
-          router.replace("/home");
-          // Redirect here
+          router.replace(`/success/${orderID}`);
         }
 
         if (e.data === "1032") {
@@ -116,15 +116,15 @@ function Checkout({ product, isToggle, setToggle }) {
         } fixed top-0 left-0 right-0 z-50 w-full  flex flex-col justify-center items-center bg-black/20 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full`}
       >
         <div className="relative w-full h-[80vh] overflow-scroll scrollbar-hide max-w-md">
-          <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+          <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow relative">
             <img
               className="rounded-t-lg min-w-full"
-              src={product?.image}
+              src={product?.product?.image_url}
               alt=""
             />
             <div className="p-5">
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                {product?.title}
+                {product?.product?.title}
               </h5>
               <div className="my-2">
                 <label
@@ -205,7 +205,7 @@ function Checkout({ product, isToggle, setToggle }) {
                   value={number}
                   onChange={(e) => setNumber(e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                  placeholder="071-2345-678"
+                  placeholder="0712345678"
                   required
                 />
               </div>
@@ -227,7 +227,7 @@ function Checkout({ product, isToggle, setToggle }) {
               <div className="flex gap-2 items-center mt-2">
                 <p className="font-bold text-gray-700">Total</p>
                 <p className="font-normal text-gray-700">
-                  {product?.price * qty}
+                  {product?.product?.sale_price * qty}
                 </p>
               </div>
             </div>
@@ -265,6 +265,25 @@ function Checkout({ product, isToggle, setToggle }) {
                 Decline
               </button>
             </div>
+            <button
+              onClick={() => setToggle(false)}
+              className="absolute top-2 right-2 rounded-full w-10 h-10 bg-black/50 p-0 border-0 inline-flex items-center justify-center text-white ml-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

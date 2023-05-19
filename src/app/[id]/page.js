@@ -9,6 +9,7 @@ import "swiper/css";
 import { useParams } from "next/navigation";
 import { fetchUserDetails, getCategories } from "../../../requests";
 import Loading from "@/components/Loading";
+import Checkout from "@/components/Checkout";
 
 function Page() {
   const [slug, setSlug] = useState(39);
@@ -16,6 +17,8 @@ function Page() {
   const [info, setInfo] = useState(null);
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [isToggle, setIsToggle] = useState(false);
+  const [product, setProduct] = useState(null);
   const { id } = useParams();
 
   const filteredProds = (slug) =>
@@ -65,6 +68,7 @@ function Page() {
 
   return (
     <section className="min-h-screen">
+      <Checkout product={product} isToggle={isToggle} setToggle={setIsToggle} />
       {!loading && (
         <div className="md:max-w-lg md:mx-auto w-full flex md:px-5 md:py-24 flex-col">
           <img
@@ -81,28 +85,32 @@ function Page() {
               {info?.username}
             </p>
             <div className="flex items-center mt-3 gap-10">
-              <BsFacebook
-                size={24}
+              <a
                 href={info?.influencer?.facebook || "https://www.facebook.com/"}
                 target="_blank"
-              />
-              <BsInstagram
-                size={24}
+              >
+                <BsFacebook size={24} />
+              </a>
+              <a
                 href={
                   info?.influencer?.instagram || "https://www.instagram.com/"
                 }
                 target="_blank"
-              />
-              <BsTiktok
-                size={24}
+              >
+                <BsInstagram size={24} />
+              </a>
+              <a
                 href={info?.influencer?.tiktok || "https://www.tiktok.com/"}
                 target="_blank"
-              />
-              <BsTwitter
-                size={24}
+              >
+                <BsTiktok size={24} />
+              </a>
+              <a
                 href={info?.influencer?.twitter || "https://twitter.com/"}
                 target="_blank"
-              />
+              >
+                <BsTwitter size={24} />
+              </a>
             </div>
             <div className="border border-gray-300 w-full my-5" />
           </div>
@@ -182,7 +190,11 @@ function Page() {
                 >
                   {prods.map((product) => (
                     <SwiperSlide key={product.id}>
-                      <ProfileCard product={product} />
+                      <ProfileCard
+                        product={product}
+                        setToggle={setIsToggle}
+                        setNewProduct={setProduct}
+                      />
                     </SwiperSlide>
                   ))}
                 </Swiper>
