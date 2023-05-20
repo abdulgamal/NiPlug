@@ -14,7 +14,7 @@ function Navbar() {
     <>
       <nav className="py-5 md:py-10 px-4 flex justify-between items-center container mx-auto">
         <img
-          src="https://paysoko.com/asset/brands/brand_1676528257.png"
+          src="https://res.cloudinary.com/dinfpnmrf/image/upload/v1684594826/dukaapp/ymusvqugr2sck88mmp5r.png"
           alt="logo"
           className="h-8"
         />
