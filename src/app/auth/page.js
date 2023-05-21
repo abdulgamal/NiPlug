@@ -82,7 +82,11 @@ export default function Auth() {
       <main className="w-full h-screen flex flex-col items-center justify-center px-4">
         <div className="max-w-sm w-full text-gray-600 space-y-5">
           <div className="text-center pb-8">
-            <img src="dukaApp.png" width={150} className="mx-auto" />
+            <img
+              src="https://res.cloudinary.com/dinfpnmrf/image/upload/v1684594826/dukaapp/ymusvqugr2sck88mmp5r.png"
+              width={150}
+              className="mx-auto"
+            />
             <div className="mt-5">
               {isLogin ? (
                 <h3 className="text-[#1d7874] text-2xl font-bold sm:text-3xl">

@@ -40,14 +40,11 @@ function Page() {
     }
   };
   const fetchCategories = async () => {
-    setLoading(true);
     try {
       const { categories } = await getCategories();
       setCategories(categories);
-      setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false);
     }
   };
 
@@ -69,7 +66,7 @@ function Page() {
   return (
     <section className="min-h-screen">
       <Checkout product={product} isToggle={isToggle} setToggle={setIsToggle} />
-      {!loading && (
+      {!loading && info && (
         <div className="md:max-w-lg md:mx-auto w-full flex md:px-5 md:py-24 flex-col">
           <img
             className="w-full object-cover object-center md:rounded-t-lg"
