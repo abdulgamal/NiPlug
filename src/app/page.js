@@ -12,19 +12,20 @@ export default function Home() {
       <main className="min-h-screen container mx-auto">
         <div className=" grid md:grid-cols-2 gap-10">
           <div className="h-screen flex flex-col justify-center px-4">
-            <div className="max-w-md">
-              <Lottie animationData={banner} />
+            <div className="">
+              {/* <Lottie animationData={banner} /> */}
               <div className="mb-5">
                 <p className="text-5xl font-bold tracking-widest text-[#1d7874]">
-                  Not just a
-                </p>
-                <p className="text-5xl my-3 font-bold tracking-widest text-[#1d7874]">
-                  link in bio
+                  Monitize your following and online presence
                 </p>
               </div>
-              <p className="text-base md:text-2xl tracking-wider">
-                Make everything you promote on social searchable to help your
-                followers find exactly what they&apos;re looking for.
+              <p className="text-base md:text-xl tracking-wider">
+                At NiPlug, we empower influencers like you to monetize your
+                online presence by providing you with your own customized
+                storefront. Our platform connects you with a wide range of
+                brands and allows you to sell their products and services
+                directly to your audience. It&apos;s time to turn your influence
+                into income!
               </p>
             </div>
             <div className="mt-5">
@@ -78,38 +79,41 @@ export default function Home() {
         </div>
         <div className="bg-[#F4F4F4] min-h-screen p-5 md:rounded-2xl my-10 flex flex-col justify-around items-center">
           <h2 className="text-4xl text-center mb-3 font-bold text-[#1d7874]">
-            Any of these sound familiar?
+            Why Choose NiPLUG
           </h2>
           <div className="grid md:grid-cols-3 gap-10 my-3">
             <div className="bg-white p-10 rounded-md h-[50vh] flex flex-col justify-around">
               <h5 className="font-bold text-[#1d7874] text-center mb-5 text-lg md:text-2xl">
-                Your followers are always asking &quot;where can I get
-                that?&quot; 🤔
+                Seamless Storefront Creation:
               </h5>
-              <p className="text-gray-500 tracking-wide">
-                We provide a way to link to any product, anywhere, right from
-                your shorts, videos and podcasts. ✌🏻
+              <p className="text-gray-500 tracking-wide text-center">
+                We make it incredibly easy for you to set up your own online
+                store. Our user-friendly interface enables you to customize your
+                storefront to reflect your personal brand. Showcase your
+                favorite products and curate collections that resonate with your
+                audience.
               </p>
             </div>
             <div className="bg-white p-10 rounded-md h-[50vh] flex flex-col justify-around">
               <h5 className="font-bold text-[#1d7874] text-center mb-5 text-lg md:text-2xl">
-                Your brand partners keep asking you to change your link in bio
-                😣
+                Diverse Product and Services Catalog:
               </h5>
-              <p className="text-gray-500 tracking-wide">
-                Your brand partners keep asking you to change your link in bio
-                😣 Offer your affiliates a long-standing code that will always
-                be searchable from your link in bio. 🙌🏻
+              <p className="text-gray-500 tracking-wide text-center">
+                Gain access to a vast selection of high-quality products from
+                reputable brands across various industries. From fashion and
+                beauty to fitness and home decor, you can choose the products
+                that align with your interests and your followers preferences.
               </p>
             </div>
             <div className="bg-white p-10 rounded-md h-[50vh] flex flex-col justify-around">
               <h5 className="font-bold text-[#1d7874] text-center mb-5 text-lg md:text-2xl">
-                Your current link in bio is so stacked with links it&apos;s
-                impossible to navigate 🤯
+                Hassle-Free Order Management:
               </h5>
-              <p className="text-gray-500 tracking-wide">
-                Get a single, clean, aesthetically pleasing search bar connected
-                to unlimited links (with the option to add permanent ones).
+              <p className="text-gray-500 tracking-wide text-center">
+                Leave the logistics to us! We handle all aspects of order
+                processing, including payment processing, inventory management,
+                and shipping. You can focus on creating engaging content and
+                nurturing your community while we take care of the rest.
               </p>
             </div>
           </div>
@@ -120,9 +124,9 @@ export default function Home() {
             <p className="text-2xl md:text-5xl text-[#1d7874] font-bold tracking-widest">
               With NiPlug,
             </p>
-            <p className="text-2xl md:text-5xl text-[#1d7874] font-bold tracking-widest my-1 md:my-3">
+            {/* <p className="text-2xl md:text-5xl text-[#1d7874] font-bold tracking-widest my-1 md:my-3">
               get ready for:
-            </p>
+            </p> */}
             <div className="mt-5">
               <div className="flex items-center gap-4 border-b border-gray-300 py-5 mb-5">
                 <svg
@@ -131,7 +135,7 @@ export default function Home() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6 text-[#d4af37] font-bold"
+                  className="w-12 h-12 text-[#d4af37] font-bold"
                 >
                   <path
                     strokeLinecap="round"
@@ -139,8 +143,10 @@ export default function Home() {
                     d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
                   />
                 </svg>
-                <p className="text-xl font-bold">
-                  Higher traffic to your affiliate links
+                <p className="text-md">
+                  Create a Single link and connect it to your photos, videos and
+                  shorts so that when your follower asks where to find the
+                  product simply direct them to your NiPlug link on your bio
                 </p>
               </div>
               <div className="flex items-center gap-4 border-b border-gray-300 py-5 mb-5">
@@ -150,7 +156,7 @@ export default function Home() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6 text-[#d4af37] font-bold"
+                  className="w-12 h-12 text-[#d4af37] font-bold"
                 >
                   <path
                     strokeLinecap="round"
@@ -158,25 +164,9 @@ export default function Home() {
                     d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
                   />
                 </svg>
-                <p className="text-xl font-bold">Boosted revenue</p>
-              </div>
-              <div className="flex items-center gap-4 border-b border-gray-300 py-5 mb-5">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6 text-[#d4af37] font-bold"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
-                  />
-                </svg>
-                <p className="text-xl font-bold">
-                  Increased brand partnership requests
+                <p className="text-md">
+                  Connect with as many brand patners and affiliates as you want
+                  without changing your link on your Bio. More Income for you!
                 </p>
               </div>
               <div className="flex items-center gap-4 border-b border-gray-300 py-5 mb-5">
@@ -186,7 +176,7 @@ export default function Home() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6 text-[#d4af37] font-bold"
+                  className="w-12 h-12 text-[#d4af37] font-bold"
                 >
                   <path
                     strokeLinecap="round"
@@ -194,27 +184,9 @@ export default function Home() {
                     d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
                   />
                 </svg>
-                <p className="text-xl font-bold">
-                  More trust with your community and future followers
-                </p>
-              </div>
-              <div className="flex items-center gap-4 py-5">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6 text-[#d4af37] font-bold"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
-                  />
-                </svg>
-                <p className="text-xl font-bold">
-                  Better engagement with your followers
+                <p className="text-md">
+                  Tag your favorite products and services with a special Access
+                  Code and simply promote that code to your audience
                 </p>
               </div>
             </div>
