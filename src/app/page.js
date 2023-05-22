@@ -13,13 +13,13 @@ export default function Home() {
         <div className=" grid md:grid-cols-2 gap-10">
           <div className="h-screen flex flex-col justify-center px-4">
             <div className="">
-              {/* <Lottie animationData={banner} /> */}
+              <Lottie animationData={banner} />
               <div className="mb-5">
-                <p className="text-5xl font-bold tracking-widest text-[#1d7874]">
+                <p className="text-2xl font-bold tracking-widest text-[#1d7874]">
                   Monitize your following and online presence
                 </p>
               </div>
-              <p className="text-base md:text-xl tracking-wider">
+              <p className="text-sm md:text-xl tracking-wider">
                 At NiPlug, we empower influencers like you to monetize your
                 online presence by providing you with your own customized
                 storefront. Our platform connects you with a wide range of
