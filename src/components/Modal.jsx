@@ -56,7 +56,7 @@ function Modal({ isToggle, setToggle }) {
       } else {
         handleAuth(res.token, email);
         setLoad(false);
-        router.replace("/add-new");
+        router.replace("/home");
       }
     } catch (error) {
       console.log(error);

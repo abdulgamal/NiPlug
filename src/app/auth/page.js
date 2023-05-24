@@ -209,7 +209,7 @@ export default function Auth() {
                 </div>
                 <span
                   onClick={() => setIsToggle(true)}
-                  className="text-center text-[#1d7874] hover:text-indigo-500"
+                  className="text-center text-[#1d7874] hover:text-indigo-500 cursor-pointer"
                 >
                   Forgot password?
                 </span>
