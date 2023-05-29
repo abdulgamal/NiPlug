@@ -24,6 +24,7 @@ function Modal({ isToggle, setToggle }) {
       email,
     };
     setLoading(true);
+    setErrors("");
     try {
       let res = await resetPassword(values);
       setLoading(false);
@@ -112,7 +113,6 @@ function Modal({ isToggle, setToggle }) {
               </li>
               <li className="mr-2">
                 <span
-                  // onClick={() => setActive("Verify")}
                   className={`inline-block p-4 border-b-2 ${
                     active === "Verify"
                       ? "border-blue-600"
@@ -229,7 +229,7 @@ function Modal({ isToggle, setToggle }) {
                   />
                   {errMessage?.password && (
                     <span className="my-2 text-red-300 text-xs">
-                      {errMessage.password.join("")}
+                      {errMessage?.password.join("")}
                     </span>
                   )}
                 </div>
@@ -269,7 +269,7 @@ function Modal({ isToggle, setToggle }) {
                     required
                   />
                 </div>
-                {errMessage && (
+                {errMessage && !errMessage?.password && (
                   <span className="my-2 text-red-300 text-xs">
                     {errMessage}
                   </span>

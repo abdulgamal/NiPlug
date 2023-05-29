@@ -37,7 +37,10 @@ export default function Auth() {
       };
       try {
         const response = await register(data);
-        if (response?.validation_errors) {
+        if (response?.errors) {
+          setErrors(response.errors);
+          setLoading(false);
+        } else if (response?.validation_errors) {
           setErrors(response.validation_errors);
           setLoading(false);
         } else {
