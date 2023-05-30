@@ -1,4 +1,5 @@
 import AuthContext from "../../context/AuthContext";
+
 import "./globals.css";
 import { Inter } from "next/font/google";
 

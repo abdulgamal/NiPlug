@@ -47,7 +47,9 @@ function Navbar() {
         )}
       </nav>
       <div
-        className={`${!isOpen && "hidden"} container mx-auto w-full md:w-auto`}
+        className={`${
+          !isOpen && "hidden"
+        } container mx-auto w-full mb-3 md:w-auto`}
       >
         <ul className="font-medium flex flex-col justify-center items-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0">
           <li>

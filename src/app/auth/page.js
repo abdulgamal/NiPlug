@@ -27,7 +27,7 @@ export default function Auth() {
     setErrMessage("");
     setLoading(true);
     if (!isLogin) {
-      const data = {
+      const values = {
         name,
         email,
         username: userName,
@@ -36,46 +36,40 @@ export default function Auth() {
         password_confirmation: confirmPassword,
       };
       try {
-        const response = await register(data);
-        if (response?.errors) {
-          setErrors(response.errors);
-          setLoading(false);
-        } else if (response?.validation_errors) {
-          setErrors(response.validation_errors);
+        const { data } = await register(values);
+        const {
+          token,
+          users: { email, id },
+        } = data;
+        handleAuth(token, email, id);
+        setLoading(false);
+        router.replace("/home");
+      } catch ({ response }) {
+        if (response?.data?.errors) {
+          setErrors(response?.data?.errors);
           setLoading(false);
         } else {
+          setErrors(response?.data?.validation_errors);
           setLoading(false);
-          const {
-            token,
-            users: { email, id },
-          } = response;
-          handleAuth(token, email, id);
-          router.replace("/home");
         }
-      } catch (error) {
-        console.log(error);
       }
     } else {
-      const data = {
+      const values = {
         email,
         password,
       };
       try {
-        const response = await login(data);
-        if (response.message) {
-          setErrMessage(response.message);
-          setLoading(false);
-        } else {
-          setLoading(false);
-          const {
-            token,
-            users: { email, id },
-          } = response;
-          handleAuth(token, email, id);
-          router.replace("/home");
-        }
-      } catch (error) {
-        console.log(error);
+        const { data } = await login(values);
+        const {
+          token,
+          users: { id, email },
+        } = data;
+        handleAuth(token, email, id);
+        setLoading(false);
+        router.replace("/home");
+      } catch ({ response }) {
+        setErrMessage(response?.data.message);
+        setLoading(false);
       }
     }
   };

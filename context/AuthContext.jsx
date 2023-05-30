@@ -1,24 +1,36 @@
 "use client";
-import { createContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { getUserDetails } from "../requests";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 export const AuthenticateContext = createContext(null);
+
+const queryClient = new QueryClient();
 
 function AuthContext({ children }) {
   const [user, setUser] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
-  const handleAuth = (token, email, id) => {
+
+  const handleAuth = useCallback((token, email, id) => {
     setUser({ token, email, id });
     localStorage.setItem("token", JSON.stringify({ token, email, id }));
-  };
+  }, []);
 
-  const logOut = () => {
+  const logOut = useCallback(() => {
     setUser(null);
     localStorage.removeItem("token");
-  };
+  }, []);
 
   const fetchData = async (token) => {
-    let { user } = await getUserDetails(token);
+    let {
+      data: { user },
+    } = await getUserDetails(token);
     let value = {
       image: user[0]?.image,
       name: user[0]?.name,
@@ -40,12 +52,22 @@ function AuthContext({ children }) {
     }
   }, [user?.token]);
 
+  const contextValues = useMemo(
+    () => ({
+      user,
+      handleAuth,
+      logOut,
+      userInfo,
+    }),
+    [user, userInfo, handleAuth, logOut]
+  );
+
   return (
-    <AuthenticateContext.Provider
-      value={{ user, handleAuth, logOut, userInfo }}
-    >
-      {children}
-    </AuthenticateContext.Provider>
+    <QueryClientProvider client={queryClient}>
+      <AuthenticateContext.Provider value={contextValues}>
+        {children}
+      </AuthenticateContext.Provider>
+    </QueryClientProvider>
   );
 }
 

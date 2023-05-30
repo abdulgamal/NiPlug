@@ -47,10 +47,13 @@ function Checkout({ product, isToggle, setToggle }) {
         notify(res?.Description);
         setMerchantId(res?.MerchantRequestID);
         setOrderID(res?.order);
+      } else {
+        notify(res?.message);
       }
       setLoading(false);
-    } catch (error) {
-      console.log(error);
+    } catch ({ response }) {
+      setLoading(false);
+      notify(response?.data?.message);
     }
   };
 

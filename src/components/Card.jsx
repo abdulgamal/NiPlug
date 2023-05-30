@@ -15,16 +15,13 @@ function Card({ product, shop, token }) {
     };
     try {
       setLoading(true);
-      const response = await addToProfile(values, token);
-      if (response.code == 200) {
+      const { data } = await addToProfile(values, token);
+      if (data.code == 200) {
         notify("Product added successfully");
         setLoading(false);
-      } else {
-        notify(response.message);
-        setLoading(false);
       }
-    } catch (error) {
-      console.log(error);
+    } catch ({ response }) {
+      notify(response?.data?.message);
       setLoading(false);
     }
   };

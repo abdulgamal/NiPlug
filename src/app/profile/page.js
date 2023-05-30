@@ -93,6 +93,7 @@ function Page() {
       }
     } catch (error) {
       console.log(error);
+      notify("Error Occured. Try again later");
       setLoading(false);
     }
   };
@@ -157,7 +158,9 @@ function Page() {
 
   const userDetails = async (token) => {
     try {
-      const { user } = await getUserDetails(token);
+      const {
+        data: { user },
+      } = await getUserDetails(token);
       setProducts(user[0]?.influencer_products);
       setName(user[0]?.name || "");
       setUserName(user[0]?.username || "");
@@ -206,6 +209,7 @@ function Page() {
       userDetails(user?.token);
     }
   }, [user]);
+
   return (
     <>
       <Navbar />
@@ -277,7 +281,7 @@ function Page() {
                     isActive === "Profile"
                       ? "border-[#060D50] text-[#060D50]"
                       : "border-transparent"
-                  } inline-block p-4 border-b-2  rounded-t-lg`}
+                  } inline-block p-4 border-b-2  rounded-t-lg cursor-pointer`}
                   onClick={() => setIsActive("Profile")}
                 >
                   Profile
@@ -289,7 +293,7 @@ function Page() {
                     isActive === "Product"
                       ? "border-[#060D50] text-[#060D50]"
                       : "border-transparent"
-                  } inline-block p-4 border-b-2  rounded-t-lg`}
+                  } inline-block p-4 border-b-2  rounded-t-lg cursor-pointer`}
                   onClick={() => setIsActive("Product")}
                 >
                   Products
@@ -301,7 +305,7 @@ function Page() {
                     isActive === "Service"
                       ? "border-[#060D50] text-[#060D50]"
                       : "border-transparent"
-                  } inline-block p-4 border-b-2  rounded-t-lg`}
+                  } inline-block p-4 border-b-2  rounded-t-lg cursor-pointer`}
                   onClick={() => setIsActive("Service")}
                 >
                   Services
@@ -313,7 +317,7 @@ function Page() {
                     isActive === "Campaign"
                       ? "border-[#060D50] text-[#060D50]"
                       : "border-transparent"
-                  } inline-block p-4 border-b-2  rounded-t-lg`}
+                  } inline-block p-4 border-b-2  rounded-t-lg cursor-pointer`}
                   onClick={() => setIsActive("Campaign")}
                 >
                   Campaigns
@@ -685,7 +689,7 @@ function Page() {
                     <p className="text-center font-semibold">
                       Total number of products
                     </p>
-                    <p className="font-bold text-xl">40</p>
+                    <p className="font-bold text-xl">{products?.length}</p>
                   </div>
                   <div className="bg-gray-50 p-4 rounded-lg flex flex-col justify-center items-center gap-3">
                     <p className="text-center font-semibold">Products sold</p>
@@ -712,7 +716,7 @@ function Page() {
                             viewBox="0 0 24 24"
                             strokeWidth={1.5}
                             stroke="currentColor"
-                            className="w-6 h-6 text-red-500"
+                            className="w-6 h-6 text-red-500 cursor-pointer"
                             onClick={() => handleDelete(product?.id)}
                           >
                             <path

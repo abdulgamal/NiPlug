@@ -30,7 +30,9 @@ function Page() {
     };
     setLoading(true);
     try {
-      const { user } = await fetchUserDetails(data);
+      const {
+        data: { user },
+      } = await fetchUserDetails(data);
       setInfo(user[0]);
       setProds(user[0]?.influencer_products);
       setLoading(false);
@@ -41,7 +43,9 @@ function Page() {
   };
   const fetchCategories = async () => {
     try {
-      const { categories } = await getCategories();
+      const {
+        data: { categories },
+      } = await getCategories();
       setCategories(categories);
     } catch (error) {
       console.log(error);
@@ -67,7 +71,7 @@ function Page() {
     <section className="min-h-screen">
       <Checkout product={product} isToggle={isToggle} setToggle={setIsToggle} />
       {!loading && info && (
-        <div className="md:max-w-lg md:mx-auto w-full flex md:px-5 md:py-24 flex-col">
+        <div className="md:max-w-lg md:mx-auto w-full flex md:px-5 md:py-24 flex-col md:shadow-lg">
           <img
             className="w-full object-cover object-center md:rounded-t-lg"
             alt="hero"

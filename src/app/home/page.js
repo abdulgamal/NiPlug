@@ -7,6 +7,7 @@ import { getCategories } from "../../../requests";
 import { AuthenticateContext } from "../../../context/AuthContext";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/Loading";
+import { useQuery } from "react-query";
 
 export const products = [
   {
@@ -194,19 +195,7 @@ export const cats = [
 export default function Page() {
   const router = useRouter();
   const { user } = useContext(AuthenticateContext);
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const fetchCategories = async () => {
-    setLoading(true);
-    try {
-      const { categories } = await getCategories();
-      setCategories(categories);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
+  const { data, isLoading } = useQuery("categories", getCategories);
 
   useEffect(() => {
     if (!user) {
@@ -214,9 +203,6 @@ export default function Page() {
     }
   }, [user]);
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
   return (
     <>
       <Navbar />
@@ -248,9 +234,9 @@ export default function Page() {
             Choose Products/Services to Promote from categories below
           </h1>
 
-          {categories.length > 0 && (
+          {data?.data?.categories?.length > 0 && (
             <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 lg:grid-cols-3">
-              {categories.map((cat) => (
+              {data?.data?.categories?.map((cat) => (
                 <div
                   className="flex items-end overflow-hidden bg-cover rounded-lg h-96"
                   key={cat.id}
@@ -292,7 +278,7 @@ export default function Page() {
               ))}
             </div>
           )}
-          {loading && <Loading />}
+          {isLoading && <Loading />}
         </div>
       </section>
       <Footer />

@@ -28,10 +28,10 @@ function Modal({ isToggle, setToggle }) {
     try {
       let res = await resetPassword(values);
       setLoading(false);
-      if (res.status === 200) {
+      if (res?.data?.status === 200) {
         setActive("Verify");
       } else {
-        setErrors(res.message);
+        setErrors(res?.data?.message);
       }
     } catch (error) {
       console.log(error);
@@ -50,17 +50,12 @@ function Modal({ isToggle, setToggle }) {
     setLoad(true);
     setErrMessage(null);
     try {
-      let res = await verifyPassword(values);
-      if (!res.success) {
-        setErrMessage(res.errors);
-        setLoad(false);
-      } else {
-        handleAuth(res.token, email);
-        setLoad(false);
-        router.replace("/home");
-      }
-    } catch (error) {
-      console.log(error);
+      let { data } = await verifyPassword(values);
+      handleAuth(data?.token, email);
+      setLoad(false);
+      router.replace("/home");
+    } catch ({ response }) {
+      setErrMessage(response?.data?.errors);
       setLoad(false);
     }
   };

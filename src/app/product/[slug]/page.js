@@ -24,8 +24,12 @@ export default function Product() {
   const fetchProducts = async (id) => {
     setLoading(true);
     try {
-      const { products } = await getCatProducts(id);
-      const { sub_categories } = await getCatSubs(id);
+      const {
+        data: { products },
+      } = await getCatProducts(id);
+      const {
+        data: { sub_categories },
+      } = await getCatSubs(id);
       setSubs(sub_categories);
       setProds(products);
       setProducts(products);
@@ -71,7 +75,7 @@ export default function Product() {
             Choose products you want to promote on your profile page.
           </p>
           {subs?.length > 0 && (
-            <div className="px-4 my-4">
+            <div className="px-4 my-4 md:max-w-lg md:mx-auto">
               <select
                 id="countries_multiple"
                 value={cat}
