@@ -17,8 +17,8 @@ function Page() {
   const [info, setInfo] = useState(null);
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
-  const [isToggle, setIsToggle] = useState(false);
-  const [product, setProduct] = useState(null);
+  // const [isToggle, setIsToggle] = useState(false);
+  // const [product, setProduct] = useState(null);
   const { id } = useParams();
 
   const filteredProds = (slug) =>
@@ -67,9 +67,15 @@ function Page() {
     fetchCategories();
   }, []);
 
+  useEffect(() => {
+    if (info) {
+      localStorage.setItem("userId", info.id);
+    }
+  }, [info]);
+
   return (
     <section className="min-h-screen">
-      <Checkout product={product} isToggle={isToggle} setToggle={setIsToggle} />
+      {/* <Checkout product={product} isToggle={isToggle} setToggle={setIsToggle} /> */}
       {!loading && info && (
         <div className="md:max-w-lg md:mx-auto w-full flex md:px-5 md:py-24 flex-col md:shadow-lg">
           <img
@@ -191,11 +197,7 @@ function Page() {
                 >
                   {prods.map((product) => (
                     <SwiperSlide key={product.id}>
-                      <ProfileCard
-                        product={product}
-                        setToggle={setIsToggle}
-                        setNewProduct={setProduct}
-                      />
+                      <ProfileCard product={product} />
                     </SwiperSlide>
                   ))}
                 </Swiper>

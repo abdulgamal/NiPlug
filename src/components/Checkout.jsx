@@ -16,6 +16,7 @@ function Checkout({ product, isToggle, setToggle }) {
   const [merchantId, setMerchantId] = useState("");
   const [loading, setLoading] = useState(false);
   const [orderID, setOrderID] = useState("");
+  const [userId, setUserId] = useState("");
 
   const notify = (message) =>
     toast(message, {
@@ -36,8 +37,8 @@ function Checkout({ product, isToggle, setToggle }) {
       mpesa_no: number,
       quantity: qty,
       shipping_address: shipping,
-      product_id: product?.product_id,
-      user_id: product?.user_id,
+      product_id: product?.prd_id,
+      user_id: userId,
       instruction,
     };
     setLoading(true);
@@ -56,6 +57,11 @@ function Checkout({ product, isToggle, setToggle }) {
       notify(response?.data?.message);
     }
   };
+
+  useEffect(() => {
+    let id = localStorage.getItem("userId");
+    setUserId(id);
+  }, []);
 
   useEffect(() => {
     if (merchantId) {
@@ -122,12 +128,12 @@ function Checkout({ product, isToggle, setToggle }) {
           <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow relative">
             <img
               className="rounded-t-lg min-w-full"
-              src={product?.product?.image_url}
+              src={product?.image}
               alt=""
             />
             <div className="p-5">
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                {product?.product?.title}
+                {product?.title}
               </h5>
               <div className="my-2">
                 <label
@@ -230,7 +236,7 @@ function Checkout({ product, isToggle, setToggle }) {
               <div className="flex gap-2 items-center mt-2">
                 <p className="font-bold text-gray-700">Total</p>
                 <p className="font-normal text-gray-700">
-                  {product?.product?.sale_price * qty}
+                  {product?.discount_price * qty}
                 </p>
               </div>
             </div>

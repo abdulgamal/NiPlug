@@ -1,12 +1,9 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 import "react-toastify/dist/ReactToastify.css";
 
-function Card({ product, setToggle, setNewProduct }) {
-  const handleBuy = (val) => {
-    setToggle(true);
-    setNewProduct(val);
-  };
+function Card({ product }) {
   return (
     <div className="w-full pb-4">
       <img
@@ -21,12 +18,12 @@ function Card({ product, setToggle, setNewProduct }) {
         AccessCode:{" "}
         <span className="text-xs font-bold">{product?.product?.slug}</span>
       </p>
-      <button
-        onClick={() => handleBuy(product)}
+      <Link
+        href={`/business/${product?.product_id}`}
         className="bg-[#1d7874] text-white px-5 py-1 mb-2 rounded-2xl w-full md:w-auto"
       >
-        Buy
-      </button>
+        Go To Details
+      </Link>
     </div>
   );
 }

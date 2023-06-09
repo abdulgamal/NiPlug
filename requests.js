@@ -21,6 +21,10 @@ export const register = async (data) => {
   return await axios.post("/register", data);
 };
 
+export const getProduct = async (id) => {
+  return await axios.get(`/products/${id}`);
+};
+
 export const login = async (data) => {
   return await axios.post("/login", data);
 };
