@@ -21,6 +21,15 @@ export const register = async (data) => {
   return await axios.post("/register", data);
 };
 
+export const addToLink = async (data, token) => {
+  return await axios.post("/user/links/add", data, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 export const getProduct = async (id) => {
   return await axios.get(`/products/${id}`);
 };
@@ -102,6 +111,14 @@ export const verifyPassword = async (data) => {
 
 export const deleteProduct = async (token, id) => {
   return await axios.delete(`/user/products/delete/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const deleteProfileLink = async (token, id) => {
+  return await axios.delete(`/user/links/delete/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

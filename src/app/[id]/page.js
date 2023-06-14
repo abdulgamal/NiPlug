@@ -9,7 +9,6 @@ import "swiper/css";
 import { useParams } from "next/navigation";
 import { fetchUserDetails, getCategories } from "../../../requests";
 import Loading from "@/components/Loading";
-import Checkout from "@/components/Checkout";
 
 function Page() {
   const [slug, setSlug] = useState(39);
@@ -17,8 +16,8 @@ function Page() {
   const [info, setInfo] = useState(null);
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
-  // const [isToggle, setIsToggle] = useState(false);
-  // const [product, setProduct] = useState(null);
+  const [code, setCode] = useState("");
+  const [links, setLinks] = useState([]);
   const { id } = useParams();
 
   const filteredProds = (slug) =>
@@ -34,6 +33,7 @@ function Page() {
         data: { user },
       } = await fetchUserDetails(data);
       setInfo(user[0]);
+      setLinks(user[0]?.links);
       setProds(user[0]?.influencer_products);
       setLoading(false);
     } catch (error) {
@@ -41,6 +41,15 @@ function Page() {
       setLoading(false);
     }
   };
+
+  const handleFilter = () => {
+    let data = info?.influencer_products.filter((p) =>
+      p.product?.slug.includes(code)
+    );
+    setProds(data);
+    setCode("");
+  };
+
   const fetchCategories = async () => {
     try {
       const {
@@ -75,7 +84,6 @@ function Page() {
 
   return (
     <section className="min-h-screen">
-      {/* <Checkout product={product} isToggle={isToggle} setToggle={setIsToggle} /> */}
       {!loading && info && (
         <div className="md:max-w-lg md:mx-auto w-full flex md:px-5 md:py-24 flex-col md:shadow-lg">
           <img
@@ -122,6 +130,39 @@ function Page() {
             <div className="border border-gray-300 w-full my-5" />
           </div>
           <div className="py-2 border-b border-gray-300 mx-4 pb-4">
+            {links.length > 0 && (
+              <div>
+                <p className="text-center font-bold text-[#1d7874] mb-3">
+                  Other Links
+                </p>
+                <div className="flex flex-wrap gap-3 items-center border-b border-gray-300 mb-2 pb-3">
+                  {links.map((link) => (
+                    <a
+                      key={link?.id}
+                      href={link?.link}
+                      target="_blank"
+                      className="bg-[#1d7874] flex items-center text-white px-3 py-1 rounded-2xl gap-1"
+                    >
+                      {link?.title}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-4 h-4"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                        />
+                      </svg>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
             <p className="text-center font-bold text-[#1d7874] mb-3">
               What are you looking for?
             </p>
@@ -144,8 +185,14 @@ function Page() {
                 type="text"
                 placeholder="Search or type a code"
                 className="bg-transparent flex-1 py-1 outline-none"
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
               />
-              <button className="p-1 bg-[#1d7874] rounded-md">
+              <button
+                disabled={!code}
+                className="p-1 bg-[#1d7874] rounded-md"
+                onClick={handleFilter}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

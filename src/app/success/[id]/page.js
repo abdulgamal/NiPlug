@@ -18,7 +18,6 @@ function Index() {
         setLoading(false);
       }
     } catch (error) {
-      console.log(error);
       setLoading(false);
     }
   };
@@ -40,7 +39,7 @@ function Index() {
               <div className="mx-auto max-w-lg space-y-8 px-4 lg:px-8">
                 <div className="flex items-center gap-4">
                   <img
-                    src="https://paysoko.com/asset/brands/brand_1676528257.png"
+                    src="https://res.cloudinary.com/dinfpnmrf/image/upload/v1684594826/dukaapp/ymusvqugr2sck88mmp5r.png"
                     className="h-6 mr-3 sm:h-9"
                     alt="Logo"
                   />
@@ -63,7 +62,9 @@ function Index() {
                       <span className="mx-2 text-gray-700">
                         Payment Gateway:
                       </span>
-                      <span className="mx-2 text-gray-400">Paysoko</span>
+                      <span className="mx-2 text-gray-400">
+                        {data?.payment_gateway}
+                      </span>
                     </p>
                     <p className="flex items-start -mx-2">
                       <span className="mx-2 text-gray-700">
@@ -75,13 +76,11 @@ function Index() {
                     </p>
                     <p className="flex items-start -mx-2">
                       <span className="mx-2 text-gray-700">Order Status:</span>
-                      <span className="mx-2 text-gray-400">Pending</span>
+                      <span className="mx-2 text-gray-400">{data?.status}</span>
                     </p>
                     <p className="flex items-start -mx-2">
                       <span className="mx-2 text-gray-700">Owner Number:</span>
-                      <span className="mx-2 text-gray-400">
-                        {data?.owner?.phone}
-                      </span>
+                      <span className="mx-2 text-gray-400">{data?.phone}</span>
                     </p>
                   </div>
                 </div>
@@ -125,15 +124,6 @@ function Index() {
                       <tr>
                         <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></td>
                         <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                          X{data?.quantity}
-                        </td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                          KES {data?.total}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                           Tax
                         </td>
                         <td className="whitespace-nowrap px-4 py-2 text-gray-700">
@@ -155,7 +145,7 @@ function Index() {
                           Subtotal
                         </td>
                         <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                          Kes {data?.total}
+                          Kes {data?.total_amount}
                         </td>
                       </tr>
                       <tr>
@@ -164,7 +154,7 @@ function Index() {
                           Total
                         </td>
                         <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                          Kes {data?.total}
+                          Kes {data?.total_amount}
                         </td>
                       </tr>
                     </tbody>

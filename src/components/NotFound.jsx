@@ -23,7 +23,7 @@ function NotFound() {
       </div>
 
       <p className="mt-4 font-medium text-gray-500">
-        No products available at this time
+        No items available at this time
       </p>
     </div>
   );
