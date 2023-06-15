@@ -20,7 +20,7 @@ import NotFound from "@/components/NotFound";
 import OrderCard from "@/components/OrderCard";
 
 function Page() {
-  const [isActive, setIsActive] = useState("Profile");
+  const [isActive, setIsActive] = useState("Product");
   const router = useRouter();
   const { user } = useContext(AuthenticateContext);
   const [copied, setCopied] = useState(false);
@@ -360,23 +360,11 @@ function Page() {
               href={`/${username}`}
               className="bg-[#1d7874] rounded-2xl py-1 px-7 text-white max-w-max"
             >
-              Go To Link
+              Go To Profile Link
             </Link>
 
             <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200">
               <ul className="flex -mb-px overflow-hidden overflow-x-scroll no-scrollbar">
-                <li className="mr-2">
-                  <span
-                    className={`${
-                      isActive === "Profile"
-                        ? "border-[#060D50] text-[#060D50]"
-                        : "border-transparent"
-                    } inline-block p-4 border-b-2  rounded-t-lg cursor-pointer`}
-                    onClick={() => setIsActive("Profile")}
-                  >
-                    Profile
-                  </span>
-                </li>
                 <li className="mr-2">
                   <span
                     className={`${
@@ -423,6 +411,18 @@ function Page() {
                     onClick={() => setIsActive("Orders")}
                   >
                     Orders
+                  </span>
+                </li>
+                <li className="mr-2">
+                  <span
+                    className={`${
+                      isActive === "Profile"
+                        ? "border-[#060D50] text-[#060D50]"
+                        : "border-transparent"
+                    } inline-block p-4 border-b-2  rounded-t-lg cursor-pointer`}
+                    onClick={() => setIsActive("Profile")}
+                  >
+                    Profile
                   </span>
                 </li>
               </ul>
@@ -727,6 +727,20 @@ function Page() {
                       </svg>
                       <p>Uploading Files</p>
                     </div>
+                  )}
+                  {image && (
+                    <img
+                      src={image}
+                      alt={"link Image"}
+                      className="h-14 w-14 object-cover rounded-md"
+                    />
+                  )}
+                  {background && (
+                    <img
+                      src={background}
+                      alt={"link Image"}
+                      className="h-14 w-14 object-cover rounded-md"
+                    />
                   )}
                   <div className="grid md:grid-cols-2 md:gap-6 mt-2 my-8 gap-3">
                     <div className="flex items-center justify-center w-full">
@@ -1075,6 +1089,13 @@ function Page() {
                             />
                           </label>
                         </div>
+                        {linkImage && (
+                          <img
+                            src={linkImage}
+                            alt={"link Image"}
+                            className="h-14 w-14 object-cover rounded-md"
+                          />
+                        )}
                         {loadingFile && (
                           <div className="text-white flex flex-col items-center justify-center gap-2 bg-[#1d7874] font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                             <svg
@@ -1097,7 +1118,8 @@ function Page() {
                       </div>
                       <button
                         onClick={addLink}
-                        className="text-white inline-flex mt-5 items-center justify-center gap-4 bg-[#1d7874] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                        disabled={!linkImage}
+                        className="text-white disabled:bg-gray-400 inline-flex mt-5 items-center justify-center gap-4 bg-[#1d7874] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
                       >
                         {loading && (
                           <svg
@@ -1162,18 +1184,6 @@ function Page() {
                   <li className="mr-2">
                     <span
                       className={`${
-                        isActive === "Profile"
-                          ? "border-[#060D50] text-[#060D50]"
-                          : "border-transparent"
-                      } inline-block p-4 border-b-2  rounded-t-lg cursor-pointer`}
-                      onClick={() => setIsActive("Profile")}
-                    >
-                      Profile
-                    </span>
-                  </li>
-                  <li className="mr-2">
-                    <span
-                      className={`${
                         isActive === "Product"
                           ? "border-[#060D50] text-[#060D50]"
                           : "border-transparent"
@@ -1217,6 +1227,18 @@ function Page() {
                       onClick={() => setIsActive("Orders")}
                     >
                       Orders
+                    </span>
+                  </li>
+                  <li className="mr-2">
+                    <span
+                      className={`${
+                        isActive === "Profile"
+                          ? "border-[#060D50] text-[#060D50]"
+                          : "border-transparent"
+                      } inline-block p-4 border-b-2  rounded-t-lg cursor-pointer`}
+                      onClick={() => setIsActive("Profile")}
+                    >
+                      Profile
                     </span>
                   </li>
                 </ul>
@@ -1278,7 +1300,7 @@ function Page() {
                     href={`/${username}`}
                     className="bg-[#1d7874] rounded-lg py-2 px-7 text-white max-w-max"
                   >
-                    Go To Link
+                    Go To Profile Link
                   </Link>
                 </div>
               </div>
@@ -1582,6 +1604,20 @@ function Page() {
                         </svg>
                         <p>Uploading Files</p>
                       </div>
+                    )}
+                    {image && (
+                      <img
+                        src={image}
+                        alt={"link Image"}
+                        className="h-14 w-14 object-cover rounded-md"
+                      />
+                    )}
+                    {background && (
+                      <img
+                        src={background}
+                        alt={"link Image"}
+                        className="h-14 w-14 object-cover rounded-md"
+                      />
                     )}
                     <div className="grid md:grid-cols-2 md:gap-6 mt-2 my-8 gap-3">
                       <div className="flex items-center justify-center w-full">
@@ -1934,6 +1970,13 @@ function Page() {
                               />
                             </label>
                           </div>
+                          {linkImage && (
+                            <img
+                              src={linkImage}
+                              alt={"link Image"}
+                              className="h-14 w-14 object-cover rounded-md"
+                            />
+                          )}
                           {loadingFile && (
                             <div className="text-white flex flex-col items-center justify-center gap-2 bg-[#1d7874] font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                               <svg
@@ -1956,7 +1999,8 @@ function Page() {
                         </div>
                         <button
                           onClick={addLink}
-                          className="text-white inline-flex items-center justify-center gap-4 bg-[#1d7874] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                          disabled={!linkImage}
+                          className="text-white disabled:bg-gray-500 inline-flex items-center justify-center gap-4 bg-[#1d7874] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
                         >
                           {loading && (
                             <svg
