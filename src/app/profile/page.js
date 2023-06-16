@@ -55,6 +55,7 @@ function Page() {
   const [linkImage, setLinkImage] = useState("");
   const [isAdd, setIsAdd] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [linkError, setLinkError] = useState(null);
 
   const productsSold = orders.filter(
     (order) => order?.payment_status === "paid"
@@ -186,6 +187,7 @@ function Page() {
   const addLink = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setLinkError(false);
     try {
       let value = {
         link,
@@ -204,9 +206,9 @@ function Page() {
       setLinkImage("");
       setPrice("");
       setIsAdd(false);
-    } catch (error) {
+    } catch ({ response }) {
+      setLinkError(response?.data?.validation_errors);
       setLoading(false);
-      notify("Something went wrong");
     }
   };
 
@@ -995,6 +997,11 @@ function Page() {
                           >
                             Title
                           </label>
+                          {linkError?.title && (
+                            <span className="my-2 text-red-300 text-xs">
+                              {linkError.title.join("")}
+                            </span>
+                          )}
                         </div>
                         <div className="relative z-0 w-full mb-6 group">
                           <input
@@ -1013,6 +1020,11 @@ function Page() {
                           >
                             Link
                           </label>
+                          {linkError?.link && (
+                            <span className="my-2 text-red-300 text-xs">
+                              {linkError.link.join("")}
+                            </span>
+                          )}
                         </div>
                         <div className="relative z-0 w-full mb-6 group">
                           <input
@@ -1031,6 +1043,11 @@ function Page() {
                           >
                             Description
                           </label>
+                          {linkError?.description && (
+                            <span className="my-2 text-red-300 text-xs">
+                              {linkError.description.join("")}
+                            </span>
+                          )}
                         </div>
                         <div className="relative z-0 w-full mb-6 group">
                           <input
@@ -1049,6 +1066,11 @@ function Page() {
                           >
                             Price (put 0 if price not needed)
                           </label>
+                          {linkError?.price && (
+                            <span className="my-2 text-red-300 text-xs">
+                              {linkError.price.join("")}
+                            </span>
+                          )}
                         </div>
                         <div className="flex items-center justify-center w-full">
                           <label
@@ -1089,6 +1111,11 @@ function Page() {
                             />
                           </label>
                         </div>
+                        {linkError?.image && (
+                          <span className="my-2 text-red-300 text-xs">
+                            {linkError.image.join("")}
+                          </span>
+                        )}
                         {linkImage && (
                           <img
                             src={linkImage}
@@ -1876,6 +1903,11 @@ function Page() {
                             >
                               Title
                             </label>
+                            {linkError?.title && (
+                              <span className="my-2 text-red-300 text-xs">
+                                {linkError.title.join("")}
+                              </span>
+                            )}
                           </div>
                           <div className="relative z-0 w-full mb-6 group">
                             <input
@@ -1894,6 +1926,11 @@ function Page() {
                             >
                               Link
                             </label>
+                            {linkError?.link && (
+                              <span className="my-2 text-red-300 text-xs">
+                                {linkError.link.join("")}
+                              </span>
+                            )}
                           </div>
                           <div className="relative z-0 w-full mb-6 group">
                             <input
@@ -1912,6 +1949,11 @@ function Page() {
                             >
                               Description
                             </label>
+                            {linkError?.description && (
+                              <span className="my-2 text-red-300 text-xs">
+                                {linkError.description.join("")}
+                              </span>
+                            )}
                           </div>
                           <div className="relative z-0 w-full mb-6 group">
                             <input
@@ -1930,6 +1972,11 @@ function Page() {
                             >
                               Price (put 0 if price not needed)
                             </label>
+                            {linkError?.price && (
+                              <span className="my-2 text-red-300 text-xs">
+                                {linkError.price.join("")}
+                              </span>
+                            )}
                           </div>
                           <div className="flex items-center justify-center w-full">
                             <label
@@ -1970,6 +2017,11 @@ function Page() {
                               />
                             </label>
                           </div>
+                          {linkError?.image && (
+                            <span className="my-2 text-red-300 text-xs">
+                              {linkError.image.join("")}
+                            </span>
+                          )}
                           {linkImage && (
                             <img
                               src={linkImage}
