@@ -16,7 +16,7 @@ export default function Home() {
               <Lottie animationData={banner} />
               <div className="mb-5">
                 <p className="text-2xl font-bold tracking-widest text-[#1d7874]">
-                  Monitize your following and online presence
+                  Monetize your following and online presence
                 </p>
               </div>
               <p className="text-sm md:text-xl tracking-wider">

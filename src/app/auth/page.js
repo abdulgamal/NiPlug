@@ -260,12 +260,13 @@ export default function Auth() {
           <p className="text-center">
             Don&apos;t have an account?{" "}
             {isLogin ? (
-              <span
+              <a
                 className="font-medium text-[#1d7874] hover:text-indigo-500 cursor-pointer"
-                // onClick={() => setIsLogin(false)}
+                href="https://earnsoko.ssnapp.com/?Menu=Deals&Deal=48080"
+                target="_blank"
               >
                 Request Access
-              </span>
+              </a>
             ) : (
               <span
                 className="font-medium text-[#1d7874] hover:text-indigo-500 cursor-pointer"

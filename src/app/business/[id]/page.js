@@ -86,7 +86,7 @@ function Home() {
                   alt=""
                 />
                 <div className="font-medium ">
-                  <div>{product?.owner}</div>
+                  <div>{product?.shop || product?.owner}</div>
                   <div className="text-sm text-gray-500 ">
                     Owner of the Product
                   </div>
@@ -239,7 +239,7 @@ function Home() {
                   alt=""
                 />
                 <div className="font-medium ">
-                  <div>{product?.owner}</div>
+                  <div>{product?.shop || product?.owner}</div>
                   <div className="text-sm text-gray-500 ">
                     Owner of the Product
                   </div>
