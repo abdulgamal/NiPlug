@@ -212,22 +212,40 @@ function Page() {
     }
   };
 
+  function isVideoFile(filename) {
+    const videoExtensions = [
+      ".mp4",
+      ".mov",
+      ".avi",
+      ".mkv",
+      ".flv",
+      ".wmv",
+      ".webm",
+    ];
+
+    const fileExtension = filename.slice(filename.lastIndexOf("."));
+
+    return videoExtensions.includes(fileExtension);
+  }
+
   const handleBackground = async (e) => {
     setLoadingFile(true);
     const data = new FormData();
     data.append("upload_preset", "dukaapp");
     data.append("cloud_name", "dinfpnmrf");
-
     let image = e.target.files[0];
     data.append("file", image);
-    let { url } = await fetch(
-      "https://api.cloudinary.com/v1_1/dinfpnmrf/image/upload",
-      {
-        method: "POST",
-        body: data,
-      }
-    ).then((response) => response.json());
-    setBackground(url);
+
+    if (isVideoFile(image?.name)) {
+      let { url } = await fetch(
+        "https://api.cloudinary.com/v1_1/dinfpnmrf/video/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      ).then((response) => response.json());
+      setBackground(url);
+    }
     setLoadingFile(false);
   };
 
@@ -738,11 +756,9 @@ function Page() {
                     />
                   )}
                   {background && (
-                    <img
-                      src={background}
-                      alt={"link Image"}
-                      className="h-14 w-14 object-cover rounded-md"
-                    />
+                    <p className="text-sm font-semibold text-teal-600 my-2">
+                      Video or Reel added or is present
+                    </p>
                   )}
                   <div className="grid md:grid-cols-2 md:gap-6 mt-2 my-8 gap-3">
                     <div className="flex items-center justify-center w-full">
@@ -807,12 +823,12 @@ function Page() {
                           </svg>
                           <p className="mb-2 text-sm text-gray-500">
                             <span className="font-semibold">
-                              Click to upload background
+                              Click to upload video/reel
                             </span>{" "}
                             or drag and drop
                           </p>
                           <p className="text-xs text-gray-500">
-                            SVG, PNG, JPG or GIF (MAX. 800x400px)
+                            MP4, MOV or GIF (MAX. 800x400px)
                           </p>
                         </div>
                         <input
@@ -1640,11 +1656,9 @@ function Page() {
                       />
                     )}
                     {background && (
-                      <img
-                        src={background}
-                        alt={"link Image"}
-                        className="h-14 w-14 object-cover rounded-md"
-                      />
+                      <p className="text-sm font-semibold text-teal-600 my-2 text-end">
+                        Video or Reel added or is present
+                      </p>
                     )}
                     <div className="grid md:grid-cols-2 md:gap-6 mt-2 my-8 gap-3">
                       <div className="flex items-center justify-center w-full">
@@ -1709,12 +1723,12 @@ function Page() {
                             </svg>
                             <p className="mb-2 text-sm text-gray-500">
                               <span className="font-semibold">
-                                Click to upload background
+                                Click to upload video/reel
                               </span>{" "}
                               or drag and drop
                             </p>
                             <p className="text-xs text-gray-500">
-                              SVG, PNG, JPG or GIF (MAX. 800x400px)
+                              MP4, MOV or GIF (MAX. 800x400px)
                             </p>
                           </div>
                           <input

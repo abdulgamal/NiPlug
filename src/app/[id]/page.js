@@ -1,6 +1,7 @@
 "use client";
 import ProfileCard from "@/components/ProfileCard";
 import React, { useEffect, useState } from "react";
+import ReactPlayer from "react-player";
 import { BsFacebook, BsInstagram, BsTiktok, BsTwitter } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar } from "swiper";
@@ -61,6 +62,12 @@ function Page() {
     }
   };
 
+  function isVideo(string) {
+    var videoPattern = /\.(mp4|mov|avi|wmv|flv|mkv|webm)$/i;
+
+    return videoPattern.test(string);
+  }
+
   useEffect(() => {
     const data = filteredProds(slug);
     setProds(data);
@@ -86,15 +93,26 @@ function Page() {
     <section className="min-h-screen">
       {!loading && info && (
         <div className="md:max-w-lg md:mx-auto w-full flex md:px-5 md:py-24 flex-col md:shadow-lg">
-          <img
-            className="w-full object-cover object-center md:rounded-t-lg"
-            alt="hero"
-            src={
-              info?.image ||
-              info?.influencer?.background ||
-              "https://static.wixstatic.com/media/9ce014_17143136f6fa44d39c7ca66a64576bff~mv2.jpg/v1/crop/x_73,y_0,w_1850,h_1850/fill/w_375,h_375,al_c,q_375,usm_0.66_1.00_0.01,enc_auto/9ce014_17143136f6fa44d39c7ca66a64576bff~mv2.jpg"
-            }
-          />
+          <div className="w-full">
+            {info?.influencer?.background &&
+            isVideo(info?.influencer?.background) ? (
+              <ReactPlayer
+                url={info?.influencer?.background}
+                width={"100%"}
+                playing
+                controls
+              />
+            ) : (
+              <img
+                className="w-full object-cover object-center md:rounded-t-lg"
+                alt="hero"
+                src={
+                  info?.image ||
+                  "https://static.wixstatic.com/media/9ce014_17143136f6fa44d39c7ca66a64576bff~mv2.jpg/v1/crop/x_73,y_0,w_1850,h_1850/fill/w_375,h_375,al_c,q_375,usm_0.66_1.00_0.01,enc_auto/9ce014_17143136f6fa44d39c7ca66a64576bff~mv2.jpg"
+                }
+              />
+            )}
+          </div>
           <div className="flex flex-col items-center mt-2 px-4">
             <p className="text-xl font-bold text-[#1d7874] my-2">
               {info?.username}

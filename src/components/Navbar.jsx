@@ -24,7 +24,6 @@ function Navbar() {
             className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300"
             src={
               userInfo?.image ||
-              userInfo?.background ||
               "https://images.unsplash.com/photo-1682821890455-044ea43d8b57?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDR8dG93SlpGc2twR2d8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
             }
             alt="Bordered avatar"
