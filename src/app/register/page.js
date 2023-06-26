@@ -56,7 +56,7 @@ export default function Home() {
         }
       }
     } else {
-      notify("Invalid Access Code.");
+      notify("Invalid Access/Certificate Code.");
       setLoading(false);
     }
   };
@@ -95,7 +95,7 @@ export default function Home() {
               </p>
 
               <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-                Welcome to NiPLug
+                Welcome to NiPlug
               </h2>
             </div>
           </section>
@@ -112,7 +112,7 @@ export default function Home() {
                 </p>
 
                 <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-                  Welcome to NiPLug
+                  Welcome to NiPlug
                 </h1>
               </div>
 
@@ -171,7 +171,7 @@ export default function Home() {
                     htmlFor="code"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Access Code
+                    Access/Certificate Code
                   </label>
 
                   <input
@@ -315,7 +315,7 @@ export default function Home() {
 
                   <p className="mt-4 text-sm text-gray-500 sm:mt-0">
                     Already have an account?
-                    <Link href="/auth" className="text-gray-700 underline">
+                    <Link href="/auth" className="text-gray-700 underline ml-1">
                       Log in
                     </Link>
                     .
