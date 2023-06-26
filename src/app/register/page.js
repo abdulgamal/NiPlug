@@ -35,6 +35,11 @@ export default function Home() {
     "GZN4225",
     "HZN4226",
     "JZN4227",
+    "MZN422A",
+    "KZN4228",
+    "LZN4229",
+    "NZN422B",
+    "PZN422C",
   ];
 
   const handleSubmit = async (e) => {
