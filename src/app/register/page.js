@@ -34,6 +34,7 @@ export default function Home() {
     "FZN4224",
     "GZN4225",
     "HZN4226",
+    "JZN4227",
   ];
 
   const handleSubmit = async (e) => {
