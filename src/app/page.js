@@ -4,8 +4,11 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Lottie from "lottie-react";
 import banner from "../../public/banner.json";
+import { useContext } from "react";
+import { AuthenticateContext } from "../../context/AuthContext";
 
 export default function Home() {
+  const { user } = useContext(AuthenticateContext);
   return (
     <>
       <Navbar />
@@ -28,9 +31,7 @@ export default function Home() {
                 into income!
               </p>
             </div>
-            <div className="mt-5">
-              <Button />
-            </div>
+            <div className="mt-5">{!user && <Button />}</div>
             <div className="flex items-center mt-4 gap-2 border border-[#d4af37] rounded-md p-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -117,16 +118,13 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <Button />
+          {!user && <Button />}
         </div>
         <div className="my-12 min-h-screen grid md:grid-cols-2 gap-10">
           <div className="px-4 mb-4 pt-10">
             <p className="text-2xl md:text-5xl text-[#1d7874] font-bold tracking-widest">
               With NiPlug,
             </p>
-            {/* <p className="text-2xl md:text-5xl text-[#1d7874] font-bold tracking-widest my-1 md:my-3">
-              get ready for:
-            </p> */}
             <div className="mt-5">
               <div className="flex items-center gap-4 border-b border-gray-300 py-5 mb-5">
                 <svg
@@ -190,7 +188,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <Button />
+            {!user && <Button />}
           </div>
           <div className="order-first">
             <img

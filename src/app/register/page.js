@@ -26,6 +26,14 @@ export default function Home() {
     "4ZN422R",
     "5ZN422S",
     "6ZN422T",
+    "7ZN422U",
+    "BZN422Y",
+    "CZN422Z",
+    "DZN4222",
+    "EZN4223",
+    "FZN4224",
+    "GZN4225",
+    "HZN4226",
   ];
 
   const handleSubmit = async (e) => {
