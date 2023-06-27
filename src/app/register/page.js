@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import { register } from "../../../requests";
+import axios from "axios";
 
 export default function Home() {
   const [name, setName] = useState("");
@@ -12,38 +13,29 @@ export default function Home() {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [code, setCode] = useState("");
+  const [codes, setCodes] = useState([]);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState(null);
   const [errMessage, setErrMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const accessCodes = [
-    "VYN422H",
-    "WYN422J",
-    "XYN422K",
-    "ZYN422M",
-    "2ZN422P",
-    "4ZN422R",
-    "5ZN422S",
-    "6ZN422T",
-    "7ZN422U",
-    "BZN422Y",
-    "CZN422Z",
-    "DZN4222",
-    "EZN4223",
-    "FZN4224",
-    "GZN4225",
-    "HZN4226",
-    "JZN4227",
-    "MZN422A",
-    "KZN4228",
-    "LZN4229",
-    "NZN422B",
-    "PZN422C",
-    "QZN422D",
-    "RZN422E",
-    "SZN422F",
-  ];
+  const fetchCodes = async () => {
+    try {
+      const { data } = await axios.get(
+        "https://sokoverse-admin.vercel.app/api/code"
+      );
+      setCodes(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const filterCodes = (arr, a) =>
+    arr.filter((item) => item.code === a?.toUpperCase());
+
+  useEffect(() => {
+    fetchCodes();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,7 +50,7 @@ export default function Home() {
       password,
       password_confirmation: confirmPassword,
     };
-    if (accessCodes.includes(code.toUpperCase())) {
+    if (filterCodes(codes, code).length > 0) {
       try {
         await register(values);
         setLoading(false);
