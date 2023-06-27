@@ -40,6 +40,9 @@ export default function Home() {
     "LZN4229",
     "NZN422B",
     "PZN422C",
+    "QZN422D",
+    "RZN422E",
+    "SZN422F",
   ];
 
   const handleSubmit = async (e) => {

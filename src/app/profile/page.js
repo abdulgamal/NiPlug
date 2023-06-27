@@ -86,7 +86,7 @@ function Page() {
 
   const copyContent = async () => {
     try {
-      await navigator.clipboard.writeText(`${host}/profile/${username}`);
+      await navigator.clipboard.writeText(`${host}/${username}`);
       setCopied(true);
     } catch (err) {
       console.error("Failed to copy: ", err);
