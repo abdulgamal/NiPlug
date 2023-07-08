@@ -3,12 +3,11 @@ import React from "react";
 
 function Button() {
   return (
-    <a
-      href="https://earnsoko.ssnapp.com/?Menu=Deals&Deal=48080"
-      target="_blank"
+    <Link
+      href="/auth"
       className="flex items-center font-bold text-white w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 bg-[#1d7874] py-3 px-8 rounded-2xl gap-2 my-2"
     >
-      Request Access{" "}
+      Sign Up{" "}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -23,7 +22,7 @@ function Button() {
           d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
         />
       </svg>
-    </a>
+    </Link>
   );
 }
 
