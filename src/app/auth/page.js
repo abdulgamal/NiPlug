@@ -257,25 +257,27 @@ export default function Auth() {
               </button>
             )}
           </form>
-          <p className="text-center">
-            Don&apos;t have an account?{" "}
-            {isLogin ? (
-              <a
+          {isLogin ? (
+            <p className="text-center">
+              Don&apos;t have an account?{" "}
+              <span
                 className="font-medium text-[#1d7874] hover:text-indigo-500 cursor-pointer"
-                href="https://earnsoko.ssnapp.com/?Menu=Deals&Deal=48080"
-                target="_blank"
+                onClick={() => setIsLogin(false)}
               >
-                Request Access
-              </a>
-            ) : (
+                Sign Up
+              </span>
+            </p>
+          ) : (
+            <p className="text-center">
+              Already have an account?{" "}
               <span
                 className="font-medium text-[#1d7874] hover:text-indigo-500 cursor-pointer"
                 onClick={() => setIsLogin(true)}
               >
                 Login
               </span>
-            )}
-          </p>
+            </p>
+          )}
         </div>
       </main>
     </>
