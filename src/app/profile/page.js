@@ -80,7 +80,7 @@ function Page() {
   );
 
   const totalSales = productsSold.reduce(
-    (acc, current) => acc + current?.total_amount,
+    (acc, current) => acc + parseInt(current?.total_amount),
     0
   );
 
