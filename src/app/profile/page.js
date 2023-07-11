@@ -63,7 +63,7 @@ function Page() {
 
   const displayedOrders = productsSold.map((product) => {
     let data = products.filter(
-      (item) => item?.product_id === product?.product_id
+      (item) => item?.product_id == product?.product_id
     );
     if (data.length > 0) {
       let value = { ...product, prod: data[0]?.product };
