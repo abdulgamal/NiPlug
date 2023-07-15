@@ -66,6 +66,13 @@ export const getUserDetails = async (token) => {
   });
 };
 
+export const deleteUserAccount = async (token) => {
+  return await axios.delete("/user/profile/delete", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
 export const fetchUserDetails = async (data) => {
   return await axios.post("/account", data, {
     headers: {

@@ -10,6 +10,7 @@ import {
   addToLink,
   deleteProduct,
   deleteProfileLink,
+  deleteUserAccount,
   getUserDetails,
   updatePassword,
   updateProfile,
@@ -22,7 +23,7 @@ import OrderCard from "@/components/OrderCard";
 function Page() {
   const [isActive, setIsActive] = useState("Product");
   const router = useRouter();
-  const { user } = useContext(AuthenticateContext);
+  const { user, logOut } = useContext(AuthenticateContext);
   const [copied, setCopied] = useState(false);
   const [host, setHost] = useState("");
   const [username, setUserName] = useState("");
@@ -40,6 +41,7 @@ function Page() {
   const [background, setBackground] = useState("");
   const [loading, setLoading] = useState(false);
   const [load, setLoad] = useState(false);
+  const [loads, setLoads] = useState(false);
   const [loadingFile, setLoadingFile] = useState(false);
   const [change, setChange] = useState(false);
   const [password, setPassword] = useState("");
@@ -83,6 +85,17 @@ function Page() {
     (acc, current) => acc + parseInt(current?.total_amount),
     0
   );
+
+  const handleDeleteAccount = async () => {
+    setLoads(true);
+    try {
+      await deleteUserAccount(user?.token);
+      logOut();
+    } catch (error) {
+      console.log(error);
+    }
+    setLoads(false);
+  };
 
   const copyContent = async () => {
     try {
@@ -449,402 +462,426 @@ function Page() {
             </div>
             <div className="my-5">
               {isActive === "Profile" && (
-                <form onSubmit={updateUserProfile}>
-                  <div className="grid md:grid-cols-2 md:gap-6">
+                <>
+                  <form onSubmit={updateUserProfile}>
+                    <div className="grid md:grid-cols-2 md:gap-6">
+                      <div className="relative z-0 w-full mb-6 group">
+                        <input
+                          type="text"
+                          name="floating_first_name"
+                          id="floating_first_name"
+                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                          placeholder=" "
+                          value={username}
+                          onChange={(e) => setUserName(e.target.value)}
+                          required
+                        />
+                        <label
+                          htmlFor="floating_first_name"
+                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >
+                          User name
+                        </label>
+                      </div>
+                      <div className="relative z-0 w-full mb-6 group">
+                        <input
+                          type="text"
+                          name="floating_last_name"
+                          id="floating_last_name"
+                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                          placeholder=" "
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          required
+                        />
+                        <label
+                          htmlFor="floating_last_name"
+                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >
+                          Name
+                        </label>
+                      </div>
+                    </div>
+                    <div className="relative z-0 w-full mb-6 group">
+                      <input
+                        type="email"
+                        name="floating_email"
+                        id="floating_email"
+                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                        placeholder=" "
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                      />
+                      <label
+                        htmlFor="floating_email"
+                        className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                      >
+                        Email address
+                      </label>
+                    </div>
                     <div className="relative z-0 w-full mb-6 group">
                       <input
                         type="text"
-                        name="floating_first_name"
-                        id="floating_first_name"
+                        name="facebook"
+                        id="facebook"
                         className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
                         placeholder=" "
-                        value={username}
-                        onChange={(e) => setUserName(e.target.value)}
-                        required
+                        value={facebook}
+                        onChange={(e) => setFacebook(e.target.value)}
                       />
                       <label
-                        htmlFor="floating_first_name"
+                        htmlFor="facebook"
                         className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                       >
-                        User name
+                        Facebook
                       </label>
                     </div>
                     <div className="relative z-0 w-full mb-6 group">
                       <input
                         type="text"
-                        name="floating_last_name"
-                        id="floating_last_name"
+                        name="instagram"
+                        id="floating_instagram"
                         className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
                         placeholder=" "
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
+                        value={instagram}
+                        onChange={(e) => setInstagram(e.target.value)}
                       />
                       <label
-                        htmlFor="floating_last_name"
+                        htmlFor="floating_instagram"
                         className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                       >
-                        Name
+                        Instagram
                       </label>
                     </div>
-                  </div>
-                  <div className="relative z-0 w-full mb-6 group">
-                    <input
-                      type="email"
-                      name="floating_email"
-                      id="floating_email"
-                      className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                      placeholder=" "
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                    <label
-                      htmlFor="floating_email"
-                      className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                    >
-                      Email address
-                    </label>
-                  </div>
-                  <div className="relative z-0 w-full mb-6 group">
-                    <input
-                      type="text"
-                      name="facebook"
-                      id="facebook"
-                      className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                      placeholder=" "
-                      value={facebook}
-                      onChange={(e) => setFacebook(e.target.value)}
-                    />
-                    <label
-                      htmlFor="facebook"
-                      className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                    >
-                      Facebook
-                    </label>
-                  </div>
-                  <div className="relative z-0 w-full mb-6 group">
-                    <input
-                      type="text"
-                      name="instagram"
-                      id="floating_instagram"
-                      className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                      placeholder=" "
-                      value={instagram}
-                      onChange={(e) => setInstagram(e.target.value)}
-                    />
-                    <label
-                      htmlFor="floating_instagram"
-                      className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                    >
-                      Instagram
-                    </label>
-                  </div>
-                  <div className="relative z-0 w-full mb-6 group">
-                    <input
-                      type="text"
-                      name="pinterest"
-                      id="floating_pinterest"
-                      className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                      placeholder=" "
-                      value={pinterest}
-                      onChange={(e) => setPinterest(e.target.value)}
-                    />
-                    <label
-                      htmlFor="floating_pinterest"
-                      className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                    >
-                      Pinterest
-                    </label>
-                  </div>
-                  <div className="relative z-0 w-full mb-6 group">
-                    <input
-                      type="text"
-                      name="twitter"
-                      id="floating_twitter"
-                      className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                      placeholder=" "
-                      value={twitter}
-                      onChange={(e) => setTwitter(e.target.value)}
-                    />
-                    <label
-                      htmlFor="floating_twitter"
-                      className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                    >
-                      Twitter
-                    </label>
-                  </div>
-                  <div className="relative z-0 w-full mb-6 group">
-                    <input
-                      type="text"
-                      name="titktok"
-                      id="floating_titktok"
-                      className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                      placeholder=" "
-                      value={tiktok}
-                      onChange={(e) => setTiktok(e.target.value)}
-                    />
-                    <label
-                      htmlFor="floating_titktok"
-                      className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                    >
-                      TikTok
-                    </label>
-                  </div>
-                  <div className="relative z-0 w-full mb-6 group">
-                    <input
-                      type="text"
-                      name="youtube"
-                      id="floating_youtube"
-                      className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                      placeholder=" "
-                      value={youtube}
-                      onChange={(e) => setYoutube(e.target.value)}
-                    />
-                    <label
-                      htmlFor="floating_youtube"
-                      className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                    >
-                      YouTube
-                    </label>
-                  </div>
-                  <div className="grid md:grid-cols-2 md:gap-6">
                     <div className="relative z-0 w-full mb-6 group">
                       <input
-                        type="tel"
-                        name="floating_phone"
-                        id="floating_phone"
+                        type="text"
+                        name="pinterest"
+                        id="floating_pinterest"
                         className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
                         placeholder=" "
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        required
+                        value={pinterest}
+                        onChange={(e) => setPinterest(e.target.value)}
                       />
                       <label
-                        htmlFor="floating_phone"
+                        htmlFor="floating_pinterest"
                         className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                       >
-                        Phone number (1234567890)
+                        Pinterest
                       </label>
                     </div>
-                    <div>
+                    <div className="relative z-0 w-full mb-6 group">
+                      <input
+                        type="text"
+                        name="twitter"
+                        id="floating_twitter"
+                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                        placeholder=" "
+                        value={twitter}
+                        onChange={(e) => setTwitter(e.target.value)}
+                      />
                       <label
-                        htmlFor="message"
-                        className="block mb-2 text-sm font-medium text-gray-900"
+                        htmlFor="floating_twitter"
+                        className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                       >
-                        Bio
+                        Twitter
                       </label>
-                      <textarea
-                        id="message"
-                        rows="3"
-                        value={bio}
-                        onChange={(e) => setBio(e.target.value)}
-                        className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:border-blue-500"
-                        placeholder="Write your thoughts here..."
-                      ></textarea>
                     </div>
-                  </div>
-                  <div className="my-6">
-                    <span
-                      className="text-xs bg-gray-400 p-2 rounded-lg text-gray-200 cursor-pointer"
-                      onClick={() => setChange(!change)}
-                    >
-                      Change Password
-                    </span>
-                  </div>
-                  {change && (
-                    <div>
-                      <div className="relative z-0 w-full mb-6 group">
-                        <input
-                          type="password"
-                          name="current"
-                          id="floating_current"
-                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                          placeholder=" "
-                          value={current}
-                          onChange={(e) => setCurrent(e.target.value)}
-                        />
-                        <label
-                          htmlFor="floating_current"
-                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        >
-                          Current Password
-                        </label>
-                      </div>
-                      <div className="relative z-0 w-full mb-6 group">
-                        <input
-                          type="password"
-                          name="password"
-                          id="floating_password"
-                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                          placeholder=" "
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                        />
-                        <label
-                          htmlFor="floating_password"
-                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        >
-                          Password
-                        </label>
-                      </div>
-                      <div className="relative z-0 w-full mb-6 group">
-                        <input
-                          type="password"
-                          name="repeat_password"
-                          id="floating_repeat_password"
-                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                          placeholder=" "
-                          value={confirm}
-                          onChange={(e) => setConfirm(e.target.value)}
-                        />
-                        <label
-                          htmlFor="floating_repeat_password"
-                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        >
-                          Confirm password
-                        </label>
-                      </div>
-                      <p
-                        onClick={handleUpdatePassword}
-                        className="text-white cursor-pointer inline-flex items-center justify-center gap-4 bg-[#060D50] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                    <div className="relative z-0 w-full mb-6 group">
+                      <input
+                        type="text"
+                        name="titktok"
+                        id="floating_titktok"
+                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                        placeholder=" "
+                        value={tiktok}
+                        onChange={(e) => setTiktok(e.target.value)}
+                      />
+                      <label
+                        htmlFor="floating_titktok"
+                        className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                       >
-                        {load && (
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-5 h-5 animate-spin"
+                        TikTok
+                      </label>
+                    </div>
+                    <div className="relative z-0 w-full mb-6 group">
+                      <input
+                        type="text"
+                        name="youtube"
+                        id="floating_youtube"
+                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                        placeholder=" "
+                        value={youtube}
+                        onChange={(e) => setYoutube(e.target.value)}
+                      />
+                      <label
+                        htmlFor="floating_youtube"
+                        className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                      >
+                        YouTube
+                      </label>
+                    </div>
+                    <div className="grid md:grid-cols-2 md:gap-6">
+                      <div className="relative z-0 w-full mb-6 group">
+                        <input
+                          type="tel"
+                          name="floating_phone"
+                          id="floating_phone"
+                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                          placeholder=" "
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          required
+                        />
+                        <label
+                          htmlFor="floating_phone"
+                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >
+                          Phone number (1234567890)
+                        </label>
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="message"
+                          className="block mb-2 text-sm font-medium text-gray-900"
+                        >
+                          Bio
+                        </label>
+                        <textarea
+                          id="message"
+                          rows="3"
+                          value={bio}
+                          onChange={(e) => setBio(e.target.value)}
+                          className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:border-blue-500"
+                          placeholder="Write your thoughts here..."
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div className="my-6">
+                      <span
+                        className="text-xs bg-gray-400 p-2 rounded-lg text-gray-200 cursor-pointer"
+                        onClick={() => setChange(!change)}
+                      >
+                        Change Password
+                      </span>
+                    </div>
+                    {change && (
+                      <div>
+                        <div className="relative z-0 w-full mb-6 group">
+                          <input
+                            type="password"
+                            name="current"
+                            id="floating_current"
+                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                            placeholder=" "
+                            value={current}
+                            onChange={(e) => setCurrent(e.target.value)}
+                          />
+                          <label
+                            htmlFor="floating_current"
+                            className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                           >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
-                            />
-                          </svg>
-                        )}
-                        Update Password
+                            Current Password
+                          </label>
+                        </div>
+                        <div className="relative z-0 w-full mb-6 group">
+                          <input
+                            type="password"
+                            name="password"
+                            id="floating_password"
+                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                            placeholder=" "
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                          />
+                          <label
+                            htmlFor="floating_password"
+                            className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                          >
+                            Password
+                          </label>
+                        </div>
+                        <div className="relative z-0 w-full mb-6 group">
+                          <input
+                            type="password"
+                            name="repeat_password"
+                            id="floating_repeat_password"
+                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                            placeholder=" "
+                            value={confirm}
+                            onChange={(e) => setConfirm(e.target.value)}
+                          />
+                          <label
+                            htmlFor="floating_repeat_password"
+                            className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                          >
+                            Confirm password
+                          </label>
+                        </div>
+                        <p
+                          onClick={handleUpdatePassword}
+                          className="text-white cursor-pointer inline-flex items-center justify-center gap-4 bg-[#060D50] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                        >
+                          {load && (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-5 h-5 animate-spin"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                              />
+                            </svg>
+                          )}
+                          Update Password
+                        </p>
+                      </div>
+                    )}
+                    {loadingFile && (
+                      <div className="text-white flex flex-col items-center justify-center gap-2 bg-[#1d7874] font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-5 h-5 animate-spin"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                          />
+                        </svg>
+                        <p>Uploading Files</p>
+                      </div>
+                    )}
+                    {image && (
+                      <img
+                        src={image}
+                        alt={"link Image"}
+                        className="h-14 w-14 object-cover rounded-md"
+                      />
+                    )}
+                    {background && (
+                      <p className="text-sm font-semibold text-teal-600 my-2">
+                        Video or Reel added or is present
                       </p>
+                    )}
+                    <div className="grid md:grid-cols-2 md:gap-6 mt-2 my-8 gap-3">
+                      <div className="flex items-center justify-center w-full">
+                        <label
+                          htmlFor="dropzone-file"
+                          className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 "
+                        >
+                          <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                            <svg
+                              aria-hidden="true"
+                              className="w-10 h-10 mb-3 text-gray-400"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                              ></path>
+                            </svg>
+                            <p className="mb-2 text-sm text-gray-500">
+                              <span className="font-semibold">
+                                Click to upload Profile
+                              </span>{" "}
+                              or drag and drop
+                            </p>
+                            <p className="text-xs text-gray-500">
+                              SVG, PNG, JPG or GIF (MAX. 800x400px)
+                            </p>
+                          </div>
+                          <input
+                            id="dropzone-file"
+                            type="file"
+                            className="hidden"
+                            onChange={handleFile}
+                          />
+                        </label>
+                      </div>
+                      <div className="flex items-center justify-center w-full">
+                        <label
+                          htmlFor="dropzone-file"
+                          className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 "
+                        >
+                          <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                            <svg
+                              aria-hidden="true"
+                              className="w-10 h-10 mb-3 text-gray-400"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                              ></path>
+                            </svg>
+                            <p className="mb-2 text-sm text-gray-500">
+                              <span className="font-semibold">
+                                Click to upload video/reel
+                              </span>{" "}
+                              or drag and drop
+                            </p>
+                            <p className="text-xs text-gray-500">
+                              MP4, MOV or GIF (MAX. 800x400px)
+                            </p>
+                          </div>
+                          <input
+                            id="dropzone-file"
+                            type="file"
+                            className="hidden"
+                            onChange={handleBackground}
+                          />
+                        </label>
+                      </div>
                     </div>
-                  )}
-                  {loadingFile && (
-                    <div className="text-white flex flex-col items-center justify-center gap-2 bg-[#1d7874] font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-5 h-5 animate-spin"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
-                        />
-                      </svg>
-                      <p>Uploading Files</p>
-                    </div>
-                  )}
-                  {image && (
-                    <img
-                      src={image}
-                      alt={"link Image"}
-                      className="h-14 w-14 object-cover rounded-md"
-                    />
-                  )}
-                  {background && (
-                    <p className="text-sm font-semibold text-teal-600 my-2">
-                      Video or Reel added or is present
-                    </p>
-                  )}
-                  <div className="grid md:grid-cols-2 md:gap-6 mt-2 my-8 gap-3">
-                    <div className="flex items-center justify-center w-full">
-                      <label
-                        htmlFor="dropzone-file"
-                        className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 "
-                      >
-                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                          <svg
-                            aria-hidden="true"
-                            className="w-10 h-10 mb-3 text-gray-400"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                            ></path>
-                          </svg>
-                          <p className="mb-2 text-sm text-gray-500">
-                            <span className="font-semibold">
-                              Click to upload Profile
-                            </span>{" "}
-                            or drag and drop
-                          </p>
-                          <p className="text-xs text-gray-500">
-                            SVG, PNG, JPG or GIF (MAX. 800x400px)
-                          </p>
-                        </div>
-                        <input
-                          id="dropzone-file"
-                          type="file"
-                          className="hidden"
-                          onChange={handleFile}
-                        />
-                      </label>
-                    </div>
-                    <div className="flex items-center justify-center w-full">
-                      <label
-                        htmlFor="dropzone-file"
-                        className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 "
-                      >
-                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                          <svg
-                            aria-hidden="true"
-                            className="w-10 h-10 mb-3 text-gray-400"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                            ></path>
-                          </svg>
-                          <p className="mb-2 text-sm text-gray-500">
-                            <span className="font-semibold">
-                              Click to upload video/reel
-                            </span>{" "}
-                            or drag and drop
-                          </p>
-                          <p className="text-xs text-gray-500">
-                            MP4, MOV or GIF (MAX. 800x400px)
-                          </p>
-                        </div>
-                        <input
-                          id="dropzone-file"
-                          type="file"
-                          className="hidden"
-                          onChange={handleBackground}
-                        />
-                      </label>
-                    </div>
-                  </div>
+                    <button
+                      type="submit"
+                      className="text-white inline-flex items-center justify-center gap-4 bg-[#1d7874] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                    >
+                      {loading && (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-5 h-5 animate-spin"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                          />
+                        </svg>
+                      )}
+                      Update Profile
+                    </button>
+                  </form>
                   <button
-                    type="submit"
-                    className="text-white inline-flex items-center justify-center gap-4 bg-[#1d7874] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                    className="bg-red-400 inline-flex items-center justify-center gap-4 text-white w-full rounded-md px-5 py-2.5 my-3 hover:bg-red-500"
+                    onClick={handleDeleteAccount}
                   >
-                    {loading && (
+                    {loads && (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -860,9 +897,9 @@ function Page() {
                         />
                       </svg>
                     )}
-                    Update Profile
+                    Delete Account
                   </button>
-                </form>
+                </>
               )}
               {isActive === "Product" && (
                 <div>
@@ -1349,402 +1386,426 @@ function Page() {
               </div>
               <div className="mt-10">
                 {isActive === "Profile" && (
-                  <form onSubmit={updateUserProfile}>
-                    <div className="grid md:grid-cols-2 md:gap-6 lg:grid-cols-3">
-                      <div className="relative z-0 w-full mb-6 group">
-                        <input
-                          type="text"
-                          name="first_name"
-                          id="first_name"
-                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                          placeholder=" "
-                          value={username}
-                          onChange={(e) => setUserName(e.target.value)}
-                          required
-                        />
-                        <label
-                          htmlFor="first_name"
-                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        >
-                          User name
-                        </label>
-                      </div>
-                      <div className="relative z-0 w-full mb-6 group">
-                        <input
-                          type="text"
-                          name="last_name"
-                          id="last_name"
-                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                          placeholder=" "
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          required
-                        />
-                        <label
-                          htmlFor="last_name"
-                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        >
-                          Name
-                        </label>
-                      </div>
-                      <div className="relative z-0 w-full mb-6 group">
-                        <input
-                          type="email"
-                          name="email"
-                          id="email"
-                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                          placeholder=" "
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          required
-                        />
-                        <label
-                          htmlFor="email"
-                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        >
-                          Email address
-                        </label>
-                      </div>
-                      <div className="relative z-0 w-full mb-6 group">
-                        <input
-                          type="text"
-                          name="facebook"
-                          id="facebook"
-                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                          placeholder=" "
-                          value={facebook}
-                          onChange={(e) => setFacebook(e.target.value)}
-                        />
-                        <label
-                          htmlFor="facebook"
-                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        >
-                          Facebook
-                        </label>
-                      </div>
-                      <div className="relative z-0 w-full mb-6 group">
-                        <input
-                          type="text"
-                          name="instagram"
-                          id="instagram"
-                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                          placeholder=" "
-                          value={instagram}
-                          onChange={(e) => setInstagram(e.target.value)}
-                        />
-                        <label
-                          htmlFor="instagram"
-                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        >
-                          Instagram
-                        </label>
-                      </div>
-                      <div className="relative z-0 w-full mb-6 group">
-                        <input
-                          type="text"
-                          name="pinterest"
-                          id="pinterest"
-                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                          placeholder=" "
-                          value={pinterest}
-                          onChange={(e) => setPinterest(e.target.value)}
-                        />
-                        <label
-                          htmlFor="pinterest"
-                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        >
-                          Pinterest
-                        </label>
-                      </div>
-                      <div className="relative z-0 w-full mb-6 group">
-                        <input
-                          type="text"
-                          name="twitter"
-                          id="twitter"
-                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                          placeholder=" "
-                          value={twitter}
-                          onChange={(e) => setTwitter(e.target.value)}
-                        />
-                        <label
-                          htmlFor="twitter"
-                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        >
-                          Twitter
-                        </label>
-                      </div>
-                      <div className="relative z-0 w-full mb-6 group">
-                        <input
-                          type="text"
-                          name="titktok"
-                          id="titktok"
-                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                          placeholder=" "
-                          value={tiktok}
-                          onChange={(e) => setTiktok(e.target.value)}
-                        />
-                        <label
-                          htmlFor="titktok"
-                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        >
-                          TikTok
-                        </label>
-                      </div>
-                      <div className="relative z-0 w-full mb-6 group">
-                        <input
-                          type="text"
-                          name="youtube"
-                          id="youtube"
-                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                          placeholder=" "
-                          value={youtube}
-                          onChange={(e) => setYoutube(e.target.value)}
-                        />
-                        <label
-                          htmlFor="youtube"
-                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        >
-                          YouTube
-                        </label>
-                      </div>
-                    </div>
-                    <div className="grid md:grid-cols-2 md:gap-6">
-                      <div className="relative z-0 w-full mb-6 group">
-                        <input
-                          type="tel"
-                          name="phone"
-                          id="phone"
-                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
-                          placeholder=" "
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
-                          required
-                        />
-                        <label
-                          htmlFor="phone"
-                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        >
-                          Phone number (1234567890)
-                        </label>
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="messages"
-                          className="block mb-2 text-sm font-medium text-gray-900"
-                        >
-                          Bio
-                        </label>
-                        <textarea
-                          id="messages"
-                          rows="3"
-                          value={bio}
-                          onChange={(e) => setBio(e.target.value)}
-                          className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:border-blue-500"
-                          placeholder="Write your thoughts here..."
-                        ></textarea>
-                      </div>
-                    </div>
-                    <div className="my-6">
-                      <span
-                        className="text-xs bg-gray-400 p-2 rounded-lg text-gray-200 cursor-pointer"
-                        onClick={() => setChange(!change)}
-                      >
-                        Change Password
-                      </span>
-                    </div>
-                    {change && (
-                      <div className="grid md:grid-cols-2 md:gap-6 lg:grid-cols-3 my-6">
+                  <>
+                    <form onSubmit={updateUserProfile}>
+                      <div className="grid md:grid-cols-2 md:gap-6 lg:grid-cols-3">
                         <div className="relative z-0 w-full mb-6 group">
                           <input
-                            type="password"
-                            name="current"
-                            id="floating_current"
+                            type="text"
+                            name="first_name"
+                            id="first_name"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
                             placeholder=" "
-                            value={current}
-                            onChange={(e) => setCurrent(e.target.value)}
+                            value={username}
+                            onChange={(e) => setUserName(e.target.value)}
+                            required
                           />
                           <label
-                            htmlFor="floating_current"
+                            htmlFor="first_name"
                             className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                           >
-                            Current Password
+                            User name
                           </label>
                         </div>
                         <div className="relative z-0 w-full mb-6 group">
                           <input
-                            type="password"
-                            name="password"
-                            id="floating_password"
+                            type="text"
+                            name="last_name"
+                            id="last_name"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
                             placeholder=" "
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
                           />
                           <label
-                            htmlFor="floating_password"
+                            htmlFor="last_name"
                             className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                           >
-                            Password
+                            Name
                           </label>
                         </div>
                         <div className="relative z-0 w-full mb-6 group">
                           <input
-                            type="password"
-                            name="repeat_password"
-                            id="floating_repeat_password"
+                            type="email"
+                            name="email"
+                            id="email"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
                             placeholder=" "
-                            value={confirm}
-                            onChange={(e) => setConfirm(e.target.value)}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
                           />
                           <label
-                            htmlFor="floating_repeat_password"
+                            htmlFor="email"
                             className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                           >
-                            Confirm password
+                            Email address
                           </label>
                         </div>
-                        <p
-                          onClick={handleUpdatePassword}
-                          className="text-white cursor-pointer inline-flex items-center justify-center gap-4 bg-[#060D50] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                        <div className="relative z-0 w-full mb-6 group">
+                          <input
+                            type="text"
+                            name="facebook"
+                            id="facebook"
+                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                            placeholder=" "
+                            value={facebook}
+                            onChange={(e) => setFacebook(e.target.value)}
+                          />
+                          <label
+                            htmlFor="facebook"
+                            className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                          >
+                            Facebook
+                          </label>
+                        </div>
+                        <div className="relative z-0 w-full mb-6 group">
+                          <input
+                            type="text"
+                            name="instagram"
+                            id="instagram"
+                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                            placeholder=" "
+                            value={instagram}
+                            onChange={(e) => setInstagram(e.target.value)}
+                          />
+                          <label
+                            htmlFor="instagram"
+                            className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                          >
+                            Instagram
+                          </label>
+                        </div>
+                        <div className="relative z-0 w-full mb-6 group">
+                          <input
+                            type="text"
+                            name="pinterest"
+                            id="pinterest"
+                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                            placeholder=" "
+                            value={pinterest}
+                            onChange={(e) => setPinterest(e.target.value)}
+                          />
+                          <label
+                            htmlFor="pinterest"
+                            className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                          >
+                            Pinterest
+                          </label>
+                        </div>
+                        <div className="relative z-0 w-full mb-6 group">
+                          <input
+                            type="text"
+                            name="twitter"
+                            id="twitter"
+                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                            placeholder=" "
+                            value={twitter}
+                            onChange={(e) => setTwitter(e.target.value)}
+                          />
+                          <label
+                            htmlFor="twitter"
+                            className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                          >
+                            Twitter
+                          </label>
+                        </div>
+                        <div className="relative z-0 w-full mb-6 group">
+                          <input
+                            type="text"
+                            name="titktok"
+                            id="titktok"
+                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                            placeholder=" "
+                            value={tiktok}
+                            onChange={(e) => setTiktok(e.target.value)}
+                          />
+                          <label
+                            htmlFor="titktok"
+                            className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                          >
+                            TikTok
+                          </label>
+                        </div>
+                        <div className="relative z-0 w-full mb-6 group">
+                          <input
+                            type="text"
+                            name="youtube"
+                            id="youtube"
+                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                            placeholder=" "
+                            value={youtube}
+                            onChange={(e) => setYoutube(e.target.value)}
+                          />
+                          <label
+                            htmlFor="youtube"
+                            className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                          >
+                            YouTube
+                          </label>
+                        </div>
+                      </div>
+                      <div className="grid md:grid-cols-2 md:gap-6">
+                        <div className="relative z-0 w-full mb-6 group">
+                          <input
+                            type="tel"
+                            name="phone"
+                            id="phone"
+                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                            placeholder=" "
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            required
+                          />
+                          <label
+                            htmlFor="phone"
+                            className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                          >
+                            Phone number (1234567890)
+                          </label>
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="messages"
+                            className="block mb-2 text-sm font-medium text-gray-900"
+                          >
+                            Bio
+                          </label>
+                          <textarea
+                            id="messages"
+                            rows="3"
+                            value={bio}
+                            onChange={(e) => setBio(e.target.value)}
+                            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:border-blue-500"
+                            placeholder="Write your thoughts here..."
+                          ></textarea>
+                        </div>
+                      </div>
+                      <div className="my-6">
+                        <span
+                          className="text-xs bg-gray-400 p-2 rounded-lg text-gray-200 cursor-pointer"
+                          onClick={() => setChange(!change)}
                         >
-                          {load && (
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth={1.5}
-                              stroke="currentColor"
-                              className="w-5 h-5 animate-spin"
+                          Change Password
+                        </span>
+                      </div>
+                      {change && (
+                        <div className="grid md:grid-cols-2 md:gap-6 lg:grid-cols-3 my-6">
+                          <div className="relative z-0 w-full mb-6 group">
+                            <input
+                              type="password"
+                              name="current"
+                              id="floating_current"
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                              placeholder=" "
+                              value={current}
+                              onChange={(e) => setCurrent(e.target.value)}
+                            />
+                            <label
+                              htmlFor="floating_current"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                             >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
-                              />
-                            </svg>
-                          )}
-                          Update Password
+                              Current Password
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-6 group">
+                            <input
+                              type="password"
+                              name="password"
+                              id="floating_password"
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                              placeholder=" "
+                              value={password}
+                              onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <label
+                              htmlFor="floating_password"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Password
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-6 group">
+                            <input
+                              type="password"
+                              name="repeat_password"
+                              id="floating_repeat_password"
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#060D50] peer"
+                              placeholder=" "
+                              value={confirm}
+                              onChange={(e) => setConfirm(e.target.value)}
+                            />
+                            <label
+                              htmlFor="floating_repeat_password"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#060D50] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Confirm password
+                            </label>
+                          </div>
+                          <p
+                            onClick={handleUpdatePassword}
+                            className="text-white cursor-pointer inline-flex items-center justify-center gap-4 bg-[#060D50] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                          >
+                            {load && (
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-5 h-5 animate-spin"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                                />
+                              </svg>
+                            )}
+                            Update Password
+                          </p>
+                        </div>
+                      )}
+                      {loadingFile && (
+                        <div className="text-white flex flex-col items-center justify-center gap-2 bg-[#1d7874] font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-5 h-5 animate-spin"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                            />
+                          </svg>
+                          <p>Uploading Files</p>
+                        </div>
+                      )}
+                      {image && (
+                        <img
+                          src={image}
+                          alt={"link Image"}
+                          className="h-14 w-14 object-cover rounded-md"
+                        />
+                      )}
+                      {background && (
+                        <p className="text-sm font-semibold text-teal-600 my-2 text-end">
+                          Video or Reel added or is present
                         </p>
+                      )}
+                      <div className="grid md:grid-cols-2 md:gap-6 mt-2 my-8 gap-3">
+                        <div className="flex items-center justify-center w-full">
+                          <label
+                            htmlFor="drop-file"
+                            className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 "
+                          >
+                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                              <svg
+                                aria-hidden="true"
+                                className="w-10 h-10 mb-3 text-gray-400"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                                ></path>
+                              </svg>
+                              <p className="mb-2 text-sm text-gray-500">
+                                <span className="font-semibold">
+                                  Click to upload Profile
+                                </span>{" "}
+                                or drag and drop
+                              </p>
+                              <p className="text-xs text-gray-500">
+                                SVG, PNG, JPG or GIF (MAX. 800x400px)
+                              </p>
+                            </div>
+                            <input
+                              id="drop-file"
+                              type="file"
+                              className="hidden"
+                              onChange={handleFile}
+                            />
+                          </label>
+                        </div>
+                        <div className="flex items-center justify-center w-full">
+                          <label
+                            htmlFor="zone-file"
+                            className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 "
+                          >
+                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                              <svg
+                                aria-hidden="true"
+                                className="w-10 h-10 mb-3 text-gray-400"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                                ></path>
+                              </svg>
+                              <p className="mb-2 text-sm text-gray-500">
+                                <span className="font-semibold">
+                                  Click to upload video/reel
+                                </span>{" "}
+                                or drag and drop
+                              </p>
+                              <p className="text-xs text-gray-500">
+                                MP4, MOV or GIF (MAX. 800x400px)
+                              </p>
+                            </div>
+                            <input
+                              id="zone-file"
+                              type="file"
+                              className="hidden"
+                              onChange={handleBackground}
+                            />
+                          </label>
+                        </div>
                       </div>
-                    )}
-                    {loadingFile && (
-                      <div className="text-white flex flex-col items-center justify-center gap-2 bg-[#1d7874] font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-5 h-5 animate-spin"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
-                          />
-                        </svg>
-                        <p>Uploading Files</p>
-                      </div>
-                    )}
-                    {image && (
-                      <img
-                        src={image}
-                        alt={"link Image"}
-                        className="h-14 w-14 object-cover rounded-md"
-                      />
-                    )}
-                    {background && (
-                      <p className="text-sm font-semibold text-teal-600 my-2 text-end">
-                        Video or Reel added or is present
-                      </p>
-                    )}
-                    <div className="grid md:grid-cols-2 md:gap-6 mt-2 my-8 gap-3">
-                      <div className="flex items-center justify-center w-full">
-                        <label
-                          htmlFor="drop-file"
-                          className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 "
-                        >
-                          <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                            <svg
-                              aria-hidden="true"
-                              className="w-10 h-10 mb-3 text-gray-400"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                              ></path>
-                            </svg>
-                            <p className="mb-2 text-sm text-gray-500">
-                              <span className="font-semibold">
-                                Click to upload Profile
-                              </span>{" "}
-                              or drag and drop
-                            </p>
-                            <p className="text-xs text-gray-500">
-                              SVG, PNG, JPG or GIF (MAX. 800x400px)
-                            </p>
-                          </div>
-                          <input
-                            id="drop-file"
-                            type="file"
-                            className="hidden"
-                            onChange={handleFile}
-                          />
-                        </label>
-                      </div>
-                      <div className="flex items-center justify-center w-full">
-                        <label
-                          htmlFor="zone-file"
-                          className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 "
-                        >
-                          <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                            <svg
-                              aria-hidden="true"
-                              className="w-10 h-10 mb-3 text-gray-400"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                              ></path>
-                            </svg>
-                            <p className="mb-2 text-sm text-gray-500">
-                              <span className="font-semibold">
-                                Click to upload video/reel
-                              </span>{" "}
-                              or drag and drop
-                            </p>
-                            <p className="text-xs text-gray-500">
-                              MP4, MOV or GIF (MAX. 800x400px)
-                            </p>
-                          </div>
-                          <input
-                            id="zone-file"
-                            type="file"
-                            className="hidden"
-                            onChange={handleBackground}
-                          />
-                        </label>
-                      </div>
-                    </div>
+                      <button
+                        type="submit"
+                        className="text-white inline-flex items-center justify-center gap-4 bg-[#1d7874] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                      >
+                        {loading && (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-5 h-5 animate-spin"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                            />
+                          </svg>
+                        )}
+                        Update Profile
+                      </button>
+                    </form>
                     <button
-                      type="submit"
-                      className="text-white inline-flex items-center justify-center gap-4 bg-[#1d7874] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                      className="bg-red-400 inline-flex items-center justify-center gap-4 text-white w-full rounded-md px-5 py-2.5 my-3 hover:bg-red-500"
+                      onClick={handleDeleteAccount}
                     >
-                      {loading && (
+                      {loads && (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -1760,9 +1821,9 @@ function Page() {
                           />
                         </svg>
                       )}
-                      Update Profile
+                      Delete Account
                     </button>
-                  </form>
+                  </>
                 )}
                 {isActive === "Product" && (
                   <div>
