@@ -25,6 +25,9 @@ function Home() {
     }
   };
 
+  const discount =
+    ((product?.price - product?.discount_price) / product?.price) * 100;
+
   const handleOpen = () => {
     setLast(slides.length);
     setOpen(true);
@@ -99,6 +102,9 @@ function Home() {
                 <>
                   <span className="title-font line-through font-medium mr-2 text-sm md:text-2xl text-gray-400">
                     {product?.price}
+                  </span>
+                  <span className="bg-teal-500 text-xs mx-1 text-white p-1 rounded-lg px-3">
+                    -{discount}%
                   </span>
                   <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
                     {product?.discount_price}
@@ -264,6 +270,9 @@ function Home() {
                   <>
                     <span className="title-font line-through font-medium mr-2 text-sm md:text-2xl text-gray-400">
                       {product?.price}
+                    </span>
+                    <span className="bg-teal-500 text-xs mx-1 text-white p-1 rounded-lg px-3">
+                      -{discount}%
                     </span>
                     <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
                       {product?.discount_price}
