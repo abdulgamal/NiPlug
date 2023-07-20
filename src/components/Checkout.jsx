@@ -236,7 +236,7 @@ function Checkout({ product, isToggle, setToggle }) {
               <div className="flex gap-2 items-center mt-2">
                 <p className="font-bold text-gray-700">Total</p>
                 <p className="font-normal text-gray-700">
-                  {product?.price * qty}
+                  {product?.discount_price * qty}
                 </p>
               </div>
             </div>

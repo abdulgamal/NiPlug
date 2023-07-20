@@ -95,18 +95,18 @@ function Home() {
             </div>
             <div className="flex items-center">
               <p className="font-medium text-md mr-2 text-gray-400">Price:</p>
-              {product?.discount_price > product?.price ? (
+              {product?.price > product?.discount_price ? (
                 <>
                   <span className="title-font line-through font-medium mr-2 text-sm md:text-2xl text-gray-400">
-                    {product?.discount_price}
+                    {product?.price}
                   </span>
                   <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
-                    {product?.price}
+                    {product?.discount_price}
                   </span>
                 </>
               ) : (
                 <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
-                  {product?.price}
+                  {product?.discount_price}
                 </span>
               )}
               <button
@@ -260,18 +260,18 @@ function Home() {
                 <p className="font-medium text-xs md:text-xl text-gray-400">
                   Price:
                 </p>
-                {product?.discount_price > product?.price ? (
+                {product?.price > product?.discount_price ? (
                   <>
                     <span className="title-font line-through font-medium mr-2 text-sm md:text-2xl text-gray-400">
-                      {product?.discount_price}
+                      {product?.price}
                     </span>
                     <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
-                      {product?.price}
+                      {product?.discount_price}
                     </span>
                   </>
                 ) : (
                   <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
-                    {product?.price}
+                    {product?.discount_price}
                   </span>
                 )}
                 <button
