@@ -95,9 +95,20 @@ function Home() {
             </div>
             <div className="flex items-center">
               <p className="font-medium text-md mr-2 text-gray-400">Price:</p>
-              <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
-                {product?.discount_price}
-              </span>
+              {product?.discount_price > product?.price ? (
+                <>
+                  <span className="title-font line-through font-medium mr-2 text-sm md:text-2xl text-gray-400">
+                    {product?.discount_price}
+                  </span>
+                  <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
+                    {product?.price}
+                  </span>
+                </>
+              ) : (
+                <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
+                  {product?.price}
+                </span>
+              )}
               <button
                 onClick={() => setIsToggle(true)}
                 className="flex ml-auto text-white bg-[#1d7874] border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
@@ -249,9 +260,20 @@ function Home() {
                 <p className="font-medium text-xs md:text-xl text-gray-400">
                   Price:
                 </p>
-                <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
-                  {product?.discount_price}
-                </span>
+                {product?.discount_price > product?.price ? (
+                  <>
+                    <span className="title-font line-through font-medium mr-2 text-sm md:text-2xl text-gray-400">
+                      {product?.discount_price}
+                    </span>
+                    <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
+                      {product?.price}
+                    </span>
+                  </>
+                ) : (
+                  <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
+                    {product?.price}
+                  </span>
+                )}
                 <button
                   onClick={() => setIsToggle(true)}
                   className="flex ml-auto text-white bg-[#1d7874] border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
