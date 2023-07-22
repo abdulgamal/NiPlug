@@ -78,24 +78,7 @@ function Home() {
               <p className="leading-relaxed">{product?.sort_description}</p>
             </div>
 
-            <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-              <div className="flex items-center space-x-4">
-                <img
-                  className="w-10 h-10 rounded-full"
-                  src={
-                    product?.owner?.image ||
-                    "https://img.freepik.com/free-icon/user_318-159711.jpg?size=338&ext=jpg&ga=GA1.2.1579534943.1675896791&semt=ais"
-                  }
-                  alt=""
-                />
-                <div className="font-medium ">
-                  <div>{product?.shop || product?.owner}</div>
-                  <div className="text-sm text-gray-500 ">
-                    Owner of the Product
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className="pb-5 border-b-2 border-gray-100 mb-3"></div>
             <div className="flex items-center">
               <p className="font-medium text-md mr-2 text-gray-400">Price:</p>
               {product?.price > product?.discount_price ? (
@@ -246,22 +229,6 @@ function Home() {
               <p className="leading-relaxed">{product?.sort_description}</p>
             </div>
             <div className="my-4 w-full flex justify-between border-t-2 border-gray-100 pt-3">
-              <div className="flex items-center space-x-4">
-                <img
-                  className="w-10 h-10 rounded-full"
-                  src={
-                    product?.owner?.image ||
-                    "https://img.freepik.com/free-icon/user_318-159711.jpg?size=338&ext=jpg&ga=GA1.2.1579534943.1675896791&semt=ais"
-                  }
-                  alt=""
-                />
-                <div className="font-medium ">
-                  <div>{product?.shop || product?.owner}</div>
-                  <div className="text-sm text-gray-500 ">
-                    Owner of the Product
-                  </div>
-                </div>
-              </div>
               <div className="flex space-x-4 items-center">
                 <p className="font-medium text-xs md:text-xl text-gray-400">
                   Price:
