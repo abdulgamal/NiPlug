@@ -6,6 +6,8 @@ import Lottie from "lottie-react";
 import banner from "../../public/banner.json";
 import { useContext } from "react";
 import { AuthenticateContext } from "../../context/AuthContext";
+import Campagns from "@/components/Campagns";
+import Influencers from "@/components/Influencers";
 
 export default function Home() {
   const { user } = useContext(AuthenticateContext);
@@ -78,6 +80,8 @@ export default function Home() {
             />
           </div>
         </div>
+        <Campagns />
+        <Influencers />
         <div className="bg-[#F4F4F4] min-h-screen p-5 md:rounded-2xl my-10 flex flex-col justify-around items-center">
           <h2 className="text-4xl text-center mb-3 font-bold text-[#1d7874]">
             Why Choose NiPLUG
