@@ -1,6 +1,6 @@
 import React from "react";
 
-function NotFound() {
+function NotFound({ influencer }) {
   return (
     <div className="relative block rounded-sm border-t-4 border-pink-600 p-4 shadow-md sm:p-6 lg:p-8">
       <div className="flex items-center gap-4">
@@ -23,7 +23,9 @@ function NotFound() {
       </div>
 
       <p className="mt-4 font-medium text-gray-500">
-        No items available at this time
+        {influencer
+          ? "No influencer found."
+          : "No items available at this time"}
       </p>
     </div>
   );

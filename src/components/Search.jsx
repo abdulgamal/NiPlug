@@ -1,11 +1,29 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
-function Search() {
+function Search({ setLoading, setAccounts, products, setInitial, setSkip }) {
+  const [username, setUsername] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
+    if (username == "All" || username == "all") {
+      setAccounts(products);
+      setInitial(9);
+      setSkip(18);
+    } else {
+      const filteredInfluencers = products?.filter((product) =>
+        product?.username?.toLowerCase()?.includes(username)
+      );
+      setInitial(0);
+      setSkip(9);
+      setAccounts(filteredInfluencers);
+    }
+    setLoading(false);
   };
+
   return (
-    <form className="mt-3 max-w-lg mx-auto" onSubmit={handleSubmit}>
+    <form className="my-3 max-w-lg mx-auto" onSubmit={handleSubmit}>
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only"
@@ -34,7 +52,9 @@ function Search() {
           type="search"
           id="default-search"
           className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-          placeholder="Search influencers..."
+          placeholder="Search influencer..."
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           required
         />
         <button

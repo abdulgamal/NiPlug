@@ -50,6 +50,10 @@ export const getCategories = async () => {
   return await axios.get("/category");
 };
 
+export const getInfluencers = async () => {
+  return await axios.get("/influencers");
+};
+
 export const paySuccess = (id) => {
   return fetch(`${BASE_URL}/order/paid/${id}`)
     .then((response) => response.json())
