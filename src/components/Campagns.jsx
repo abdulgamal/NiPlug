@@ -9,7 +9,7 @@ function Campagns() {
             <div className="max-w-md mx-auto text-center lg:text-left">
               <header>
                 <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">
-                  Promoted Campaigns/Offers
+                  Promotions and Offers
                 </h2>
               </header>
 
@@ -22,7 +22,7 @@ function Campagns() {
           <div className="lg:col-span-2 lg:py-8">
             <ul className="grid grid-cols-2 gap-4">
               <li>
-                <div className="block group">
+                <div className="block group relative">
                   <img
                     src="https://admin.niplug.com/assets/uploads/media-uploader/46ddb52e-d327-464e-82d5-6f70794a0d9b16786935961684328510.jpg"
                     alt=""
@@ -36,11 +36,14 @@ function Campagns() {
                       Details
                     </p>
                   </div>
+                  <span className="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full absolute right-2 top-2">
+                    Offer
+                  </span>
                 </div>
               </li>
 
               <li>
-                <div className="block group">
+                <div className="block group relative">
                   <img
                     src="https://admin.niplug.com/assets/uploads/media-uploader/img-20230216-wa005616765467971684413582.jpg"
                     alt=""
@@ -54,10 +57,13 @@ function Campagns() {
                       Details
                     </p>
                   </div>
+                  <span className="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full absolute right-2 top-2">
+                    Offer
+                  </span>
                 </div>
               </li>
               <li className="lg:hidden">
-                <div className="block group">
+                <div className="block group relative">
                   <img
                     src="https://admin.niplug.com/assets/uploads/media-uploader/whatsapp-image-2023-03-22-at-14404-pm16794952621684401224.jpg"
                     alt=""
@@ -73,10 +79,13 @@ function Campagns() {
                       Details
                     </p>
                   </div>
+                  <span className="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full absolute right-2 top-2">
+                    Offer
+                  </span>
                 </div>
               </li>
               <li className="lg:hidden">
-                <div className="block group">
+                <div className="block group relative">
                   <img
                     src="https://admin.niplug.com/assets/uploads/media-uploader/whatsapp-image-2023-06-16-at-91034-am-11686895943.jpeg"
                     alt=""
@@ -90,6 +99,9 @@ function Campagns() {
                       Details
                     </p>
                   </div>
+                  <span className="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full absolute right-2 top-2">
+                    Offer
+                  </span>
                 </div>
               </li>
             </ul>
