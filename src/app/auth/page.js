@@ -43,7 +43,7 @@ export default function Auth() {
         } = data;
         handleAuth(token, email, id);
         setLoading(false);
-        router.replace("/");
+        router.replace("/home");
       } catch ({ response }) {
         if (response?.data?.errors) {
           setErrors(response?.data?.errors);
@@ -66,7 +66,7 @@ export default function Auth() {
         } = data;
         handleAuth(token, email, id);
         setLoading(false);
-        router.replace("/");
+        router.replace("/home");
       } catch ({ response }) {
         setErrMessage(response?.data.message);
         setLoading(false);

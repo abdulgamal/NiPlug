@@ -37,6 +37,14 @@ function Home() {
     setOpen(false);
   };
 
+  function removeTags(str) {
+    if (str === null || str === "") return false;
+    else {
+      str = str.toString();
+      return str.replace(/(<([^>]+)>)/gi, "");
+    }
+  }
+
   useEffect(() => {
     if (id) {
       fetchData(id);
@@ -75,7 +83,9 @@ function Home() {
               <h2 className="text-xl font-bold mb-1 text-gray-500 tracking-widest border-b-2 border-gray-200">
                 {product?.title}
               </h2>
-              <p className="leading-relaxed">{product?.sort_description}</p>
+              <p className="leading-relaxed">
+                {removeTags(product?.description) || product?.sort_description}
+              </p>
             </div>
 
             <div className="pb-5 border-b-2 border-gray-100 mb-3"></div>
@@ -87,7 +97,7 @@ function Home() {
                     {product?.price}
                   </span>
                   <span className="bg-teal-500 text-xs mx-1 text-white p-1 rounded-lg px-3">
-                    -{discount}%
+                    -{discount.toFixed(1)}%
                   </span>
                   <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
                     {product?.discount_price}
@@ -226,7 +236,9 @@ function Home() {
                 ))}
             </div>
             <div className="my-4 w-1/2">
-              <p className="leading-relaxed">{product?.sort_description}</p>
+              <p className="leading-relaxed">
+                {removeTags(product?.description) || product?.sort_description}
+              </p>
             </div>
             <div className="my-4 w-full flex justify-between border-t-2 border-gray-100 pt-3">
               <div className="flex space-x-4 items-center">
@@ -239,7 +251,7 @@ function Home() {
                       {product?.price}
                     </span>
                     <span className="bg-teal-500 text-xs mx-1 text-white p-1 rounded-lg px-3">
-                      -{discount}%
+                      -{discount.toFixed(1)}%
                     </span>
                     <span className="title-font font-medium text-sm md:text-2xl text-gray-600">
                       {product?.discount_price}

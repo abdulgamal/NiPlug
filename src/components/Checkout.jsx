@@ -49,7 +49,7 @@ function Checkout({ product, isToggle, setToggle }) {
         setMerchantId(res?.MerchantRequestID);
         setOrderID(res?.order);
       } else {
-        notify(res?.message);
+        notify("Something went wrong! Please try again later");
       }
       setLoading(false);
     } catch ({ response }) {

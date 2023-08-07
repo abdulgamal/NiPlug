@@ -11,7 +11,8 @@ export default function HomePage() {
   return (
     <>
       <Navbar />
-      {user ? <Home /> : <Landing />}
+      {/* {user ? <Home /> : <Landing />} */}
+      <Landing />
       <Footer />
     </>
   );

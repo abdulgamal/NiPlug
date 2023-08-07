@@ -26,7 +26,7 @@ function Landing() {
           <div className="mt-5">
             <Button />
           </div>
-          <div className="flex items-center mt-4 gap-2 border border-[#d4af37] rounded-md p-1">
+          {/* <div className="flex items-center mt-4 gap-2 border border-[#d4af37] rounded-md p-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -62,7 +62,7 @@ function Landing() {
                 />
               </svg>
             </button>
-          </div>
+          </div> */}
         </div>
         <div className="">
           <img
