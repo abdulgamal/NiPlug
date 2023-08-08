@@ -7,7 +7,7 @@ import NotFound from "@/components/NotFound";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 
-function page({ params }) {
+function SearchPage({ params }) {
   const { title } = params;
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
@@ -63,4 +63,4 @@ function page({ params }) {
   );
 }
 
-export default page;
+export default SearchPage;
