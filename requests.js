@@ -85,6 +85,10 @@ export const fetchUserDetails = async (data) => {
   });
 };
 
+export const fetchProductsQuery = async (data) => {
+  return await axios.get("/products/search", { params: data });
+};
+
 export const updatePassword = async (data, token) => {
   return await axios.post("/user/change-password", data, {
     headers: {

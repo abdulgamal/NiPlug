@@ -2,6 +2,7 @@ import React from "react";
 import Lottie from "lottie-react";
 import banner from "../../public/banner.json";
 import Button from "./Button";
+import SearchQuery from "./SearchQuery";
 
 function Landing() {
   return (
@@ -26,43 +27,7 @@ function Landing() {
           <div className="mt-5">
             <Button />
           </div>
-          {/* <div className="flex items-center mt-4 gap-2 border border-[#d4af37] rounded-md p-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-              />
-            </svg>
-            <input
-              type="text"
-              placeholder="Search or type a code"
-              className="bg-transparent flex-1 py-1 outline-none"
-            />
-            <button className="p-1 bg-[#1d7874] rounded-md">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-5 h-5 text-white"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                />
-              </svg>
-            </button>
-          </div> */}
+          <SearchQuery />
         </div>
         <div className="">
           <img
