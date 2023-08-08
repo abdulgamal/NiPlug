@@ -60,7 +60,12 @@ function Checkout({ product, isToggle, setToggle }) {
 
   useEffect(() => {
     let id = localStorage.getItem("userId");
-    setUserId(id);
+    if (id) {
+      setUserId(id); //142
+    } else {
+      setUserId(142);
+    }
+    return () => localStorage.clear();
   }, []);
 
   useEffect(() => {
