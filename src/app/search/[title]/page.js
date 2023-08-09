@@ -29,6 +29,10 @@ function SearchPage({ params }) {
     fetchProducts(title);
   }, [title]);
 
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
+
   return (
     <>
       <Navbar />

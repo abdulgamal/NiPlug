@@ -38,7 +38,7 @@ function Checkout({ product, isToggle, setToggle }) {
       quantity: qty,
       shipping_address: shipping,
       product_id: product?.prd_id,
-      user_id: userId,
+      user_id: userId || "142",
       instruction,
     };
     setLoading(true);
@@ -60,11 +60,7 @@ function Checkout({ product, isToggle, setToggle }) {
 
   useEffect(() => {
     let id = localStorage.getItem("userId");
-    if (id) {
-      setUserId(id); //142
-    } else {
-      setUserId(142);
-    }
+    setUserId(id); //142
     return () => localStorage.clear();
   }, []);
 
