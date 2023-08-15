@@ -10,12 +10,14 @@ import "swiper/css";
 import { useParams } from "next/navigation";
 import { fetchUserDetails, getCategories } from "../../../requests";
 import Loading from "@/components/Loading";
+import Influencers from "@/components/Influencers";
 
 function Page() {
   const [slug, setSlug] = useState(39);
   const [prods, setProds] = useState([]);
   const [info, setInfo] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
   const [categories, setCategories] = useState([]);
   const [code, setCode] = useState("");
   const [links, setLinks] = useState([]);
@@ -252,6 +254,20 @@ function Page() {
             <p className="text-center text-[#1d7874] font-bold mb-3">
               My Recommended Products
             </p>
+            <label className="relative inline-flex items-center cursor-pointer ml-4">
+              <input
+                type="checkbox"
+                value=""
+                className="sr-only peer"
+                onChange={() => setIsChecked(!isChecked)}
+                checked={isChecked}
+              />
+              <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-[#1d7874] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#1d7874]"></div>
+              <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                Sort Products
+              </span>
+            </label>
+
             {prods?.length > 0 && (
               <div className="mt-8 px-4 mb-8">
                 <Swiper
@@ -260,11 +276,20 @@ function Page() {
                   scrollbar={{ draggable: true }}
                   modules={[Scrollbar]}
                 >
-                  {prods.map((product) => (
-                    <SwiperSlide key={product.id}>
-                      <ProfileCard product={product} />
-                    </SwiperSlide>
-                  ))}
+                  {isChecked
+                    ? prods
+                        .slice()
+                        .reverse()
+                        .map((product) => (
+                          <SwiperSlide key={product.id}>
+                            <ProfileCard product={product} />
+                          </SwiperSlide>
+                        ))
+                    : prods.map((product) => (
+                        <SwiperSlide key={product.id}>
+                          <ProfileCard product={product} />
+                        </SwiperSlide>
+                      ))}
                 </Swiper>
               </div>
             )}
@@ -297,6 +322,12 @@ function Page() {
               </div>
             )}
           </div>
+          {/* <div className="my-1">
+            <p className="text-center text-xl font-bold text-[#1d7874] mb-3">
+              Browse for other Influencers
+            </p> */}
+          <Influencers />
+          {/* </div> */}
         </div>
       )}
       {loading && <Loading />}

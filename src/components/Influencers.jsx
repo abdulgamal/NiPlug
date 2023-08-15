@@ -46,8 +46,8 @@ function Influencers() {
 
   return (
     <section className="bg-white" id="influencers">
-      <div className="container px-6 py-10 mx-auto">
-        <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl">
+      <div className="container px-6 py-1 mx-auto">
+        <h1 className="text-xl font-semibold text-center text-[#1d7874] capitalize">
           NiPlug Influencers
         </h1>
         <Search
@@ -59,22 +59,21 @@ function Influencers() {
         />
         {loading && <Loading />}
         {accounts.length > 0 && (
-          <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-8 mt-4 xl:mt-12 xl:gap-12 lg:grid-cols-3">
             {accounts.slice(initial, skip).map((account) => (
-              <div
-                className="flex items-end overflow-hidden bg-cover rounded-lg h-96"
-                style={{
-                  backgroundImage: `url(${account?.image || fallback})`,
-                }}
-                key={account?.id}
-              >
-                <div className="w-full px-8 py-4 overflow-hidden rounded-b-lg backdrop-blur-sm bg-white/60">
-                  <h2 className="mt-4 text-xl font-semibold text-gray-800 capitalize">
+              <div key={account?.id}>
+                <img
+                  class="rounded w-36 h-36"
+                  src={account?.image || fallback}
+                  alt="profilePic"
+                ></img>
+                <div className="w-full py-1 overflow-hidden">
+                  <h2 className="mt-4 text-sm font-semibold text-gray-800 capitalize">
                     {account?.username}
                   </h2>
                   <Link
                     href={`/${account?.username}`}
-                    className="mt-2 text-lg tracking-wider text-blue-500 uppercase"
+                    className="mt-2 text-xs tracking-wider text-blue-500 uppercase"
                   >
                     Visit
                   </Link>
