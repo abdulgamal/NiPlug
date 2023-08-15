@@ -328,7 +328,7 @@ function Page() {
               href="/offers-page"
               className="flex items-center font-bold text-white w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 bg-[#1d7874] py-3 px-8 rounded-2xl gap-2 my-2"
             >
-              Check Other Influencers{" "}
+              Check Other Influencers
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
