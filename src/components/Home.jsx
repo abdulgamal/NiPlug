@@ -4,7 +4,7 @@ import Influencers from "./Influencers";
 function Home() {
   return (
     <main className="min-h-screen container mx-auto">
-      <Campagns />
+      {/* <Campagns /> */}
       <Influencers />
     </main>
   );

@@ -54,6 +54,10 @@ export const getInfluencers = async () => {
   return await axios.get("/influencers");
 };
 
+export const getOfferProducts = async () => {
+  return await axios.get("/products");
+};
+
 export const paySuccess = (id) => {
   return fetch(`${BASE_URL}/order/paid/${id}`)
     .then((response) => response.json())

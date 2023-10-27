@@ -14,15 +14,16 @@ function Landing() {
             <Lottie animationData={banner} />
             <div className="mb-5">
               <p className="text-2xl font-bold tracking-widest text-[#1d7874]">
-                Monetize your following and online presence
+                Welcome to NiPlug
+              </p>
+              <p className="text-sm font-bold tracking-widest">
+                Your Gateway to Monetize Your Online Presence!
               </p>
             </div>
             <p className="text-sm md:text-xl tracking-wider">
-              At NiPlug, we empower influencers like you to monetize your online
-              presence by providing you with your own customized storefront. Our
-              platform connects you with a wide range of brands and allows you
-              to sell their products and services directly to your audience.
-              It&apos;s time to turn your influence into income!
+              Discover how we seamlessly merge technology, eCommerce, and
+              influencer marketing to help you turn your online presence into a
+              revenue-generating powerhouse
             </p>
           </div>
           <div className="mt-5">
@@ -30,7 +31,7 @@ function Landing() {
               href="/offers-page"
               className="flex items-center font-bold text-white w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 bg-[#1d7874] py-3 px-8 rounded-2xl gap-2 my-2"
             >
-              Check Offers / Influencers{" "}
+              Get Plugged
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -46,6 +47,27 @@ function Landing() {
                 />
               </svg>
             </Link>
+            <a
+              href="https://niplug.com/"
+              target="_blank"
+              className="flex items-center font-bold text-white w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 bg-[#1d7874] py-3 px-8 rounded-2xl gap-2 my-2"
+            >
+              Create Plugs
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                />
+              </svg>
+            </a>
           </div>
           <SearchQuery />
         </div>
@@ -64,35 +86,72 @@ function Landing() {
         <div className="grid md:grid-cols-3 gap-10 my-3">
           <div className="bg-white p-10 rounded-md h-[50vh] flex flex-col justify-around">
             <h5 className="font-bold text-[#1d7874] text-center mb-5 text-lg md:text-2xl">
-              Seamless Storefront Creation:
+              Seamlessly Launch Your eCommerce Storefront
             </h5>
             <p className="text-gray-500 tracking-wide text-center">
-              We make it incredibly easy for you to set up your own online
-              store. Our user-friendly interface enables you to customize your
-              storefront to reflect your personal brand. Showcase your favorite
-              products and curate collections that resonate with your audience.
+              At NiPlug, we provide the ultimate solution for creating and
+              managing your eCommerce storefront effortlessly. Whether
+              you&apos;re a passionate creator, a small business owner, or a
+              digital entrepreneur, our platform enables you to set up and
+              customize your online store with ease. Sell products, services, or
+              digital content, and watch your online business thrive.
             </p>
           </div>
           <div className="bg-white p-10 rounded-md h-[50vh] flex flex-col justify-around">
             <h5 className="font-bold text-[#1d7874] text-center mb-5 text-lg md:text-2xl">
-              Diverse Product and Services Catalog:
+              Make money through Membership
             </h5>
             <p className="text-gray-500 tracking-wide text-center">
-              Gain access to a vast selection of high-quality products from
-              reputable brands across various industries. From fashion and
-              beauty to fitness and home decor, you can choose the products that
-              align with your interests and your followers preferences.
+              Monetize your content and expertise by offering memberships to
+              your audience. With NiPlug, you can easily create and manage
+              membership tiers, provide exclusive content, and build a loyal
+              community that&apos;s eager to support your work.
             </p>
           </div>
           <div className="bg-white p-10 rounded-md h-[50vh] flex flex-col justify-around">
             <h5 className="font-bold text-[#1d7874] text-center mb-5 text-lg md:text-2xl">
-              Hassle-Free Order Management:
+              Empower Influencers with Storefronts
             </h5>
             <p className="text-gray-500 tracking-wide text-center">
-              Leave the logistics to us! We handle all aspects of order
-              processing, including payment processing, inventory management,
-              and shipping. You can focus on creating engaging content and
-              nurturing your community while we take care of the rest.
+              In the world of influencer marketing, NiPlug stands out. Our
+              platform allows influencers to create storefronts without the
+              hassle of managing inventory. Promote and sell products to your
+              followers, turning your online influence into a lucrative
+              business.
+            </p>
+          </div>
+          <div className="bg-white p-10 rounded-md h-[50vh] flex flex-col justify-around">
+            <h5 className="font-bold text-[#1d7874] text-center mb-5 text-lg md:text-2xl">
+              In-Link-Bio - Streamline Your Social Commerce
+            </h5>
+            <p className="text-gray-500 tracking-wide text-center">
+              Make the most of your social media presence with our In-Link-Bio
+              feature. It&apos;s your all-in-one solution for directing your
+              audience to your eCommerce storefront, memberships, and influencer
+              partnerships. Streamline the customer journey and maximize your
+              online sales.
+            </p>
+          </div>
+          <div className="bg-white p-10 rounded-md h-[50vh] flex flex-col justify-around">
+            <h5 className="font-bold text-[#1d7874] text-center mb-5 text-lg md:text-2xl">
+              Ads Plugs - Free Ads to Boost Your Customer Base
+            </h5>
+            <p className="text-gray-500 tracking-wide text-center">
+              With Ads Plugs on NiPlug, you can expand your reach and attract
+              more customers without breaking the bank. Our free ads are
+              designed to increase your customer base and drive more traffic to
+              your online business.
+            </p>
+          </div>
+          <div className="bg-white p-10 rounded-md h-[50vh] flex flex-col justify-around">
+            <h5 className="font-bold text-[#1d7874] text-center mb-5 text-lg md:text-2xl">
+              Tip Plugs - Hassle-Free Tips with Maximum Privacy
+            </h5>
+            <p className="text-gray-500 tracking-wide text-center">
+              Say goodbye to exposing your personal information when receiving
+              tips. NiPlug&apos;s Tip Plugs offer a secure and privacy-conscious
+              solution for hassle-free tipping. Whether you&apos;re a content
+              creator or service provider, you can accept tips with confidence.
             </p>
           </div>
         </div>
@@ -100,8 +159,9 @@ function Landing() {
       </div>
       <div className="my-12 min-h-screen grid md:grid-cols-2 gap-10">
         <div className="px-4 mb-4 pt-10">
-          <p className="text-2xl md:text-5xl text-[#1d7874] font-bold tracking-widest">
-            With NiPlug,
+          <p className="text-base md:text-lg text-[#1d7874] font-bold tracking-widest">
+            Ready to seize the opportunities of the digital world? NiPlug
+            invites you to take action:
           </p>
           <div className="mt-5">
             <div className="flex items-center gap-4 border-b border-gray-300 py-5 mb-5">
@@ -120,9 +180,10 @@ function Landing() {
                 />
               </svg>
               <p className="text-md">
-                Create a Single link and connect it to your photos, videos and
-                shorts so that when your follower asks where to find the product
-                simply direct them to your NiPlug link on your bio
+                <b>Build Your eCommerce Storefront:</b>Whether you&apos;re a
+                creator, business owner, or digital entrepreneur, start selling
+                your products, services, or content with ease. NiPlug makes it
+                simple to launch your online store.
               </p>
             </div>
             <div className="flex items-center gap-4 border-b border-gray-300 py-5 mb-5">
@@ -141,8 +202,9 @@ function Landing() {
                 />
               </svg>
               <p className="text-md">
-                Connect with as many brand patners and affiliates as you want
-                without changing your link on your Bio. More Income for you!
+                <b>Create Memberships:</b>Monetize your expertise and content by
+                offering memberships. Build a loyal community and generate
+                consistent income from your dedicated followers.
               </p>
             </div>
             <div className="flex items-center gap-4 border-b border-gray-300 py-5 mb-5">
@@ -161,8 +223,69 @@ function Landing() {
                 />
               </svg>
               <p className="text-md">
-                Tag your favorite products and services with a special Access
-                Code and simply promote that code to your audience
+                <b>Empower Influencers:</b>If you&apos;re an influencer,
+                transform your online influence into a thriving business. Create
+                your storefront without the burden of inventory management
+              </p>
+            </div>
+            <div className="flex items-center gap-4 border-b border-gray-300 py-5 mb-5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-12 h-12 text-[#d4af37] font-bold"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                />
+              </svg>
+              <p className="text-md">
+                <b>In-Link-Bio:</b>Streamline your social commerce efforts by
+                using our In-Link-Bio feature. Connect your audience directly to
+                your monetization opportunities.
+              </p>
+            </div>
+            <div className="flex items-center gap-4 border-b border-gray-300 py-5 mb-5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-12 h-12 text-[#d4af37] font-bold"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                />
+              </svg>
+              <p className="text-md">
+                <b>Ads Plugs:</b>Expand your reach with free ads that boost your
+                customer base
+              </p>
+            </div>
+            <div className="flex items-center gap-4 border-b border-gray-300 py-5 mb-5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-12 h-12 text-[#d4af37] font-bold"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                />
+              </svg>
+              <p className="text-md">
+                <b>Tip Plugs:</b>Enjoy hassle-free tips with maximum privacy.
               </p>
             </div>
           </div>
@@ -170,46 +293,6 @@ function Landing() {
         </div>
         <div className="order-first">
           <img src="banner2.webp" alt="banner-img" className="md:rounded-2xl" />
-        </div>
-      </div>
-      <div className="bg-gradient-to-br from-[#1d7874] to-[#151B7B] px-5 md:rounded-3xl mt-5 flex flex-col items-center justify-around py-10 min-h-screen">
-        <h2 className="text-gray-300 text-center font-bold text-3xl tracking-widest">
-          How it works
-        </h2>
-        <div className="mt-5 flex justify-between items-center gap-10">
-          <div className="hidden md:block">
-            <img src="banner3.gif" alt="banner-image" className="w-[50vh]" />
-          </div>
-          <div>
-            <div className="border-b border-gray-400 flex items-center gap-5 py-7 w-[40vh] mb-7">
-              <p className="font-bold text-4xl text-gray-100">1</p>
-              <div>
-                <p className="font-bold text-2xl text-gray-100">Create</p>
-                <p className="text-base text-gray-100 tracking-wider">
-                  a code for what you want to promote and assign it a URL.
-                </p>
-              </div>
-            </div>
-            <div className="border-b border-gray-400 flex items-center gap-5 py-7 w-[40vh] mb-7">
-              <p className="font-bold text-4xl text-gray-100">2</p>
-              <div>
-                <p className="font-bold text-2xl text-gray-100">Share</p>
-                <p className="text-base text-gray-100 tracking-wider">
-                  your code in text, on a sticker, or in your videos.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-5 py-7 w-[40vh] mb-5">
-              <p className="font-bold text-4xl text-gray-100">3</p>
-              <div>
-                <p className="font-bold text-2xl text-gray-100">Grow</p>
-                <p className="text-base text-gray-100 tracking-wider">
-                  your audience with a platform that lets followers search for
-                  whatever they are looking for—easy as that.
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </main>

@@ -13,6 +13,7 @@ export default function HomePage() {
       <Navbar />
       {/* {user ? <Home /> : <Landing />} */}
       <Landing />
+      {/* <Home /> */}
       <Footer />
     </>
   );
