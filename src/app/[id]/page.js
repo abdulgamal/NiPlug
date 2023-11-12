@@ -10,7 +10,6 @@ import "swiper/css";
 import { useParams } from "next/navigation";
 import { fetchUserDetails, getCategories } from "../../../requests";
 import Loading from "@/components/Loading";
-import Influencers from "@/components/Influencers";
 import Link from "next/link";
 
 function Page() {
@@ -111,7 +110,7 @@ function Page() {
                 alt="hero"
                 src={
                   info?.image ||
-                  "https://static.wixstatic.com/media/9ce014_17143136f6fa44d39c7ca66a64576bff~mv2.jpg/v1/crop/x_73,y_0,w_1850,h_1850/fill/w_375,h_375,al_c,q_375,usm_0.66_1.00_0.01,enc_auto/9ce014_17143136f6fa44d39c7ca66a64576bff~mv2.jpg"
+                  "https://images.unsplash.com/photo-1697795978796-94ab8f294990?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDEwMXx0b3dKWkZza3BHZ3x8ZW58MHx8fHx8"
                 }
               />
             )}
