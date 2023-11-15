@@ -1,14 +1,14 @@
 import Link from "next/link";
 import React from "react";
 
-function Button() {
+function Button({ link = "https://niplug.com/", title = "Create Plug" }) {
   return (
     <a
-      href="https://niplug.com/"
+      href={link}
       target="_blank"
       className="flex items-center font-bold text-white w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 bg-[#1d7874] py-3 px-8 rounded-2xl gap-2 my-2"
     >
-      Create Plug{" "}
+      {title}{" "}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

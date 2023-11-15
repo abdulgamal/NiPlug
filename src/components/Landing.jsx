@@ -1,17 +1,16 @@
 import React from "react";
-import Lottie from "lottie-react";
-import banner from "../../public/banner.json";
 import Button from "./Button";
 import SearchQuery from "./SearchQuery";
 import Link from "next/link";
+import Image from "next/image";
 
 function Landing() {
   return (
     <main className="min-h-screen container mx-auto">
       <div className=" grid md:grid-cols-2 gap-10">
-        <div className="h-screen flex flex-col justify-center px-4">
+        <div className="h-[90vh] flex flex-col justify-around px-4">
+          <Image width={500} height={500} src="/section_D.png" alt="" />
           <div className="">
-            <Lottie animationData={banner} />
             <div className="mb-5">
               <p className="text-2xl font-bold tracking-widest text-[#1d7874]">
                 Welcome to NiPlug
@@ -26,54 +25,58 @@ function Landing() {
               revenue-generating powerhouse
             </p>
           </div>
-          <div className="mt-5">
-            <Link
-              href="/offers-page"
-              className="flex items-center font-bold text-white w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 bg-[#1d7874] py-3 px-8 rounded-2xl gap-2 my-2"
-            >
-              Get Plugged
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
+          <div>
+            <div className="mt-5">
+              <Link
+                href="/offers-page"
+                className="flex items-center font-bold text-white w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 bg-[#1d7874] py-3 px-8 rounded-2xl gap-2 my-2"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                />
-              </svg>
-            </Link>
-            <a
-              href="https://niplug.com/"
-              target="_blank"
-              className="flex items-center font-bold text-white w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 bg-[#1d7874] py-3 px-8 rounded-2xl gap-2 my-2"
-            >
-              Create Plugs
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
+                Get Plugged
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                  />
+                </svg>
+              </Link>
+              <a
+                href="https://niplug.com/"
+                target="_blank"
+                className="flex items-center font-bold text-white w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 bg-[#1d7874] py-3 px-8 rounded-2xl gap-2 my-2"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                />
-              </svg>
-            </a>
+                Create Plugs
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                  />
+                </svg>
+              </a>
+            </div>
+            <SearchQuery />
           </div>
-          <SearchQuery />
         </div>
         <div className="">
-          <img
-            src="banner1.webp"
+          <Image
+            width={500}
+            height={500}
+            src="/influencer.png"
             alt="banner-image"
             className="md:rounded-2xl"
           />
@@ -142,6 +145,10 @@ function Landing() {
               designed to increase your customer base and drive more traffic to
               your online business.
             </p>
+            <Button
+              link="https://advertising.niplug.com/"
+              title="Create Ad Plugs"
+            />
           </div>
           <div className="bg-white p-10 rounded-md h-[50vh] flex flex-col justify-around">
             <h5 className="font-bold text-[#1d7874] text-center mb-5 text-lg md:text-2xl">
@@ -292,7 +299,13 @@ function Landing() {
           <Button />
         </div>
         <div className="order-first">
-          <img src="banner2.webp" alt="banner-img" className="md:rounded-2xl" />
+          <Image
+            width={500}
+            height={500}
+            src="/section_G.png"
+            alt="banner-img"
+            className="md:rounded-2xl h-full"
+          />
         </div>
       </div>
     </main>
