@@ -16,7 +16,7 @@ function Landing() {
                 Welcome to NiPlug
               </p>
               <p className="text-sm font-bold tracking-widest">
-                Your Gateway to Monetize Your Online Presence!
+                Transform you online presence into income
               </p>
             </div>
             <p className="text-sm md:text-xl tracking-wider">
