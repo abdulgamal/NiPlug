@@ -84,14 +84,14 @@ function Navbar() {
           !isOpen && "hidden"
         } container mx-auto w-full mb-3 md:w-auto`}
       >
-        <ul className="font-medium flex flex-col justify-center items-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0">
+        <ul className="font-medium flex flex-col justify-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0">
           {user && (
             <>
               {" "}
               <li>
                 <Link
                   href="/profile"
-                  className="block py-2 pl-3 pr-4 text-[#1d7874] rounded"
+                  className="block py-2 pl-3 pr-4 text-gray-500 rounded"
                 >
                   Profile
                 </Link>
@@ -99,7 +99,7 @@ function Navbar() {
               <li>
                 <Link
                   href="/home"
-                  className="block py-2 pl-3 pr-4 text-[#1d7874] rounded"
+                  className="block py-2 pl-3 pr-4 text-gray-500 rounded"
                 >
                   Add Items
                 </Link>
@@ -107,7 +107,7 @@ function Navbar() {
               <li>
                 <span
                   onClick={handleLogOut}
-                  className="block py-2 pl-3 pr-4 text-[#1d7874] rounded cursor-pointer"
+                  className="block py-2 pl-3 pr-4 text-gray-500 rounded cursor-pointer"
                 >
                   Logout
                 </span>
@@ -118,7 +118,7 @@ function Navbar() {
             <a
               href="https://advertising.niplug.com/"
               target="_blank"
-              className="block py-2 pl-3 pr-4 text-[#1d7874] rounded"
+              className="block py-2 pl-3 pr-4 text-gray-500 rounded"
             >
               Ad Plugs
             </a>
@@ -126,7 +126,7 @@ function Navbar() {
           <li>
             <Link
               href="/offers-page"
-              className="block py-2 pl-3 pr-4 text-[#1d7874] rounded"
+              className="block py-2 pl-3 pr-4 text-gray-500 rounded"
             >
               View Influencer plugs
             </Link>
