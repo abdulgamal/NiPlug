@@ -19,39 +19,41 @@ function Navbar() {
           className="h-8"
         />
         <div className="flex items-center gap-3">
-          {isOpen ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-          )}
+          <div className="flex md:hidden">
+            {isOpen ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            )}
+          </div>
           {user ? (
             <img
               className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300"
@@ -82,9 +84,17 @@ function Navbar() {
       <div
         className={`${
           !isOpen && "hidden"
-        } container mx-auto w-full mb-3 md:w-auto`}
+        } container mx-auto w-full mb-3 md:w-auto h-[90vh]`}
       >
-        <ul className="font-medium flex flex-col justify-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0">
+        <ul className="font-medium flex flex-col justify-center p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0">
+          <li>
+            <Link
+              href="/"
+              className="block py-2 pl-3 pr-4 text-gray-500 rounded"
+            >
+              Home
+            </Link>
+          </li>
           {user && (
             <>
               {" "}
@@ -114,6 +124,24 @@ function Navbar() {
               </li>
             </>
           )}
+          <li>
+            <a
+              href="https://niplug.com/index/features"
+              target="_blank"
+              className="block py-2 pl-3 pr-4 text-gray-500 rounded"
+            >
+              Features
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://niplug.com/discover"
+              target="_blank"
+              className="block py-2 pl-3 pr-4 text-gray-500 rounded"
+            >
+              Discover Entreprenuers
+            </a>
+          </li>
           <li>
             <a
               href="https://advertising.niplug.com/"
