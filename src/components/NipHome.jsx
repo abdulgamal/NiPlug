@@ -8,9 +8,48 @@ import NipModal from "./NipModal";
 
 function NipHome() {
   const [isToggle, setIsToggle] = useState(false);
+  const [isPlugged, setIsPlugged] = useState(false);
+  const getPlugs = [
+    {
+      title: "Influencer Plugs",
+      subTitle: "Get Influencer Plugs",
+      link: "https://app.niplug.com/offers-page",
+    },
+    {
+      title: "Ad Plugs",
+      subTitle: "Get Ad Plugs",
+      link: "https://advertising.niplug.com/",
+    },
+    {
+      title: "Entreprenuers Plugs",
+      subTitle: "Get Entreprenuers Plugs",
+      link: "https://niplug.com/discover",
+    },
+  ];
+  const createPlugs = [
+    {
+      title: "Create Influencer Plugs",
+      subTitle: "Create Influencer Plugs",
+      link: "https://app.niplug.com/auth",
+    },
+    {
+      title: "Create Ad Plugs",
+      subTitle: "Create Ad Plugs",
+      link: "https://advertising.niplug.com/login?post_ads=1",
+    },
+    {
+      title: "Create Entreprenuers Plugs",
+      subTitle: "Create Entreprenuers Plugs",
+      link: "https://niplug.com/auth/login",
+    },
+  ];
   return (
     <>
-      <NipModal isToggle={isToggle} setIsToggle={setIsToggle} />
+      <NipModal
+        isToggle={isToggle}
+        setIsToggle={setIsToggle}
+        data={isPlugged ? getPlugs : createPlugs}
+      />
       <section className="min-h-screen container mx-auto">
         <div className="flex flex-col space-y-5 justify-around items-center h-[85vh]">
           <Image width={500} height={500} src="/section_D.png" alt="" />
@@ -28,18 +67,23 @@ function NipHome() {
           </div>
           <div className="mt-5">
             <button
-              onClick={() => setIsToggle(true)}
+              onClick={() => {
+                setIsPlugged(true);
+                setIsToggle(true);
+              }}
               className="flex items-center font-bold text-white w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 bg-[#010101] py-3 px-8 rounded-full gap-2 my-2"
             >
               Get Plugged
             </button>
-            <a
-              href="https://niplug.com/"
-              target="_blank"
+            <button
+              onClick={() => {
+                setIsPlugged(false);
+                setIsToggle(true);
+              }}
               className="flex items-center font-bold text-white w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 bg-[#010101] py-3 px-8 rounded-full gap-2 my-2"
             >
               Create Plugs
-            </a>
+            </button>
           </div>
         </div>
         <div className="grid md:grid-cols-3 gap-5 mt-7 p-4">

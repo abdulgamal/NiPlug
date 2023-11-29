@@ -1,6 +1,6 @@
 import React from "react";
 
-function NipModal({ isToggle, setIsToggle }) {
+function NipModal({ isToggle, setIsToggle, data }) {
   return (
     <div
       id="default-modal"
@@ -23,38 +23,38 @@ function NipModal({ isToggle, setIsToggle }) {
           </div>
           <div className="bg-[#F6F6F6] p-3 my-3 rounded-xl flex flex-col gap-3">
             <div className="bg-[#E7E7E7] p-3 rounded-lg flex items-center justify-center gap-2">
-              <a href="https://app.niplug.com/" target="_blank">
+              <a href={data[0].link} target="_blank">
                 <div className="bg-white p-2 flex flex-col justify-center items-center rounded-xl">
                   <p>🔌</p>
                   <p className="font-semibold text-center text-gray-600">
-                    Influencer Plugs
+                    {data[0].title}
                   </p>
                   <p className="text-xs text-gray-400 text-center">
-                    Get Influencer Plugs
+                    {data[0].subTitle}
                   </p>
                 </div>
               </a>
-              <a href="https://advertising.niplug.com/" target="_blank">
+              <a href={data[1].link} target="_blank">
                 <div className="bg-white p-2 flex flex-col justify-center items-center rounded-xl">
                   <p>🔌</p>
                   <p className="font-semibold text-center text-gray-600">
-                    Ad Plugs
+                    {data[1].title}
                   </p>
                   <p className="text-xs text-gray-400 text-center">
-                    Get Ad Plugs
+                    {data[1].subTitle}
                   </p>
                 </div>
               </a>
             </div>
             <div className="bg-[#E7E7E7] p-3 rounded-lg flex items-center justify-center gap-2">
-              <a href="https://niplug.com/discover" target="_blank">
+              <a href={data[2].link} target="_blank">
                 <div className="bg-white p-2 flex flex-col justify-center items-center rounded-xl">
                   <p>🔌</p>
                   <p className="font-semibold text-center text-gray-600">
-                    Entrepreneurs Plugs
+                    {data[2].title}
                   </p>
                   <p className="text-xs text-gray-400 text-center">
-                    Get Entrepreneurs Plugs
+                    {data[2].subTitle}
                   </p>
                 </div>
               </a>
