@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useState } from "react";
 import NipCard from "./NipCard";
 import NipSection from "./NipSection";
@@ -8,24 +7,6 @@ import NipModal from "./NipModal";
 
 function NipHome() {
   const [isToggle, setIsToggle] = useState(false);
-  const [isPlugged, setIsPlugged] = useState(false);
-  const getPlugs = [
-    {
-      title: "Influencer Plugs",
-      subTitle: "Get Influencer Plugs",
-      link: "https://app.niplug.com/offers-page",
-    },
-    {
-      title: "Ad Plugs",
-      subTitle: "Get Ad Plugs",
-      link: "https://advertising.niplug.com/",
-    },
-    {
-      title: "Entreprenuers Plugs",
-      subTitle: "Get Entreprenuers Plugs",
-      link: "https://niplug.com/discover",
-    },
-  ];
   const createPlugs = [
     {
       title: "Create Influencer Plugs",
@@ -48,16 +29,61 @@ function NipHome() {
       <NipModal
         isToggle={isToggle}
         setIsToggle={setIsToggle}
-        data={isPlugged ? getPlugs : createPlugs}
+        data={createPlugs}
       />
-      <section className="min-h-screen container mx-auto">
-        <div className="flex flex-col space-y-5 justify-around items-center h-[85vh]">
-          <Image width={500} height={500} src="/section_D.png" alt="" />
+      <section className="min-h-screen container mx-auto px-3">
+        <div className="flex flex-wrap w-full mb-5 flex-col items-center text-center">
+          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
+            Select Plug Type
+          </h1>
+          <p className="lg:w-1/2 w-full leading-relaxed text-gray-500">
+            Discover the world of Plugs to get connected effortlessly
+          </p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-4 mb-8">
+          <a href="https://app.niplug.com/offers-page" target="_blank">
+            <div className="border border-gray-200 p-6 rounded-lg">
+              <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                <p>🔌</p>
+              </div>
+              <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
+                Influencer Plugs
+              </h2>
+              <p className="leading-relaxed text-base">Get Influencer Plugs</p>
+            </div>
+          </a>
+          <a href="https://advertising.niplug.com/" target="_blank">
+            <div className="border border-gray-200 p-6 rounded-lg">
+              <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                <p>🔌</p>
+              </div>
+              <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
+                Ad Plugs
+              </h2>
+              <p className="leading-relaxed text-base">Get Ad Plugs</p>
+            </div>
+          </a>
+          <a href="https://niplug.com/discover" target="_blank">
+            <div className="border border-gray-200 p-6 rounded-lg">
+              <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                <p>🔌</p>
+              </div>
+              <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
+                Entreprenuers Plugs
+              </h2>
+              <p className="leading-relaxed text-base">
+                Get Entreprenuers Plugs
+              </p>
+            </div>
+          </a>
+        </div>
+        <div className="flex flex-col space-y-3 justify-around items-center">
           <div className="flex flex-1 flex-col justify-center items-center gap-4 px-5">
             <h2 className="my-1 text-gray-500 tracking-widest font-semibold">
               A PLATFORM FOR ENTREPRENEURS
             </h2>
-            <h1 className="font-bold text-4xl md:text-5xl text-center max-w-xl">
+            <Image width={500} height={500} src="/section_D.png" alt="" />
+            <h1 className="font-bold text-4xl md:text-5xl text-center max-w-xl my-8">
               Transform your online presence into income
             </h1>
             <p className="text-center max-w-lg text-lg">
@@ -68,16 +94,6 @@ function NipHome() {
           <div className="mt-5">
             <button
               onClick={() => {
-                setIsPlugged(true);
-                setIsToggle(true);
-              }}
-              className="flex items-center font-bold text-white w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 bg-[#010101] py-3 px-8 rounded-full gap-2 my-2"
-            >
-              Get Plugged
-            </button>
-            <button
-              onClick={() => {
-                setIsPlugged(false);
                 setIsToggle(true);
               }}
               className="flex items-center font-bold text-white w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 bg-[#010101] py-3 px-8 rounded-full gap-2 my-2"
