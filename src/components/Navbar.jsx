@@ -13,11 +13,7 @@ function Navbar() {
   return (
     <>
       <nav className="py-5 md:py-10 px-4 flex justify-between items-center container mx-auto">
-        <img
-          src="https://niplug.com/media/site/logo/DmsrWnv8SCsTAe48ZR6wH6DKJEsy8ceWXQUhsL0T.png"
-          alt="logo"
-          className="h-8"
-        />
+        <img src="logo.png" alt="logo" className="h-8" />
         <div className="flex items-center gap-3">
           <div className="flex md:hidden">
             {isOpen ? (

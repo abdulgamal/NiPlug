@@ -8,7 +8,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar } from "swiper";
 import "swiper/css/scrollbar";
 import "swiper/css";
-import Carousel from "./Carousel";
 
 function NipHome() {
   const [isToggle, setIsToggle] = useState(false);
@@ -37,7 +36,7 @@ function NipHome() {
         data={createPlugs}
       />
       <section className="min-h-screen container mx-auto px-3">
-        <div className="flex flex-wrap w-full mb-5 flex-col items-center text-center md:hidden">
+        <div className="flex flex-wrap w-full mb-5 flex-col items-center text-center">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
             Select Plug Type
           </h1>
@@ -45,21 +44,17 @@ function NipHome() {
             Discover the world of Plugs to get connected effortlessly
           </p>
         </div>
-        <div className="my-6 px-4 md:hidden">
+        <div className="hidden my-6 px-4 max-w-3xl mx-auto md:block">
           <Swiper
             spaceBetween={10}
-            slidesPerView={1.5}
+            slidesPerView={3.5}
             scrollbar={{ draggable: true }}
             modules={[Scrollbar]}
           >
             <SwiperSlide>
               <div className="border border-gray-200 p-6 rounded-lg flex flex-col justify-center items-center">
                 <div className="h-[200px] w-[200px]">
-                  <img
-                    src="https://niplug.com/assets/image/influencer.svg"
-                    alt=""
-                    className="w-full h-full"
-                  />
+                  <img src="influencer.svg" alt="" className="w-full h-full" />
                 </div>
                 <h2 className="text-lg text-gray-900 font-medium mb-2">
                   Influencer Plugs
@@ -76,11 +71,7 @@ function NipHome() {
             <SwiperSlide>
               <div className="border border-gray-200 p-6 rounded-lg flex flex-col justify-center items-center">
                 <div className="h-[200px] w-[200px]">
-                  <img
-                    src="https://niplug.com/assets/image/ads.svg"
-                    alt=""
-                    className="w-full h-full"
-                  />
+                  <img src="ads.svg" alt="" className="w-full h-full" />
                 </div>
                 <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
                   Ads Plugs
@@ -98,7 +89,7 @@ function NipHome() {
               <div className="border border-gray-200 p-6 rounded-lg flex flex-col justify-center items-center">
                 <div className="h-[200px] w-[200px]">
                   <img
-                    src="https://niplug.com/assets/image/enter.svg"
+                    src="enterprenuer.svg"
                     alt=""
                     className="w-full h-full"
                   />
@@ -118,11 +109,7 @@ function NipHome() {
             <SwiperSlide>
               <div className="border border-gray-200 p-6 rounded-lg flex flex-col justify-center items-center">
                 <div className="h-[200px] w-[200px]">
-                  <img
-                    src="https://niplug.com/assets/image/offers.svg"
-                    alt=""
-                    className="w-full h-full"
-                  />
+                  <img src="offers.svg" alt="" className="w-full h-full" />
                 </div>
                 <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
                   Offers Plugs
@@ -139,11 +126,118 @@ function NipHome() {
             <SwiperSlide>
               <div className="border border-gray-200 p-6 rounded-lg flex flex-col justify-center items-center">
                 <div className="h-[200px] w-[200px]">
+                  <img src="vip.svg" alt="" className="w-full h-full" />
+                </div>
+                <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
+                  Vip Plugs
+                </h2>
+                <a
+                  href="https://niplug.vip/"
+                  target="_blank"
+                  className=" bg-green-300 py-2 px-6 rounded-xl"
+                >
+                  Get plug
+                </a>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="border border-gray-200 p-6 rounded-lg flex flex-col justify-center items-center">
+                <div className="h-[200px] w-[200px]">
+                  <img src="date.svg" alt="" className="w-full h-full" />
+                </div>
+                <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
+                  Dates Plugs
+                </h2>
+                <button className=" bg-green-300 py-2 px-6 rounded-xl">
+                  Coming Soon
+                </button>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+        <div className="my-6 px-4 md:hidden">
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={1.5}
+            scrollbar={{ draggable: true }}
+            modules={[Scrollbar]}
+          >
+            <SwiperSlide>
+              <div className="border border-gray-200 p-6 rounded-lg flex flex-col justify-center items-center">
+                <div className="h-[200px] w-[200px]">
+                  <img src="influencer.svg" alt="" className="w-full h-full" />
+                </div>
+                <h2 className="text-lg text-gray-900 font-medium mb-2">
+                  Influencer Plugs
+                </h2>
+                <a
+                  href="https://app.niplug.com/offers-page"
+                  target="_blank"
+                  className=" bg-green-300 py-2 px-6 rounded-xl"
+                >
+                  Get plug
+                </a>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="border border-gray-200 p-6 rounded-lg flex flex-col justify-center items-center">
+                <div className="h-[200px] w-[200px]">
+                  <img src="ads.svg" alt="" className="w-full h-full" />
+                </div>
+                <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
+                  Ads Plugs
+                </h2>
+                <a
+                  href="https://advertising.niplug.com/"
+                  target="_blank"
+                  className=" bg-green-300 py-2 px-6 rounded-xl"
+                >
+                  Get plug
+                </a>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="border border-gray-200 p-6 rounded-lg flex flex-col justify-center items-center">
+                <div className="h-[200px] w-[200px]">
                   <img
-                    src="https://niplug.com/assets/image/vip.svg"
+                    src="enterprenuer.svg"
                     alt=""
                     className="w-full h-full"
                   />
+                </div>
+                <h2 className="text-lg text-gray-900 font-medium mb-2">
+                  Entreprenuers
+                </h2>
+                <a
+                  href="https://niplug.com/discover"
+                  target="_blank"
+                  className=" bg-green-300 py-2 px-6 rounded-xl"
+                >
+                  Get plug
+                </a>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="border border-gray-200 p-6 rounded-lg flex flex-col justify-center items-center">
+                <div className="h-[200px] w-[200px]">
+                  <img src="offers.svg" alt="" className="w-full h-full" />
+                </div>
+                <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
+                  Offers Plugs
+                </h2>
+                <a
+                  href="https://niplug.com/@offers"
+                  target="_blank"
+                  className=" bg-green-300 py-2 px-6 rounded-xl"
+                >
+                  Get plug
+                </a>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="border border-gray-200 p-6 rounded-lg flex flex-col justify-center items-center">
+                <div className="h-[200px] w-[200px]">
+                  <img src="vip.svg" alt="" className="w-full h-full" />
                 </div>
                 <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
                   Vip Plugs
@@ -178,7 +272,7 @@ function NipHome() {
         </div>
         <div className="flex flex-col space-y-3 justify-around items-center">
           <div className="flex flex-1 flex-col justify-center items-center gap-4 px-5">
-            <h2 className="my-1 text-gray-500 tracking-widest font-semibold text-center">
+            <h2 className="my-1 text-gray-500 tracking-wider font-semibold text-center">
               A PLATFORM FOR ENTREPRENEURS
             </h2>
             <Image width={500} height={500} src="/section_D.png" alt="" />
