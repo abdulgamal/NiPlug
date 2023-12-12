@@ -26,13 +26,34 @@ function Influencers() {
     setSkip((prev) => prev - 9);
   };
 
+  function shuffleArray(array) {
+    let currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
+
+    // While there remain elements to shuffle
+    while (0 !== currentIndex) {
+      // Pick a remaining element
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // Swap it with the current element
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
   const fetchData = async () => {
     try {
       const {
         data: { users },
       } = await getInfluencers();
-      setAccounts(users);
-      setProducts(users);
+      const shuffledUsers = shuffleArray(users);
+      setAccounts(shuffledUsers);
+      setProducts(shuffledUsers);
     } catch (error) {
       console.log(error);
     } finally {

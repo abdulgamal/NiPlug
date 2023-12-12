@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar } from "swiper";
 import "swiper/css/scrollbar";
 import "swiper/css";
+import Link from "next/link";
 
 function NipHome() {
   const [isToggle, setIsToggle] = useState(false);
@@ -59,13 +60,12 @@ function NipHome() {
                 <h2 className="text-lg text-gray-900 font-medium mb-2">
                   Influencer Plugs
                 </h2>
-                <a
-                  href="https://app.niplug.com/offers-page"
-                  target="_blank"
+                <Link
+                  href="/offers-page"
                   className=" bg-green-300 py-2 px-6 rounded-xl"
                 >
                   Get plug
-                </a>
+                </Link>
               </div>
             </SwiperSlide>
             <SwiperSlide>
