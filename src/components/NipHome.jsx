@@ -61,7 +61,7 @@ function NipHome() {
                   Influencer Plugs
                 </h2>
                 <Link
-                  href="/offers-page"
+                  href="/influencers"
                   className=" bg-green-300 py-2 px-6 rounded-xl"
                 >
                   Get plug
