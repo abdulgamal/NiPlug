@@ -188,7 +188,7 @@ function NipHome() {
                   Influencer Plugs
                 </h2>
                 <a
-                  href="https://app.niplug.com/offers-page"
+                  href="https://app.niplug.com/influencers"
                   target="_blank"
                   className=" bg-green-300 py-2 px-6 rounded-xl"
                 >
