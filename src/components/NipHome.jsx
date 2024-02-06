@@ -160,6 +160,23 @@ function NipHome() {
             <SwiperSlide>
               <div className="border border-gray-200 p-6 rounded-lg flex flex-col justify-center items-center">
                 <div className="h-[200px] w-[200px]">
+                  <img src="tipplug.svg" alt="" className="w-full h-full" />
+                </div>
+                <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
+                  Tip Plugs
+                </h2>
+                <a
+                  href="https://tiplug.ke/"
+                  target="_blank"
+                  className=" bg-green-300 py-2 px-6 rounded-xl"
+                >
+                  Get plug
+                </a>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="border border-gray-200 p-6 rounded-lg flex flex-col justify-center items-center">
+                <div className="h-[200px] w-[200px]">
                   <img src="date.svg" alt="" className="w-full h-full" />
                 </div>
                 <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
@@ -278,6 +295,23 @@ function NipHome() {
                 </h2>
                 <a
                   href="https://niplug.vip/"
+                  target="_blank"
+                  className=" bg-green-300 py-2 px-6 rounded-xl"
+                >
+                  Get plug
+                </a>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="border border-gray-200 p-6 rounded-lg flex flex-col justify-center items-center">
+                <div className="h-[200px] w-[200px]">
+                  <img src="tipplug.svg" alt="" className="w-full h-full" />
+                </div>
+                <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
+                  Tip Plugs
+                </h2>
+                <a
+                  href="https://tiplug.ke/"
                   target="_blank"
                   className=" bg-green-300 py-2 px-6 rounded-xl"
                 >
