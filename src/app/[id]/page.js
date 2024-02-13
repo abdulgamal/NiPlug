@@ -10,7 +10,6 @@ import "swiper/css";
 import { useParams } from "next/navigation";
 import { fetchUserDetails, getCategories } from "../../../requests";
 import Loading from "@/components/Loading";
-import Link from "next/link";
 
 function Page() {
   const [slug, setSlug] = useState(39);
@@ -70,6 +69,9 @@ function Page() {
     return videoPattern.test(string);
   }
 
+  const fallback =
+    "https://cdn.vectorstock.com/i/preview-1x/63/42/avatar-photo-placeholder-icon-design-vector-30916342.webp";
+
   useEffect(() => {
     const data = filteredProds(slug);
     setProds(data);
@@ -108,10 +110,7 @@ function Page() {
               <img
                 className="w-full object-cover object-center md:rounded-t-lg"
                 alt="hero"
-                src={
-                  info?.image ||
-                  "https://images.unsplash.com/photo-1697795978796-94ab8f294990?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDEwMXx0b3dKWkZza3BHZ3x8ZW58MHx8fHx8"
-                }
+                src={info?.image || fallback}
               />
             )}
           </div>
@@ -321,28 +320,6 @@ function Page() {
                 </div>
               </div>
             )}
-          </div>
-          <div className="my-3 mx-4 border-t border-gray-300 py-2">
-            <Link
-              href="/offers-page"
-              className="flex items-center font-bold text-white w-full justify-center md:w-auto hover:bg-transparent hover:border hover:text-gray-500 bg-[#1d7874] py-3 px-8 rounded-2xl gap-2 my-2"
-            >
-              Check Other Influencers
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                />
-              </svg>
-            </Link>
           </div>
         </div>
       )}

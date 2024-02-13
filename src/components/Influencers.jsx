@@ -14,7 +14,7 @@ function Influencers() {
   const [skip, setSkip] = useState(18);
 
   const fallback =
-    "https://images.unsplash.com/photo-1697795978796-94ab8f294990?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDEwMXx0b3dKWkZza3BHZ3x8ZW58MHx8fHx8";
+    "https://cdn.vectorstock.com/i/preview-1x/63/42/avatar-photo-placeholder-icon-design-vector-30916342.webp";
 
   const goNext = () => {
     setInitial((prev) => prev + 9);
