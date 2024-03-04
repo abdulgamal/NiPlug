@@ -106,7 +106,7 @@ function Influencers() {
         )}
         {accounts.length > 9 && (
           <div className="flex flex-col items-center my-5">
-            <span className="text-sm text-gray-700">
+            {/* <span className="text-sm text-gray-700">
               Showing
               <span className="font-semibold text-gray-900">
                 {" "}
@@ -123,7 +123,7 @@ function Influencers() {
                 {accounts.length}{" "}
               </span>
               Entries
-            </span>
+            </span> */}
             <div className="inline-flex mt-2 xs:mt-0">
               <button
                 disabled={initial === 0}
