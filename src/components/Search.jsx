@@ -13,7 +13,7 @@ function Search({ setLoading, setAccounts, products, setInitial, setSkip }) {
       setSkip(18);
     } else {
       const filteredInfluencers = products?.filter((product) =>
-        product?.username?.toLowerCase()?.includes(username)
+        product?.username?.toLowerCase()?.includes(username.toLowerCase())
       );
       setInitial(0);
       setSkip(9);
