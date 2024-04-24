@@ -53,6 +53,7 @@ function Navbar() {
           {user ? (
             <img
               className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300"
+              onClick={() => setIsOpen(!isOpen)}
               src={
                 userInfo?.image ||
                 "https://images.unsplash.com/photo-1682821890455-044ea43d8b57?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDR8dG93SlpGc2twR2d8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
@@ -80,7 +81,7 @@ function Navbar() {
       <div
         className={`${
           !isOpen && "hidden"
-        } container mx-auto w-full mb-3 md:w-auto h-[90vh]`}
+        } container mx-auto w-full mb-3 md:w-auto h-[90vh] md:h-auto`}
       >
         <ul className="font-medium flex flex-col justify-center p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0">
           <li>
