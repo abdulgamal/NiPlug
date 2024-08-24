@@ -4,7 +4,7 @@ function NipModal({ isToggle, setIsToggle, data }) {
   return (
     <div
       id="default-modal"
-      tabindex="-1"
+      tabIndex="-1"
       aria-hidden="true"
       onClick={() => setIsToggle(false)}
       className={`${
