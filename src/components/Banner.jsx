@@ -65,7 +65,7 @@ const Banner = () => {
               <div className="flex justify-start lg:justify-end mt-15 lg:mt-0">
                 <div className="relative">
                   <img
-                    src="/banner-image-1.png"
+                    src="/nipVideo.jpg"
                     alt="banner image"
                     className="relative z-10 max-w-full"
                   />
