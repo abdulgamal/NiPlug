@@ -2,7 +2,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-function page() {
+function Academy() {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -380,4 +380,4 @@ function page() {
   );
 }
 
-export default page;
+export default Academy;
