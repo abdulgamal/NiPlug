@@ -1,6 +1,161 @@
 "use client";
 import axios from "axios";
+import Script from "next/script";
 import React, { useState } from "react";
+
+const packagesArray = [
+  {
+    name: "Graphic Design",
+    packages: [
+      {
+        name: "KES 5,000 per software",
+        benefits: [
+          "8-week course (2 session per week)",
+          "Graphic design (Adobe Illustrator, Adobe in Design, Adobe Photoshop, Corel Draw, Microsoft Publisher) & video editing (Premiere Pro, CapCut, After Effects, DaVinci Resolve, Final Cut)",
+          "Hands-on exercises & practice projects",
+        ],
+      },
+    ],
+  },
+  {
+    name: "Dance Packages",
+    packages: [
+      {
+        name: "Bronze (KES 8,000)",
+        benefits: [
+          "4-week beginners’ course",
+          "Basics of choreography & movement styles",
+        ],
+      },
+      {
+        name: "Silver (KES 15,000)",
+        benefits: [
+          "6-week intermediate course",
+          "Exploring various dance styles (Afro, Hip-hop, Contemporary)",
+        ],
+      },
+      {
+        name: "Gold (KES 25,000)",
+        benefits: [
+          "8-week intensive training",
+          "Dance routine creation & performance training",
+          "One professional dance video recording",
+        ],
+      },
+      {
+        name: "Platinum (KES 40,000)",
+        benefits: [
+          "12-week elite training program",
+          "Choreography development & stage performance techniques",
+          "Brand building for professional dancers",
+        ],
+      },
+    ],
+  },
+  {
+    name: " DJ Packages",
+    packages: [
+      {
+        name: "Bronze (KES 12,000)",
+        benefits: [
+          "4-week introduction to DJing",
+          "Basics of mixing, beatmatching, and equipment setup",
+        ],
+      },
+      {
+        name: "Silver (KES 20,000)",
+        benefits: [
+          "6-week hands-on training with industry-standard equipment",
+          "Genre-blending techniques & crowd control basics",
+        ],
+      },
+      {
+        name: "Gold (KES 35,000)",
+        benefits: [
+          "8-week advanced DJ course",
+          "Live performance coaching & playlist curation",
+          "One recorded DJ set for portfolio building",
+        ],
+      },
+      {
+        name: "Platinum (KES 50,000)",
+        benefits: [
+          "10-week mentorship with professional DJs",
+          "Club & event performance training",
+          "Opportunities for live gigs & industry networking",
+        ],
+      },
+    ],
+  },
+  {
+    name: "Tech Enablement Packages (AI, Coding, Automation)",
+    packages: [
+      {
+        name: "Bronze (KES 10,000)",
+        benefits: [
+          "4-week introduction to tech enablement",
+          "Basics of AI, automation, and coding",
+        ],
+      },
+      {
+        name: "Silver (KES 20,000)",
+        benefits: [
+          "6-week hands-on coding & AI tools training",
+          "Website automation & chatbot development",
+        ],
+      },
+      {
+        name: "Gold (KES 35,000)",
+        benefits: [
+          "8-week specialized training in tech solutions",
+          "Digital tools for businesses & content creators",
+        ],
+      },
+      {
+        name: "Platinum (KES 50,000)",
+        benefits: [
+          "12-week deep-dive into AI, coding, and automation",
+          "Live projects & startup tech solutions development",
+          "Internship & job placement opportunities",
+        ],
+      },
+    ],
+  },
+  {
+    name: "Digital Marketing Packages",
+    packages: [
+      {
+        name: "Bronze (KES 10,000)",
+        benefits: [
+          "4-week course on social media basics",
+          "Introduction to content strategy & analytics",
+        ],
+      },
+      {
+        name: "Silver (KES 20,000)",
+        benefits: [
+          "6-week training on paid ads, SEO, and engagement tactics",
+          "Hands-on campaign management",
+        ],
+      },
+      {
+        name: "Gold (KES 35,000)",
+        benefits: [
+          "8-week course on digital marketing strategy",
+          "Growth hacking & brand positioning",
+        ],
+      },
+      {
+        name: "Platinum (KES 50,000)",
+        benefits: [
+          "12-week advanced training",
+          "Monetization strategies & influencer marketing",
+          "Portfolio-building with real clients",
+        ],
+      },
+    ],
+  },
+];
 
 function Academy() {
   const [name, setName] = useState("");
@@ -10,6 +165,7 @@ function Academy() {
   const [message, setMessage] = useState("");
   const [info, setInfo] = useState("");
   const [loading, setLoading] = useState(false);
+  const [currentPackage, setCurrentPackage] = useState(packagesArray[1]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,7 +200,19 @@ function Academy() {
   };
   return (
     <>
-      <div className="flex pt-2 px-6 md:px-20  items-center justify-center bg-hero md:h-screen overflow-hidden container mx-auto">
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-X6QMWQL048"
+      />
+      <Script
+        id="google-analytics-product"
+        strategy="afterInteractive"
+      >{`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X6QMWQL048');`}</Script>
+      <div className="flex pt-10 px-6 md:px-20  items-center justify-center bg-hero md:h-screen overflow-hidden container mx-auto">
         <div className="flex flex-col  gap-6 md:flex-row items-center max-w-8xl">
           <div className="w-full md:w-1/2 lg:pr-32">
             <h2 className="text-4xl lg:text-5xl text-center md:text-left text-blue-900 leading-tight font-medium">
@@ -84,39 +252,49 @@ function Academy() {
             <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
               <div className="relative h-full ml-0 mr-0 sm:mr-10">
                 <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-indigo-500 rounded-lg"></span>
-                <div className="relative h-full p-5 bg-white border-2 border-indigo-500 rounded-lg">
-                  <div className="flex items-center -mt-1">
-                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800">
-                      Graphic Design / Videography
-                    </h3>
+                <a
+                  href="#pricing"
+                  onClick={() => setCurrentPackage(packagesArray[0])}
+                >
+                  <div className="relative h-full p-5 bg-white border-2 border-indigo-500 rounded-lg">
+                    <div className="flex items-center -mt-1">
+                      <h3 className="my-2 ml-3 text-lg font-bold text-gray-800">
+                        Graphic Design / Videography
+                      </h3>
+                    </div>
+                    <p className="mt-3 mb-1 text-xs font-medium text-indigo-500 uppercase">
+                      ------------
+                    </p>
+                    <p className="mb-2 text-gray-600">
+                      Master visual storytelling, from design principles to
+                      professional video editing.
+                    </p>
                   </div>
-                  <p className="mt-3 mb-1 text-xs font-medium text-indigo-500 uppercase">
-                    ------------
-                  </p>
-                  <p className="mb-2 text-gray-600">
-                    Master visual storytelling, from design principles to
-                    professional video editing.
-                  </p>
-                </div>
+                </a>
               </div>
             </div>
             <div className="w-full sm:w-1/2">
               <div className="relative h-full ml-0 md:mr-10">
                 <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-purple-500 rounded-lg"></span>
-                <div className="relative h-full p-5 bg-white border-2 border-purple-500 rounded-lg">
-                  <div className="flex items-center -mt-1">
-                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800">
-                      Dance
-                    </h3>
+                <a
+                  href="#pricing"
+                  onClick={() => setCurrentPackage(packagesArray[1])}
+                >
+                  <div className="relative h-full p-5 bg-white border-2 border-purple-500 rounded-lg">
+                    <div className="flex items-center -mt-1">
+                      <h3 className="my-2 ml-3 text-lg font-bold text-gray-800">
+                        Dance
+                      </h3>
+                    </div>
+                    <p className="mt-3 mb-1 text-xs font-medium text-purple-500 uppercase">
+                      ------------
+                    </p>
+                    <p className="mb-2 text-gray-600">
+                      Learn various dance styles and enhance your movement
+                      techniques with expert choreography
+                    </p>
                   </div>
-                  <p className="mt-3 mb-1 text-xs font-medium text-purple-500 uppercase">
-                    ------------
-                  </p>
-                  <p className="mb-2 text-gray-600">
-                    Learn various dance styles and enhance your movement
-                    techniques with expert choreography
-                  </p>
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -124,63 +302,118 @@ function Academy() {
             <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
               <div className="relative h-full ml-0 mr-0 sm:mr-10">
                 <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-blue-400 rounded-lg"></span>
-                <div className="relative h-full p-5 bg-white border-2 border-blue-400 rounded-lg">
-                  <div className="flex items-center -mt-1">
-                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800">
-                      DJ
-                    </h3>
+                <a
+                  href="#pricing"
+                  onClick={() => setCurrentPackage(packagesArray[2])}
+                >
+                  <div className="relative h-full p-5 bg-white border-2 border-blue-400 rounded-lg">
+                    <div className="flex items-center -mt-1">
+                      <h3 className="my-2 ml-3 text-lg font-bold text-gray-800">
+                        DJ
+                      </h3>
+                    </div>
+                    <p className="mt-3 mb-1 text-xs font-medium text-blue-400 uppercase">
+                      ------------
+                    </p>
+                    <p className="mb-2 text-gray-600">
+                      Gain hands-on training in mixing, sound production, and
+                      music curation.
+                    </p>
                   </div>
-                  <p className="mt-3 mb-1 text-xs font-medium text-blue-400 uppercase">
-                    ------------
-                  </p>
-                  <p className="mb-2 text-gray-600">
-                    Gain hands-on training in mixing, sound production, and
-                    music curation.
-                  </p>
-                </div>
+                </a>
               </div>
             </div>
             <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
               <div className="relative h-full ml-0 mr-0 sm:mr-10">
                 <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-yellow-400 rounded-lg"></span>
-                <div className="relative h-full p-5 bg-white border-2 border-yellow-400 rounded-lg">
-                  <div className="flex items-center -mt-1">
-                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800">
-                      Tech Enablement
-                    </h3>
+                <a
+                  href="#pricing"
+                  onClick={() => setCurrentPackage(packagesArray[3])}
+                >
+                  <div className="relative h-full p-5 bg-white border-2 border-yellow-400 rounded-lg">
+                    <div className="flex items-center -mt-1">
+                      <h3 className="my-2 ml-3 text-lg font-bold text-gray-800">
+                        Tech Enablement
+                      </h3>
+                    </div>
+                    <p className="mt-3 mb-1 text-xs font-medium text-yellow-400 uppercase">
+                      ------------
+                    </p>
+                    <p className="mb-2 text-gray-600">
+                      Explore AI, coding, and digital solutions designed to
+                      enhance creativity.
+                    </p>
                   </div>
-                  <p className="mt-3 mb-1 text-xs font-medium text-yellow-400 uppercase">
-                    ------------
-                  </p>
-                  <p className="mb-2 text-gray-600">
-                    Explore AI, coding, and digital solutions designed to
-                    enhance creativity.
-                  </p>
-                </div>
+                </a>
               </div>
             </div>
             <div className="w-full sm:w-1/2">
               <div className="relative h-full ml-0 md:mr-10">
                 <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-green-500 rounded-lg"></span>
-                <div className="relative h-full p-5 bg-white border-2 border-green-500 rounded-lg">
-                  <div className="flex items-center -mt-1">
-                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800">
-                      Digital Marketing
-                    </h3>
+                <a
+                  href="#pricing"
+                  onClick={() => setCurrentPackage(packagesArray[4])}
+                >
+                  <div className="relative h-full p-5 bg-white border-2 border-green-500 rounded-lg">
+                    <div className="flex items-center -mt-1">
+                      <h3 className="my-2 ml-3 text-lg font-bold text-gray-800">
+                        Digital Marketing
+                      </h3>
+                    </div>
+                    <p className="mt-3 mb-1 text-xs font-medium text-green-500 uppercase">
+                      ------------
+                    </p>
+                    <p className="mb-2 text-gray-600">
+                      Develop expertise in branding, social media strategies,
+                      SEO, and performance marketing.
+                    </p>
                   </div>
-                  <p className="mt-3 mb-1 text-xs font-medium text-green-500 uppercase">
-                    ------------
-                  </p>
-                  <p className="mb-2 text-gray-600">
-                    Develop expertise in branding, social media strategies, SEO,
-                    and performance marketing.
-                  </p>
-                </div>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
+      {/* Pricing */}
+      <div className="px-4 py-16 min-h-screen" id="pricing">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 h-max w-full m-auto grid grid-cols-2 -space-x-52 opacity-20"
+        >
+          <div className="blur-[106px] h-56 bg-gradient-to-br to-purple-400 from-blue-700"></div>
+          <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-indigo-600"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
+          <div className="mb-10 space-y-4 px-6 md:px-0">
+            <h2 className="text-center text-2xl font-bold sm:text-3xl md:text-4xl">
+              {currentPackage.name}
+            </h2>
+          </div>
+          <div className="flex flex-col md:flex-row justify-center gap-4">
+            {currentPackage.packages.map((pac) => (
+              <div className="flex flex-col items-center aspect-auto p-4 sm:p-8 border rounded-3xl border-gray-200 shadow-gray-300/10 shadow-none m-2 flex-1 max-w-md">
+                <h2 className="text-lg sm:text-xl font-medium mb-2">
+                  {pac.name}
+                </h2>
+                {/* <p className="text-lg sm:text-xl text-center mb-8 mt-4 text-gray-400">
+                  <span className="text-3xl sm:text-4xl font-bold">$19</span> /
+                  Month
+                </p> */}
+                <ul className="list-none list-inside mb-6 text-center text-gray-700">
+                  {pac.benefits.map((ben) => (
+                    <li>{ben}</li>
+                  ))}
+                  {/* <li className="font-bold text-orange-600">1 Website</li>
+                  <li>Custom Domain</li>
+                  <li>Basic SEO</li>
+                  <li>Limited Support</li> */}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      {/* pricing */}
       <section className="bg-white" id="contacts">
         <div className="container px-6 py-12 mx-auto">
           <div>
