@@ -391,7 +391,10 @@ function Academy() {
           </div>
           <div className="flex flex-col md:flex-row justify-center gap-4">
             {currentPackage.packages.map((pac) => (
-              <div className="flex flex-col items-center aspect-auto p-4 sm:p-8 border rounded-3xl border-gray-200 shadow-gray-300/10 shadow-none m-2 flex-1 max-w-md">
+              <div
+                className="flex flex-col items-center aspect-auto p-4 sm:p-8 border rounded-3xl border-gray-200 shadow-gray-300/10 shadow-none m-2 flex-1 max-w-md"
+                key={pac.name}
+              >
                 <h2 className="text-lg sm:text-xl font-medium mb-2">
                   {pac.name}
                 </h2>
@@ -401,7 +404,7 @@ function Academy() {
                 </p> */}
                 <ul className="list-none list-inside mb-6 text-center text-gray-700">
                   {pac.benefits.map((ben) => (
-                    <li>{ben}</li>
+                    <li key={ben}>{ben}</li>
                   ))}
                   {/* <li className="font-bold text-orange-600">1 Website</li>
                   <li>Custom Domain</li>
