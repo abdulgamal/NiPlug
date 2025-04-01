@@ -7,6 +7,7 @@ function Onboarding() {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [info, setInfo] = useState("");
@@ -21,6 +22,7 @@ function Onboarding() {
       email: email,
       subject: subject,
       message: message,
+      phone: phone,
     };
 
     try {
@@ -35,6 +37,7 @@ function Onboarding() {
         setEmail("");
         setSubject("");
         setMessage("");
+        setPhone("");
         setInfo(response.data);
       }
     } catch (error) {
@@ -92,6 +95,19 @@ function Onboarding() {
               placeholder="johndoe@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+            />
+          </div>
+
+          <div className="mt-4">
+            <label className="block mb-2 text-sm text-gray-600">
+              Phone Number
+            </label>
+            <input
+              type="text"
+              placeholder="0712345678"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
