@@ -1,4 +1,5 @@
 import AuthContext from "../../context/AuthContext";
+import OnBoarding from "../../context/OnBoarding";
 
 import "./globals.css";
 import { Inter } from "next/font/google";
@@ -14,7 +15,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthContext>{children}</AuthContext>
+        <AuthContext>
+          <OnBoarding>{children}</OnBoarding>
+        </AuthContext>
       </body>
     </html>
   );

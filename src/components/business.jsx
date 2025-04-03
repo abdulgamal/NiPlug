@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { use, useState } from "react";
+import { useOnBoardingContext } from "../../context/OnBoarding";
 
 function Business() {
   const [businessName, setBusinessName] = useState("");
@@ -7,6 +8,7 @@ function Business() {
   const [industry, setIndustry] = useState("");
   const [digitalTool, setDigitalTool] = useState("");
   const [businessType, setBusinessType] = useState("");
+  const { isDigital } = useOnBoardingContext();
   return (
     <>
       <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
@@ -47,7 +49,7 @@ function Business() {
 
         <div className="mt-4">
           <label className="block mb-2 text-sm text-gray-600">
-            You have physical or online business?
+            Do you operate a physical or online business, or both?
           </label>
           <input
             type="text"
@@ -63,7 +65,7 @@ function Business() {
             htmlFor="industry"
             className="block mb-2 text-sm text-gray-600"
           >
-            You are positioned In?
+            Which industry do you operate in?
           </label>
           <select
             id="industry"
@@ -75,32 +77,85 @@ function Business() {
             <option value="Fashion">Fashion</option>
             <option value="Grocery Store">Grocery Store</option>
             <option value="Restaurant">Restaurant</option>
-            <option value="Retail">Retail</option>
+            <option value="Retail & Wholesale">Retail & Wholesale</option>
+            <option value="Manufacturing">Manufacturing</option>
+            <option value="Agriculture & Agribusiness">
+              Agriculture & Agribusiness
+            </option>
+            <option value="Healthcare & Pharmaceutical">
+              Healthcare & Pharmaceutical
+            </option>
+            <option value="Education & Institutions">
+              Education & Institutions
+            </option>
+            <option value="Real Estate & Property Management">
+              Real Estate & Property Management
+            </option>
+            <option value="Construction & Engineering">
+              Construction & Engineering
+            </option>
+            <option value="Hospitality & Tourism">Hospitality & Tourism</option>
+            <option value="Logistics & Transportation">
+              Logistics & Transportation
+            </option>
+            <option value="Electronics & Gadgets">Electronics & Gadgets</option>
+            <option value="Furniture & Home Decor">
+              Furniture & Home Decor
+            </option>
           </select>
         </div>
 
-        <div className="mt-4">
-          <label
-            htmlFor="digital_tool"
-            className="block mb-2 text-sm text-gray-600"
-          >
-            Digital Tools you want to Learn?
-          </label>
-          <select
-            id="digital_tool"
-            value={digitalTool}
-            onChange={(e) => setDigitalTool(e.target.value)}
-            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
-          >
-            <option value="">Select Tool</option>
-            <option value="POS">POS</option>
-            <option value="Inventory Management">Inventory Management</option>
-            <option value="eCommerce">eCommerce</option>
-            <option value="Accounting">Accounting</option>
-            <option value="Digital Marketing">Digital Marketing</option>
-            <option value="Social Media">Social Media</option>
-          </select>
-        </div>
+        {isDigital ? (
+          <div className="mt-4">
+            <label
+              htmlFor="digital_tool"
+              className="block mb-2 text-sm text-gray-600"
+            >
+              Which digital tools are you interested in learning?
+            </label>
+            <select
+              id="digital_tool"
+              value={digitalTool}
+              onChange={(e) => setDigitalTool(e.target.value)}
+              className="block py-2.5 px-2 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            >
+              <option value="">Select Tool</option>
+              <option value="POS">POS</option>
+              <option value="Inventory Management">Inventory Management</option>
+              <option value="eCommerce">eCommerce</option>
+              <option value="Accounting">Accounting</option>
+              <option value="Digital Marketing">Digital Marketing</option>
+              <option value="Social Media">Social Media</option>
+            </select>
+          </div>
+        ) : (
+          <div className="mt-4">
+            <label
+              htmlFor="digital_tool"
+              className="block mb-2 text-sm text-gray-600"
+            >
+              Which software programs would you be most interested in learning?
+            </label>
+            <select
+              id="digital_tool"
+              value={digitalTool}
+              onChange={(e) => setDigitalTool(e.target.value)}
+              className="block py-2.5 px-2 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            >
+              <option value="">Select Tool</option>
+              <option value="Adobe Illustrator">Adobe Illustrator</option>
+              <option value="Adobe in Design">Adobe in Design</option>
+              <option value="Adobe Photoshop">Adobe Photoshop</option>
+              <option value="Corel Draw">Corel Draw</option>
+              <option value="Microsoft Publisher">Microsoft Publisher</option>
+              <option value="Premier Pro">Premier Pro</option>
+              <option value="CapCut">CapCut</option>
+              <option value="After Effects">After Effects</option>
+              <option value="DaVinci Resolve">DaVinci Resolve</option>
+              <option value="Final Cut">Final Cut</option>
+            </select>
+          </div>
+        )}
 
         {/* <div className="w-full mt-4">
             <label className="block mb-2 text-sm text-gray-600">

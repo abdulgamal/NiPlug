@@ -9,6 +9,7 @@ function OnBoarding({ children }) {
   const [totalSteps, setTotalSteps] = useState(businessPages.length || 0);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isDigital, setIsDigital] = useState(false);
   return (
     <OnBoardingContext.Provider
       value={{
@@ -20,6 +21,8 @@ function OnBoarding({ children }) {
         setError,
         loading,
         setLoading,
+        isDigital,
+        setIsDigital,
       }}
     >
       {children}

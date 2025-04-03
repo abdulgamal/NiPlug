@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Script from "next/script";
 import React, { useState } from "react";
+import { useOnBoardingContext } from "../../../context/OnBoarding";
 
 const packagesArray = [
   {
@@ -204,6 +205,7 @@ function Academy() {
   const [loading, setLoading] = useState(false);
   // const [currentPackage, setCurrentPackage] = useState(packagesArray[1]);
   // const router = useRouter();
+  const { setIsDigital } = useOnBoardingContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -309,10 +311,7 @@ function Academy() {
           <div className="flex flex-col w-full mb-10 sm:flex-row">
             <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
               <div className="relative h-full ml-0 md:mr-10">
-                <Link
-                  href="/onboarding"
-                  // onClick={() => setCurrentPackage(packagesArray[4])}
-                >
+                <Link href="/onboarding" onClick={() => setIsDigital(true)}>
                   <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
                     <img
                       alt=""
@@ -339,7 +338,7 @@ function Academy() {
             </div>
             <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
               <div className="relative h-full ml-0 mr-0 sm:mr-10">
-                <Link href="/onboarding">
+                <Link href="/onboarding" onClick={() => setIsDigital(false)}>
                   <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
                     <img
                       alt=""
