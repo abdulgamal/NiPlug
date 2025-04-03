@@ -266,9 +266,9 @@ function Academy() {
             <p className="mt-4 text-base text-pretty text-gray-700 sm:text-lg/relaxed">
               At NiPlug Academy, we empower creatives and aspiring enterpreneurs
               with hands-on skills in design,music,technology,marketing and
-              essential business digital tools. Whether you're building a brand,
-              growing your SMEs, or exploring your passion, there's a path for
-              you. Start your journey today!
+              essential business digital tools. Whether you&apos;re building a
+              brand, growing your SMEs, or exploring your passion, there&apos;s
+              a path for you. Start your journey today!
             </p>
 
             <div className="mt-4 flex gap-4 sm:mt-6">
