@@ -202,8 +202,8 @@ function Academy() {
   const [message, setMessage] = useState("");
   const [info, setInfo] = useState("");
   const [loading, setLoading] = useState(false);
-  const [currentPackage, setCurrentPackage] = useState(packagesArray[1]);
-  const router = useRouter();
+  // const [currentPackage, setCurrentPackage] = useState(packagesArray[1]);
+  // const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -257,15 +257,18 @@ function Academy() {
         <div className="mx-auto w-screen max-w-screen-xl px-4 py-16 sm:px-6 sm:py-16 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-16">
           <div className="max-w-prose text-left">
             <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
-              Welcome to NiPlug Academy, Unlock Your
-              <strong className="text-teal-600"> Creative </strong>
+              Welcome to NiPlug Academy - Unlock Your
+              <strong className="text-teal-600"> Creative </strong> &{" "}
+              <strong className="text-teal-600"> Digital </strong>
               Potential
             </h1>
 
             <p className="mt-4 text-base text-pretty text-gray-700 sm:text-lg/relaxed">
-              At NiPlug Academy, we empower creatives with hands-on skills in
-              design, music, tech, and marketing. Choose your path and start
-              your journey today!
+              At NiPlug Academy, we empower creatives and aspiring enterpreneurs
+              with hands-on skills in design,music,technology,marketing and
+              essential business digital tools. Whether you're building a brand,
+              growing your SMEs, or exploring your passion, there's a path for
+              you. Start your journey today!
             </p>
 
             <div className="mt-4 flex gap-4 sm:mt-6">
@@ -308,7 +311,7 @@ function Academy() {
               <div className="relative h-full ml-0 md:mr-10">
                 <Link
                   href="/onboarding"
-                  onClick={() => setCurrentPackage(packagesArray[4])}
+                  // onClick={() => setCurrentPackage(packagesArray[4])}
                 >
                   <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
                     <img
@@ -335,9 +338,9 @@ function Academy() {
             </div>
             <div className="w-full sm:w-1/2">
               <div className="relative h-full ml-0 md:mr-10">
-                <Link
-                  href="/onboarding"
-                  onClick={() => setCurrentPackage(packagesArray[1])}
+                <a
+                  href="#contacts"
+                  // onClick={() => setCurrentPackage(packagesArray[1])}
                 >
                   <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
                     <img
@@ -362,16 +365,16 @@ function Academy() {
                       </div>
                     </div>
                   </article>
-                </Link>
+                </a>
               </div>
             </div>
           </div>
           <div className="flex flex-col w-full mb-5 sm:flex-row">
             <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
               <div className="relative h-full ml-0 mr-0 sm:mr-10">
-                <Link
-                  href="/onboarding"
-                  onClick={() => setCurrentPackage(packagesArray[2])}
+                <a
+                  href="#contacts"
+                  // onClick={() => setCurrentPackage(packagesArray[2])}
                 >
                   <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
                     <img
@@ -396,14 +399,14 @@ function Academy() {
                       </div>
                     </div>
                   </article>
-                </Link>
+                </a>
               </div>
             </div>
             <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
               <div className="relative h-full ml-0 mr-0 sm:mr-10">
-                <Link
-                  href="/onboarding"
-                  onClick={() => setCurrentPackage(packagesArray[3])}
+                <a
+                  href="#contacts"
+                  // onClick={() => setCurrentPackage(packagesArray[3])}
                 >
                   <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
                     <img
@@ -430,14 +433,14 @@ function Academy() {
                       </div>
                     </div>
                   </article>
-                </Link>
+                </a>
               </div>
             </div>
             <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
               <div className="relative h-full ml-0 mr-0 sm:mr-10">
-                <Link
-                  href="/onboarding"
-                  onClick={() => setCurrentPackage(packagesArray[0])}
+                <a
+                  href="#contacts"
+                  // onClick={() => setCurrentPackage(packagesArray[0])}
                 >
                   <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
                     <img
@@ -464,7 +467,7 @@ function Academy() {
                       </div>
                     </div>
                   </article>
-                </Link>
+                </a>
               </div>
             </div>
           </div>
