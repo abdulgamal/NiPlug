@@ -327,8 +327,9 @@ function Academy() {
                         </h3>
 
                         <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
-                          Develop expertise in branding, social media
-                          strategies, SEO, and performance marketing.
+                          Gain hands-on experience and learn the benefits of
+                          POS, ERP and E-Commerce to transform your business and
+                          thrive in the digital world
                         </p>
                       </div>
                     </div>
@@ -336,36 +337,30 @@ function Academy() {
                 </Link>
               </div>
             </div>
-            <div className="w-full sm:w-1/2">
-              <div className="relative h-full ml-0 md:mr-10">
-                <a
-                  href="#contacts"
-                  // onClick={() => setCurrentPackage(packagesArray[1])}
-                >
+            <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
+              <div className="relative h-full ml-0 mr-0 sm:mr-10">
+                <Link href="/onboarding">
                   <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
                     <img
                       alt=""
-                      src="https://images.unsplash.com/photo-1546427660-eb346c344ba5?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGRhbmNlfGVufDB8fDB8fHww"
+                      src="https://images.unsplash.com/photo-1611241893603-3c359704e0ee?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGdyYXBoaWMlMjBkZXNpZ258ZW58MHx8MHx8fDA%3D"
                       className="absolute inset-0 h-full w-full object-cover"
                     />
-                    <div className="absolute inset-0 h-full w-full object-cover bg-black/40 flex justify-center items-center">
-                      <p className="text-3xl font-bold text-white tracking-wider">
-                        Coming Soon
-                      </p>
-                    </div>
 
                     <div className="relative bg-gradient-to-t from-gray-900/50 to-gray-900/25 pt-32 sm:pt-48 lg:pt-64">
                       <div className="p-4 sm:p-6">
-                        <h3 className="mt-0.5 text-lg text-white">Dance</h3>
+                        <h3 className="mt-0.5 text-lg text-white">
+                          Graphic Design / Videography
+                        </h3>
 
                         <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
-                          Learn various dance styles and enhance your movement
-                          techniques with expert choreography
+                          Master visual storytelling, from design principles to
+                          professional video editing.
                         </p>
                       </div>
                     </div>
                   </article>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -436,16 +431,13 @@ function Academy() {
                 </a>
               </div>
             </div>
-            <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
-              <div className="relative h-full ml-0 mr-0 sm:mr-10">
-                <a
-                  href="#contacts"
-                  // onClick={() => setCurrentPackage(packagesArray[0])}
-                >
+            <div className="w-full sm:w-1/2">
+              <div className="relative h-full ml-0 md:mr-10">
+                <a href="#contacts">
                   <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
                     <img
                       alt=""
-                      src="https://images.unsplash.com/photo-1611241893603-3c359704e0ee?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGdyYXBoaWMlMjBkZXNpZ258ZW58MHx8MHx8fDA%3D"
+                      src="https://images.unsplash.com/photo-1546427660-eb346c344ba5?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGRhbmNlfGVufDB8fDB8fHww"
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 h-full w-full object-cover bg-black/40 flex justify-center items-center">
@@ -456,13 +448,11 @@ function Academy() {
 
                     <div className="relative bg-gradient-to-t from-gray-900/50 to-gray-900/25 pt-32 sm:pt-48 lg:pt-64">
                       <div className="p-4 sm:p-6">
-                        <h3 className="mt-0.5 text-lg text-white">
-                          Graphic Design / Videography
-                        </h3>
+                        <h3 className="mt-0.5 text-lg text-white">Dance</h3>
 
                         <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
-                          Master visual storytelling, from design principles to
-                          professional video editing.
+                          Learn various dance styles and enhance your movement
+                          techniques with expert choreography
                         </p>
                       </div>
                     </div>
