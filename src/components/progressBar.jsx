@@ -1,11 +1,34 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useOnBoardingContext } from "../../context/OnBoarding";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ProgressBar() {
   const [isLastStep, setIsLastStep] = useState(false);
-  const { step, totalSteps, setStep, loading, error, setError } =
-    useOnBoardingContext();
+  const {
+    step,
+    totalSteps,
+    setStep,
+    loading,
+    error,
+    setError,
+    handleRegisterBusiness,
+  } = useOnBoardingContext();
+  const router = useRouter();
+
+  const notify = (message) =>
+    toast(message, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
 
   useEffect(() => {
     setIsLastStep(step === totalSteps - 1);
@@ -29,6 +52,11 @@ function ProgressBar() {
                 setStep(step + 1);
               } else {
                 // setIsModalOpen(true);
+                const status = await handleRegisterBusiness();
+                if (status) {
+                  router.push("/niplugacademy");
+                  notify("Registration successful. We will be in touch");
+                }
               }
             }}
             className="inline-block shrink-0 rounded-md border border-[#04AA66] bg-[#04AA66] px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-[#509478] focus:ring-3 focus:outline-hidden cursor-pointer"

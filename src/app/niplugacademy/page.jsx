@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Script from "next/script";
 import React, { useState } from "react";
 import { useOnBoardingContext } from "../../../context/OnBoarding";
+import { ToastContainer } from "react-toastify";
 
 const packagesArray = [
   {
@@ -254,6 +255,8 @@ function Academy() {
   gtag('js', new Date());
 
   gtag('config', 'G-X6QMWQL048');`}</Script>
+
+      <ToastContainer />
 
       <section className="bg-white lg:grid lg:h-screen lg:place-content-center min-h-screen">
         <div className="mx-auto w-screen max-w-screen-xl px-4 py-16 sm:px-6 sm:py-16 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-16">

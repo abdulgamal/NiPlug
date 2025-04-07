@@ -1,14 +1,32 @@
 "use client";
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import { useOnBoardingContext } from "../../context/OnBoarding";
 
 function Business() {
-  const [businessName, setBusinessName] = useState("");
-  const [businessAddress, setBusinessAddress] = useState("");
-  const [industry, setIndustry] = useState("");
-  const [digitalTool, setDigitalTool] = useState("");
-  const [businessType, setBusinessType] = useState("");
-  const { isDigital } = useOnBoardingContext();
+  const { businessData, setBusinessData, isDigital } = useOnBoardingContext();
+  const [businessName, setBusinessName] = useState(
+    businessData?.businessName || ""
+  );
+  const [businessAddress, setBusinessAddress] = useState(
+    businessData?.businessAddress || ""
+  );
+  const [industry, setIndustry] = useState(businessData?.industry || "");
+  const [digitalTool, setDigitalTool] = useState(
+    businessData?.toolToLearn || ""
+  );
+  const [businessType, setBusinessType] = useState(
+    businessData?.businessPremise || ""
+  );
+  const [businessEmail, setBusinessEmail] = useState(
+    businessData?.businessEmail || ""
+  );
+  const [businessPhone, setBusinessPhone] = useState(
+    businessData?.businessPhone || ""
+  );
+  const [businessWebsite, setBusinessWebsite] = useState(
+    businessData?.businessWebsite || ""
+  );
+
   return (
     <>
       <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
@@ -28,7 +46,13 @@ function Business() {
               type="text"
               placeholder="John Enterprise"
               value={businessName}
-              onChange={(e) => setBusinessName(e.target.value)}
+              onChange={(e) => {
+                setBusinessName(e.target.value);
+                setBusinessData((prev) => ({
+                  ...prev,
+                  businessName: e.target.value,
+                }));
+              }}
               className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
@@ -41,10 +65,70 @@ function Business() {
               type="text"
               placeholder="Nairobi CBD"
               value={businessAddress}
-              onChange={(e) => setBusinessAddress(e.target.value)}
+              onChange={(e) => {
+                setBusinessAddress(e.target.value);
+                setBusinessData((prev) => ({
+                  ...prev,
+                  businessAddress: e.target.value,
+                }));
+              }}
               className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
+        </div>
+        <div className="mt-4">
+          <label className="block mb-2 text-sm text-gray-600">
+            Business Email
+          </label>
+          <input
+            type="email"
+            placeholder="abc@example.com"
+            value={businessEmail}
+            onChange={(e) => {
+              setBusinessEmail(e.target.value);
+              setBusinessData((prev) => ({
+                ...prev,
+                businessEmail: e.target.value,
+              }));
+            }}
+            className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+          />
+        </div>
+        <div className="mt-4">
+          <label className="block mb-2 text-sm text-gray-600">
+            Business Phone
+          </label>
+          <input
+            type="text"
+            placeholder="0712345678"
+            value={businessPhone}
+            onChange={(e) => {
+              setBusinessPhone(e.target.value);
+              setBusinessData((prev) => ({
+                ...prev,
+                businessPhone: e.target.value,
+              }));
+            }}
+            className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+          />
+        </div>
+        <div className="mt-4">
+          <label className="block mb-2 text-sm text-gray-600">
+            Business Website
+          </label>
+          <input
+            type="text"
+            placeholder="abc.com"
+            value={businessWebsite}
+            onChange={(e) => {
+              setBusinessWebsite(e.target.value);
+              setBusinessData((prev) => ({
+                ...prev,
+                businessWebsite: e.target.value,
+              }));
+            }}
+            className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+          />
         </div>
 
         <div className="mt-4">
@@ -55,7 +139,13 @@ function Business() {
             type="text"
             placeholder="physical or online business"
             value={businessType}
-            onChange={(e) => setBusinessType(e.target.value)}
+            onChange={(e) => {
+              setBusinessType(e.target.value);
+              setBusinessData((prev) => ({
+                ...prev,
+                businessPremise: e.target.value,
+              }));
+            }}
             className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
           />
         </div>
@@ -70,7 +160,13 @@ function Business() {
           <select
             id="industry"
             value={industry}
-            onChange={(e) => setIndustry(e.target.value)}
+            onChange={(e) => {
+              setIndustry(e.target.value);
+              setBusinessData((prev) => ({
+                ...prev,
+                industry: e.target.value,
+              }));
+            }}
             className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
           >
             <option value="">Select Industry</option>
@@ -116,7 +212,13 @@ function Business() {
             <select
               id="digital_tool"
               value={digitalTool}
-              onChange={(e) => setDigitalTool(e.target.value)}
+              onChange={(e) => {
+                setDigitalTool(e.target.value);
+                setBusinessData((prev) => ({
+                  ...prev,
+                  toolToLearn: e.target.value,
+                }));
+              }}
               className="block py-2.5 px-2 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer"
             >
               <option value="">Select Tool</option>
@@ -139,7 +241,13 @@ function Business() {
             <select
               id="digital_tool"
               value={digitalTool}
-              onChange={(e) => setDigitalTool(e.target.value)}
+              onChange={(e) => {
+                setDigitalTool(e.target.value);
+                setBusinessData((prev) => ({
+                  ...prev,
+                  toolToLearn: e.target.value,
+                }));
+              }}
               className="block py-2.5 px-2 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer"
             >
               <option value="">Select Tool</option>

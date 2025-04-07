@@ -1,11 +1,13 @@
 "use client";
 import React, { useState } from "react";
+import { useOnBoardingContext } from "../../context/OnBoarding";
 
 function Begin() {
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const { businessData, setBusinessData } = useOnBoardingContext();
+  const [name, setName] = useState(businessData?.firstName || "");
+  const [lastName, setLastName] = useState(businessData?.lastName || "");
+  const [email, setEmail] = useState(businessData?.email || "");
+  const [phone, setPhone] = useState(businessData?.phone || "");
   //   const [subject, setSubject] = useState("");
   //   const [message, setMessage] = useState("");
   return (
@@ -27,7 +29,13 @@ function Begin() {
               type="text"
               placeholder="John "
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => {
+                setName(e.target.value);
+                setBusinessData((prev) => ({
+                  ...prev,
+                  firstName: e.target.value,
+                }));
+              }}
               className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
@@ -40,7 +48,13 @@ function Begin() {
               type="text"
               placeholder="Doe"
               value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              onChange={(e) => {
+                setLastName(e.target.value);
+                setBusinessData((prev) => ({
+                  ...prev,
+                  lastName: e.target.value,
+                }));
+              }}
               className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
@@ -54,7 +68,10 @@ function Begin() {
             type="email"
             placeholder="johndoe@example.com"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setBusinessData((prev) => ({ ...prev, email: e.target.value }));
+            }}
             className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
           />
         </div>
@@ -67,7 +84,10 @@ function Begin() {
             type="text"
             placeholder="0712345678"
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => {
+              setPhone(e.target.value);
+              setBusinessData((prev) => ({ ...prev, phone: e.target.value }));
+            }}
             className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
           />
         </div>
