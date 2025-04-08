@@ -596,7 +596,7 @@ function Academy() {
                   Our friendly team is here to help.
                 </p>
                 <p className="mt-2 text-sm text-teal-500">
-                  info@paysokosystems.com
+                  niplug@paysokosystems.com
                 </p>
               </div>
 

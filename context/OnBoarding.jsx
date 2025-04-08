@@ -62,7 +62,7 @@ function OnBoarding({ children }) {
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://dev.paysokoerp.com/api/business-register",
+        "https://test.paysokoerp.com/api/business-register",
         obj
       );
       setBusinessData(initialBusiness);
