@@ -103,10 +103,11 @@ function Business() {
             placeholder="0712345678"
             value={businessPhone}
             onChange={(e) => {
-              setBusinessPhone(e.target.value);
+              const newValue = e.target.value.replace(/[^0-9.]/g, "");
+              setBusinessPhone(newValue);
               setBusinessData((prev) => ({
                 ...prev,
-                businessPhone: e.target.value,
+                businessPhone: newValue,
               }));
             }}
             className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -135,9 +136,8 @@ function Business() {
           <label className="block mb-2 text-sm text-gray-600">
             Do you operate a physical or online business, or both?
           </label>
-          <input
-            type="text"
-            placeholder="physical or online business"
+          <select
+            id="digital_tool"
             value={businessType}
             onChange={(e) => {
               setBusinessType(e.target.value);
@@ -146,8 +146,13 @@ function Business() {
                 businessPremise: e.target.value,
               }));
             }}
-            className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-          />
+            className="block py-2.5 px-2 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+          >
+            <option value="">Select</option>
+            <option value="physical business">Physical business</option>
+            <option value="online business">Online business</option>
+            <option value="both">Both</option>
+          </select>
         </div>
 
         <div className="mt-4">
@@ -167,7 +172,7 @@ function Business() {
                 industry: e.target.value,
               }));
             }}
-            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer"
           >
             <option value="">Select Industry</option>
             <option value="Fashion">Fashion</option>
@@ -219,7 +224,7 @@ function Business() {
                   toolToLearn: e.target.value,
                 }));
               }}
-              className="block py-2.5 px-2 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              className="block py-2.5 px-2 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer"
             >
               <option value="">Select Tool</option>
               <option value="POS">POS</option>
