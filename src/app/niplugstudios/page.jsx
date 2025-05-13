@@ -130,7 +130,7 @@ function Academy() {
         <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
           <ServicesCard
             title={"Videography + Event Videography"}
-            imageUrl="https://images.unsplash.com/photo-1502209877429-d7c6df9eb3f9?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHZpZGVvZ3JhcGh5fGVufDB8fDB8fHww"
+            imageUrl="https://africadslive.com/wp-content/uploads/2025/04/pexels-brunomassao-2873486-scaled.jpg"
           />
           <ServicesCard
             title={"Voiceover"}
@@ -146,7 +146,7 @@ function Academy() {
           />
           <ServicesCard
             title={"Ad Creation"}
-            imageUrl="https://plus.unsplash.com/premium_photo-1668166519818-01aa3adf1e7d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YWRzJTIwY3JlYXRpb258ZW58MHx8MHx8fDA%3D"
+            imageUrl="https://www.shutterstock.com/shutterstock/videos/3693710249/thumb/12.jpg?ip=x480"
           />
           <ServicesCard
             title={"Content Studio"}
@@ -158,11 +158,11 @@ function Academy() {
           />
           <ServicesCard
             title={"Rent Our Space"}
-            imageUrl="https://images.unsplash.com/photo-1533436041693-411c656d1383?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3BhY2VzfGVufDB8fDB8fHww"
+            imageUrl="https://img.freepik.com/premium-vector/vacant-place-banner-search-leader-loft-style-table-workplace-books-documents-laptop-vector_174639-30356.jpg"
           />
           <ServicesCard
             title={"Live Streaming"}
-            imageUrl="https://images.unsplash.com/photo-1604941878418-b0fbf86e3590?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bGl2ZSUyMHN0cmVhbWluZ3xlbnwwfHwwfHx8MA%3D%3D"
+            imageUrl="https://img.freepik.com/free-vector/gradient-instagram-live-user-frame-set_23-2149487373.jpg"
           />
         </div>
       </div>
