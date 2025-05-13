@@ -6,194 +6,195 @@ import Script from "next/script";
 import React, { useState } from "react";
 import { useOnBoardingContext } from "../../../context/OnBoarding";
 import { ToastContainer } from "react-toastify";
+import ServicesCard from "@/components/ServicesCard";
 
-const packagesArray = [
-  {
-    name: "Graphic Design",
-    packages: [
-      {
-        name: "Bronze 5,000",
-        accent: "#B87333",
-        color: "#3E3E3E",
-        benefits: [
-          "8-week course (2 session per week)",
-          "Graphic design (Adobe Illustrator, Adobe in Design, Adobe Photoshop, Corel Draw, Microsoft Publisher) & video editing (Premiere Pro, CapCut, After Effects, DaVinci Resolve, Final Cut)",
-          "Hands-on exercises & practice projects",
-        ],
-      },
-    ],
-  },
-  {
-    name: "Dance Packages",
-    packages: [
-      {
-        name: "Bronze 8,000",
-        accent: "#B87333",
-        color: "#3E3E3E",
-        benefits: [
-          "4-week beginners’ course",
-          "Basics of choreography & movement styles",
-        ],
-      },
-      {
-        name: "Silver 15,000",
-        accent: "#D3D3D3",
-        color: "#333333",
-        benefits: [
-          "6-week intermediate course",
-          "Exploring various dance styles (Afro, Hip-hop, Contemporary)",
-        ],
-      },
-      {
-        name: "Gold 25,000",
-        accent: "#E6B800",
-        color: "#5A4F3C",
-        benefits: [
-          "8-week intensive training",
-          "Dance routine creation & performance training",
-          "One professional dance video recording",
-        ],
-      },
-      {
-        name: "Platinum 40,000",
-        accent: "#A7A8AA",
-        color: "#2E2E2E",
-        benefits: [
-          "12-week elite training program",
-          "Choreography development & stage performance techniques",
-          "Brand building for professional dancers",
-        ],
-      },
-    ],
-  },
-  {
-    name: " DJ Packages",
-    packages: [
-      {
-        name: "Bronze 12,000",
-        accent: "#B87333",
-        color: "#3E3E3E",
-        benefits: [
-          "4-week introduction to DJing",
-          "Basics of mixing, beatmatching, and equipment setup",
-        ],
-      },
-      {
-        name: "Silver 20,000",
-        accent: "#D3D3D3",
-        color: "#333333",
-        benefits: [
-          "6-week hands-on training with industry-standard equipment",
-          "Genre-blending techniques & crowd control basics",
-        ],
-      },
-      {
-        name: "Gold 35,000",
-        accent: "#E6B800",
-        color: "#5A4F3C",
-        benefits: [
-          "8-week advanced DJ course",
-          "Live performance coaching & playlist curation",
-          "One recorded DJ set for portfolio building",
-        ],
-      },
-      {
-        name: "Platinum 50,000",
-        accent: "#A7A8AA",
-        color: "#2E2E2E",
-        benefits: [
-          "10-week mentorship with professional DJs",
-          "Club & event performance training",
-          "Opportunities for live gigs & industry networking",
-        ],
-      },
-    ],
-  },
-  {
-    name: "Tech Enablement Packages (AI, Coding, Automation)",
-    packages: [
-      {
-        name: "Bronze 10,000",
-        accent: "#B87333",
-        color: "#3E3E3E",
-        benefits: [
-          "4-week introduction to tech enablement",
-          "Basics of AI, automation, and coding",
-        ],
-      },
-      {
-        name: "Silver 20,000",
-        accent: "#D3D3D3",
-        color: "#333333",
-        benefits: [
-          "6-week hands-on coding & AI tools training",
-          "Website automation & chatbot development",
-        ],
-      },
-      {
-        name: "Gold 35,000",
-        accent: "#E6B800",
-        color: "#5A4F3C",
-        benefits: [
-          "8-week specialized training in tech solutions",
-          "Digital tools for businesses & content creators",
-        ],
-      },
-      {
-        name: "Platinum 50,000",
-        accent: "#A7A8AA",
-        color: "#2E2E2E",
-        benefits: [
-          "12-week deep-dive into AI, coding, and automation",
-          "Live projects & startup tech solutions development",
-          "Internship & job placement opportunities",
-        ],
-      },
-    ],
-  },
-  {
-    name: "Digital Transformation Packages",
-    packages: [
-      {
-        name: "Bronze 10,000",
-        accent: "#B87333",
-        color: "#3E3E3E",
-        benefits: [
-          "4-week course on social media basics",
-          "Introduction to content strategy & analytics",
-        ],
-      },
-      {
-        name: "Silver 20,000",
-        accent: "#D3D3D3",
-        color: "#333333",
-        benefits: [
-          "6-week training on paid ads, SEO, and engagement tactics",
-          "Hands-on campaign management",
-        ],
-      },
-      {
-        name: "Gold 35,000",
-        accent: "#E6B800",
-        color: "#5A4F3C",
-        benefits: [
-          "8-week course on digital marketing strategy",
-          "Growth hacking & brand positioning",
-        ],
-      },
-      {
-        name: "Platinum 50,000",
-        accent: "#A7A8AA",
-        color: "#2E2E2E",
-        benefits: [
-          "12-week advanced training",
-          "Monetization strategies & influencer marketing",
-          "Portfolio-building with real clients",
-        ],
-      },
-    ],
-  },
-];
+// const packagesArray = [
+//   {
+//     name: "Graphic Design",
+//     packages: [
+//       {
+//         name: "Bronze 5,000",
+//         accent: "#B87333",
+//         color: "#3E3E3E",
+//         benefits: [
+//           "8-week course (2 session per week)",
+//           "Graphic design (Adobe Illustrator, Adobe in Design, Adobe Photoshop, Corel Draw, Microsoft Publisher) & video editing (Premiere Pro, CapCut, After Effects, DaVinci Resolve, Final Cut)",
+//           "Hands-on exercises & practice projects",
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     name: "Dance Packages",
+//     packages: [
+//       {
+//         name: "Bronze 8,000",
+//         accent: "#B87333",
+//         color: "#3E3E3E",
+//         benefits: [
+//           "4-week beginners’ course",
+//           "Basics of choreography & movement styles",
+//         ],
+//       },
+//       {
+//         name: "Silver 15,000",
+//         accent: "#D3D3D3",
+//         color: "#333333",
+//         benefits: [
+//           "6-week intermediate course",
+//           "Exploring various dance styles (Afro, Hip-hop, Contemporary)",
+//         ],
+//       },
+//       {
+//         name: "Gold 25,000",
+//         accent: "#E6B800",
+//         color: "#5A4F3C",
+//         benefits: [
+//           "8-week intensive training",
+//           "Dance routine creation & performance training",
+//           "One professional dance video recording",
+//         ],
+//       },
+//       {
+//         name: "Platinum 40,000",
+//         accent: "#A7A8AA",
+//         color: "#2E2E2E",
+//         benefits: [
+//           "12-week elite training program",
+//           "Choreography development & stage performance techniques",
+//           "Brand building for professional dancers",
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     name: " DJ Packages",
+//     packages: [
+//       {
+//         name: "Bronze 12,000",
+//         accent: "#B87333",
+//         color: "#3E3E3E",
+//         benefits: [
+//           "4-week introduction to DJing",
+//           "Basics of mixing, beatmatching, and equipment setup",
+//         ],
+//       },
+//       {
+//         name: "Silver 20,000",
+//         accent: "#D3D3D3",
+//         color: "#333333",
+//         benefits: [
+//           "6-week hands-on training with industry-standard equipment",
+//           "Genre-blending techniques & crowd control basics",
+//         ],
+//       },
+//       {
+//         name: "Gold 35,000",
+//         accent: "#E6B800",
+//         color: "#5A4F3C",
+//         benefits: [
+//           "8-week advanced DJ course",
+//           "Live performance coaching & playlist curation",
+//           "One recorded DJ set for portfolio building",
+//         ],
+//       },
+//       {
+//         name: "Platinum 50,000",
+//         accent: "#A7A8AA",
+//         color: "#2E2E2E",
+//         benefits: [
+//           "10-week mentorship with professional DJs",
+//           "Club & event performance training",
+//           "Opportunities for live gigs & industry networking",
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     name: "Tech Enablement Packages (AI, Coding, Automation)",
+//     packages: [
+//       {
+//         name: "Bronze 10,000",
+//         accent: "#B87333",
+//         color: "#3E3E3E",
+//         benefits: [
+//           "4-week introduction to tech enablement",
+//           "Basics of AI, automation, and coding",
+//         ],
+//       },
+//       {
+//         name: "Silver 20,000",
+//         accent: "#D3D3D3",
+//         color: "#333333",
+//         benefits: [
+//           "6-week hands-on coding & AI tools training",
+//           "Website automation & chatbot development",
+//         ],
+//       },
+//       {
+//         name: "Gold 35,000",
+//         accent: "#E6B800",
+//         color: "#5A4F3C",
+//         benefits: [
+//           "8-week specialized training in tech solutions",
+//           "Digital tools for businesses & content creators",
+//         ],
+//       },
+//       {
+//         name: "Platinum 50,000",
+//         accent: "#A7A8AA",
+//         color: "#2E2E2E",
+//         benefits: [
+//           "12-week deep-dive into AI, coding, and automation",
+//           "Live projects & startup tech solutions development",
+//           "Internship & job placement opportunities",
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     name: "Digital Transformation Packages",
+//     packages: [
+//       {
+//         name: "Bronze 10,000",
+//         accent: "#B87333",
+//         color: "#3E3E3E",
+//         benefits: [
+//           "4-week course on social media basics",
+//           "Introduction to content strategy & analytics",
+//         ],
+//       },
+//       {
+//         name: "Silver 20,000",
+//         accent: "#D3D3D3",
+//         color: "#333333",
+//         benefits: [
+//           "6-week training on paid ads, SEO, and engagement tactics",
+//           "Hands-on campaign management",
+//         ],
+//       },
+//       {
+//         name: "Gold 35,000",
+//         accent: "#E6B800",
+//         color: "#5A4F3C",
+//         benefits: [
+//           "8-week course on digital marketing strategy",
+//           "Growth hacking & brand positioning",
+//         ],
+//       },
+//       {
+//         name: "Platinum 50,000",
+//         accent: "#A7A8AA",
+//         color: "#2E2E2E",
+//         benefits: [
+//           "12-week advanced training",
+//           "Monetization strategies & influencer marketing",
+//           "Portfolio-building with real clients",
+//         ],
+//       },
+//     ],
+//   },
+// ];
 
 function Academy() {
   const [name, setName] = useState("");
@@ -262,18 +263,26 @@ function Academy() {
         <div className="mx-auto w-screen max-w-screen-xl px-4 py-16 sm:px-6 sm:py-16 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-16">
           <div className="max-w-prose text-left">
             <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
-              Welcome to NiPlug Academy - Unlock Your
+              Welcome to NiPlug Studios - Unlock Your
               <strong className="text-teal-600"> Creative </strong> &{" "}
               <strong className="text-teal-600"> Digital </strong>
               Potential
             </h1>
 
             <p className="mt-4 text-base text-pretty text-gray-700 sm:text-lg/relaxed">
-              At NiPlug Academy, we empower creatives and aspiring enterpreneurs
-              with hands-on skills in design,music,technology,marketing and
-              essential business digital tools. Whether you&apos;re building a
-              brand, growing your SMEs, or exploring your passion, there&apos;s
-              a path for you. Start your journey today!
+              Welcome to NiPlug Studios & Academy—your all-in-one creative hub.
+              At NiPlug Studios, we offer professional services including
+              podcast production, photography and videography, audio and
+              voiceover recording, studio and content room rentals, as well as
+              drone and aerial coverage. Whether you&apos;re a brand, business,
+              or individual creator, our team is here to bring your vision to
+              life. Through NiPlug Academy, we equip creatives and aspiring
+              entrepreneurs with hands-on training in graphic design,
+              videography, digital marketing, dance, DJing, tech enablement (AI,
+              coding, and more), and essential business tools. Whether
+              you&apos;re producing, learning, or scaling your passion into a
+              profession, NiPlug is where creativity meets opportunity. Start
+              your journey with us today.
             </p>
 
             <div className="mt-4 flex gap-4 sm:mt-6">
@@ -300,12 +309,56 @@ function Academy() {
         </div>
       </section>
 
+      <div className="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 my-8">
+        <h2 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900">
+          NiPlug Studios Services
+        </h2>
+        <p className="mb-12 text-lg text-gray-500">
+          Here is a few of the awesome Services we provide.
+        </p>
+
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
+          <ServicesCard
+            title={"Videography + Event Videography"}
+            imageUrl="https://images.unsplash.com/photo-1502209877429-d7c6df9eb3f9?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHZpZGVvZ3JhcGh5fGVufDB8fDB8fHww"
+          />
+          <ServicesCard
+            title={"Voiceover"}
+            imageUrl="https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dm9pY2VvdmVyfGVufDB8fDB8fHww"
+          />
+          <ServicesCard
+            title={"Photography + Event Photography"}
+            imageUrl="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGhvdG9ncmFwaHl8ZW58MHx8MHx8fDA%3D"
+          />
+          <ServicesCard
+            title={"Podcast"}
+            imageUrl="https://plus.unsplash.com/premium_photo-1683140721527-262985d7c8ef?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cG9kY2FzdHxlbnwwfHwwfHx8MA%3D%3D"
+          />
+          <ServicesCard
+            title={"Ad Creation"}
+            imageUrl="https://plus.unsplash.com/premium_photo-1668166519818-01aa3adf1e7d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YWRzJTIwY3JlYXRpb258ZW58MHx8MHx8fDA%3D"
+          />
+          <ServicesCard
+            title={"Content Studio"}
+            imageUrl="https://plus.unsplash.com/premium_photo-1664699106133-c338e54d395b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c3R1ZGlvc3xlbnwwfHwwfHx8MA%3D%3D"
+          />
+          <ServicesCard
+            title={"Drone Services"}
+            imageUrl="https://images.unsplash.com/photo-1697537335900-88bd20e24822?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZHJvbmUlMjBzZXJ2aWNlc3xlbnwwfHwwfHx8MA%3D%3D"
+          />
+          <ServicesCard
+            title={"Rent Our Space"}
+            imageUrl="https://images.unsplash.com/photo-1533436041693-411c656d1383?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3BhY2VzfGVufDB8fDB8fHww"
+          />
+        </div>
+      </div>
+
       <div
         className="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 my-8"
         id="cats"
       >
         <h2 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900">
-          Course Categories
+          NiPlug Academy Course Categories
         </h2>
         <p className="mb-12 text-lg text-gray-500">
           Here is a few of the awesome Course Categories we provide.
