@@ -8,194 +8,6 @@ import { useOnBoardingContext } from "../../../context/OnBoarding";
 import { ToastContainer } from "react-toastify";
 import ServicesCard from "@/components/ServicesCard";
 
-// const packagesArray = [
-//   {
-//     name: "Graphic Design",
-//     packages: [
-//       {
-//         name: "Bronze 5,000",
-//         accent: "#B87333",
-//         color: "#3E3E3E",
-//         benefits: [
-//           "8-week course (2 session per week)",
-//           "Graphic design (Adobe Illustrator, Adobe in Design, Adobe Photoshop, Corel Draw, Microsoft Publisher) & video editing (Premiere Pro, CapCut, After Effects, DaVinci Resolve, Final Cut)",
-//           "Hands-on exercises & practice projects",
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     name: "Dance Packages",
-//     packages: [
-//       {
-//         name: "Bronze 8,000",
-//         accent: "#B87333",
-//         color: "#3E3E3E",
-//         benefits: [
-//           "4-week beginners’ course",
-//           "Basics of choreography & movement styles",
-//         ],
-//       },
-//       {
-//         name: "Silver 15,000",
-//         accent: "#D3D3D3",
-//         color: "#333333",
-//         benefits: [
-//           "6-week intermediate course",
-//           "Exploring various dance styles (Afro, Hip-hop, Contemporary)",
-//         ],
-//       },
-//       {
-//         name: "Gold 25,000",
-//         accent: "#E6B800",
-//         color: "#5A4F3C",
-//         benefits: [
-//           "8-week intensive training",
-//           "Dance routine creation & performance training",
-//           "One professional dance video recording",
-//         ],
-//       },
-//       {
-//         name: "Platinum 40,000",
-//         accent: "#A7A8AA",
-//         color: "#2E2E2E",
-//         benefits: [
-//           "12-week elite training program",
-//           "Choreography development & stage performance techniques",
-//           "Brand building for professional dancers",
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     name: " DJ Packages",
-//     packages: [
-//       {
-//         name: "Bronze 12,000",
-//         accent: "#B87333",
-//         color: "#3E3E3E",
-//         benefits: [
-//           "4-week introduction to DJing",
-//           "Basics of mixing, beatmatching, and equipment setup",
-//         ],
-//       },
-//       {
-//         name: "Silver 20,000",
-//         accent: "#D3D3D3",
-//         color: "#333333",
-//         benefits: [
-//           "6-week hands-on training with industry-standard equipment",
-//           "Genre-blending techniques & crowd control basics",
-//         ],
-//       },
-//       {
-//         name: "Gold 35,000",
-//         accent: "#E6B800",
-//         color: "#5A4F3C",
-//         benefits: [
-//           "8-week advanced DJ course",
-//           "Live performance coaching & playlist curation",
-//           "One recorded DJ set for portfolio building",
-//         ],
-//       },
-//       {
-//         name: "Platinum 50,000",
-//         accent: "#A7A8AA",
-//         color: "#2E2E2E",
-//         benefits: [
-//           "10-week mentorship with professional DJs",
-//           "Club & event performance training",
-//           "Opportunities for live gigs & industry networking",
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     name: "Tech Enablement Packages (AI, Coding, Automation)",
-//     packages: [
-//       {
-//         name: "Bronze 10,000",
-//         accent: "#B87333",
-//         color: "#3E3E3E",
-//         benefits: [
-//           "4-week introduction to tech enablement",
-//           "Basics of AI, automation, and coding",
-//         ],
-//       },
-//       {
-//         name: "Silver 20,000",
-//         accent: "#D3D3D3",
-//         color: "#333333",
-//         benefits: [
-//           "6-week hands-on coding & AI tools training",
-//           "Website automation & chatbot development",
-//         ],
-//       },
-//       {
-//         name: "Gold 35,000",
-//         accent: "#E6B800",
-//         color: "#5A4F3C",
-//         benefits: [
-//           "8-week specialized training in tech solutions",
-//           "Digital tools for businesses & content creators",
-//         ],
-//       },
-//       {
-//         name: "Platinum 50,000",
-//         accent: "#A7A8AA",
-//         color: "#2E2E2E",
-//         benefits: [
-//           "12-week deep-dive into AI, coding, and automation",
-//           "Live projects & startup tech solutions development",
-//           "Internship & job placement opportunities",
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     name: "Digital Transformation Packages",
-//     packages: [
-//       {
-//         name: "Bronze 10,000",
-//         accent: "#B87333",
-//         color: "#3E3E3E",
-//         benefits: [
-//           "4-week course on social media basics",
-//           "Introduction to content strategy & analytics",
-//         ],
-//       },
-//       {
-//         name: "Silver 20,000",
-//         accent: "#D3D3D3",
-//         color: "#333333",
-//         benefits: [
-//           "6-week training on paid ads, SEO, and engagement tactics",
-//           "Hands-on campaign management",
-//         ],
-//       },
-//       {
-//         name: "Gold 35,000",
-//         accent: "#E6B800",
-//         color: "#5A4F3C",
-//         benefits: [
-//           "8-week course on digital marketing strategy",
-//           "Growth hacking & brand positioning",
-//         ],
-//       },
-//       {
-//         name: "Platinum 50,000",
-//         accent: "#A7A8AA",
-//         color: "#2E2E2E",
-//         benefits: [
-//           "12-week advanced training",
-//           "Monetization strategies & influencer marketing",
-//           "Portfolio-building with real clients",
-//         ],
-//       },
-//     ],
-//   },
-// ];
-
 function Academy() {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -205,8 +17,6 @@ function Academy() {
   const [message, setMessage] = useState("");
   const [info, setInfo] = useState("");
   const [loading, setLoading] = useState(false);
-  // const [currentPackage, setCurrentPackage] = useState(packagesArray[1]);
-  // const router = useRouter();
   const { setIsDigital } = useOnBoardingContext();
 
   const handleSubmit = async (e) => {
@@ -259,7 +69,7 @@ function Academy() {
 
       <ToastContainer />
 
-      <section className="bg-white lg:grid lg:h-screen lg:place-content-center min-h-screen">
+      <section className="bg-white lg:grid lg:place-content-center min-h-screen">
         <div className="mx-auto w-screen max-w-screen-xl px-4 py-16 sm:px-6 sm:py-16 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-16">
           <div className="max-w-prose text-left">
             <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
@@ -309,7 +119,7 @@ function Academy() {
         </div>
       </section>
 
-      <div className="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 my-8">
+      <div className="container relative flex flex-col justify-between max-w-6xl px-10 mx-auto xl:px-0 my-8">
         <h2 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900">
           NiPlug Studios Services
         </h2>
@@ -350,11 +160,15 @@ function Academy() {
             title={"Rent Our Space"}
             imageUrl="https://images.unsplash.com/photo-1533436041693-411c656d1383?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3BhY2VzfGVufDB8fDB8fHww"
           />
+          <ServicesCard
+            title={"Live Streaming"}
+            imageUrl="https://images.unsplash.com/photo-1604941878418-b0fbf86e3590?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bGl2ZSUyMHN0cmVhbWluZ3xlbnwwfHwwfHx8MA%3D%3D"
+          />
         </div>
       </div>
 
       <div
-        className="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 my-8"
+        className="container relative flex flex-col justify-between max-w-6xl px-10 mx-auto xl:px-0 my-8"
         id="cats"
       >
         <h2 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900">
@@ -518,95 +332,6 @@ function Academy() {
           </div>
         </div>
       </div>
-      {/* Pricing */}
-      {/* <div className="bg-white" id="pricing">
-        <div className="container px-6 py-8 mx-auto">
-          <div className="xl:items-center xl:-mx-8">
-            <div className="flex flex-col items-center xl:items-start xl:mx-8">
-              <h1 className="text-2xl font-medium text-gray-800 capitalize lg:text-3xl">
-                {currentPackage.name}
-              </h1>
-
-              <div className="mt-4">
-                <span className="inline-block w-40 h-1 bg-teal-500 rounded-full"></span>
-                <span className="inline-block w-3 h-1 mx-1 bg-teal-500 rounded-full"></span>
-                <span className="inline-block w-1 h-1 bg-teal-500 rounded-full"></span>
-              </div>
-
-              <p className="mt-4 font-medium text-gray-500">
-                You can get All Access by selecting your plan!
-              </p>
-            </div>
-
-            <div className="flex-1 xl:mx-8">
-              <div className="mt-8 space-y-8 md:-mx-4 md:flex md:items-center md:justify-center md:space-y-0 xl:mt-0">
-                {currentPackage.packages.map((pac) => (
-                  <div
-                    className="max-w-sm mx-auto border rounded-lg md:mx-4"
-                    key={pac.name}
-                  >
-                    <div className="p-6">
-                      <h1 className="text-xl font-medium text-gray-700 capitalize lg:text-2xl">
-                        {pac.name.split(" ")[0]}
-                      </h1>
-
-                      <h2 className="mt-4 text-2xl font-semibold text-gray-700">
-                        {pac.name.split(" ")[1]}
-                        <span className="text-base font-medium">/Month</span>
-                      </h2>
-
-                      <button
-                        className="w-full px-4 py-2 mt-6 tracking-wide capitalize transition-colors duration-300 transform rounded-md hover:bg-teal-500 focus:outline-none focus:bg-teal-500 focus:ring focus:ring-teal-300 focus:ring-opacity-80"
-                        style={{
-                          color: pac.color,
-                          backgroundColor: pac.accent,
-                        }}
-                        onClick={() => {
-                          router.push("/onboarding");
-                        }}
-                      >
-                        Start Now
-                      </button>
-                    </div>
-
-                    <hr className="border-gray-200" />
-
-                    <div className="p-6">
-                      <h1 className="text-lg font-medium text-gray-700 capitalize lg:text-xl">
-                        What’s included:
-                      </h1>
-
-                      <div className="mt-8 space-y-4">
-                        {pac.benefits.map((benefit, i) => (
-                          <div className="flex items-center" key={i}>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="w-5 h-5 text-teal-500"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-
-                            <span className="mx-4 text-gray-700">
-                              {benefit}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-      {/* pricing */}
       <section className="bg-white" id="contacts">
         <div className="container px-6 py-12 mx-auto">
           <div>
@@ -789,6 +514,19 @@ function Academy() {
                     <option value="DJ">DJ</option>
                     <option value="Tech Enablement">Tech Enablement</option>
                     <option value="Digital Marketing">Digital Marketing</option>
+                    <option value="Videography">
+                      Videography + Event Videography
+                    </option>
+                    <option value="Voiceover">Voiceover</option>
+                    <option value="Photography">
+                      Photography + Event Photography
+                    </option>
+                    <option value="Podcast">Podcast</option>
+                    <option value="Ad Creation">Ad Creation</option>
+                    <option value="Content Studio">Content Studio</option>
+                    <option value="Drone Services">Drone Services</option>
+                    <option value="Rent space">Rent Our Space</option>
+                    <option value="Live Streaming">Live Streaming</option>
                   </select>
                 </div>
 

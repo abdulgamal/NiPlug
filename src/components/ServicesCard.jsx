@@ -2,7 +2,7 @@ import React from "react";
 
 function ServicesCard({ imageUrl, title }) {
   return (
-    <div>
+    <a href="#contacts" className="block">
       <img
         alt=""
         src={imageUrl}
@@ -16,7 +16,7 @@ function ServicesCard({ imageUrl, title }) {
 
         <p class="mt-0.5 opacity-50 sm:mt-0">Branding / Signage</p> */}
       </div>
-    </div>
+    </a>
   );
 }
 
