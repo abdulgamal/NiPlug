@@ -1,8 +1,16 @@
+"use client";
+import Link from "next/link";
 import React from "react";
+import { useOnBoardingContext } from "../../context/OnBoarding";
 
 function ServicesCard({ imageUrl, title }) {
+  const { setService } = useOnBoardingContext();
   return (
-    <a href="#contacts" className="block">
+    <Link
+      href="/onboarding"
+      className="block"
+      onClick={() => setService(title)}
+    >
       <img
         alt=""
         src={imageUrl}
@@ -11,12 +19,8 @@ function ServicesCard({ imageUrl, title }) {
 
       <div class="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
         <strong class="font-medium">{title}</strong>
-
-        {/* <span class="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
-
-        <p class="mt-0.5 opacity-50 sm:mt-0">Branding / Signage</p> */}
       </div>
-    </a>
+    </Link>
   );
 }
 

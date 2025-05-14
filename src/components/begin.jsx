@@ -3,13 +3,14 @@ import React, { useState } from "react";
 import { useOnBoardingContext } from "../../context/OnBoarding";
 
 function Begin() {
-  const { businessData, setBusinessData } = useOnBoardingContext();
+  const { businessData, setBusinessData, service } = useOnBoardingContext();
   const [name, setName] = useState(businessData?.firstName || "");
   const [lastName, setLastName] = useState(businessData?.lastName || "");
   const [email, setEmail] = useState(businessData?.email || "");
   const [phone, setPhone] = useState(businessData?.phone || "");
-  //   const [subject, setSubject] = useState("");
+  const [subject, setSubject] = useState("");
   //   const [message, setMessage] = useState("");
+
   return (
     <>
       <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
@@ -92,38 +93,31 @@ function Begin() {
           />
         </div>
 
-        {/* <div className="mt-4">
+        {service && (
+          <div className="mt-4">
             <label htmlFor="underline_select" className="sr-only">
               Underline select
             </label>
             <select
               id="underline_select"
               value={subject}
-              onChange={(e) => setSubject(e.target.value)}
+              onChange={(e) => {
+                setSubject(e.target.value);
+                setBusinessData((prev) => ({
+                  ...prev,
+                  hasBusiness: e.target.value,
+                }));
+              }}
               className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
             >
               <option value="" selected>
-                Choose a category
+                Do you own a business?
               </option>
-              <option value="Graphic Design">Graphic Design</option>
-              <option value="Dance">Dance</option>
-              <option value="DJ">DJ</option>
-              <option value="Tech Enablement">Tech Enablement</option>
-              <option value="Digital Marketing">Digital Marketing</option>
+              <option value={true}>Yes</option>
+              <option value={false}>No</option>
             </select>
-          </div> */}
-
-        {/* <div className="w-full mt-4">
-            <label className="block mb-2 text-sm text-gray-600">
-              Which package would you like to get?
-            </label>
-            <textarea
-              className="block w-full h-32 px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg md:h-56 focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-              placeholder="Message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            ></textarea>
-          </div> */}
+          </div>
+        )}
       </div>
     </>
   );

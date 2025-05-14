@@ -1,12 +1,13 @@
 "use client";
 import axios from "axios";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import Script from "next/script";
 import React, { useState } from "react";
 import { useOnBoardingContext } from "../../../context/OnBoarding";
 import { ToastContainer } from "react-toastify";
 import ServicesCard from "@/components/ServicesCard";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import StudioNav from "@/components/StudioNav";
 
 function Academy() {
   const [name, setName] = useState("");
@@ -68,40 +69,29 @@ function Academy() {
   gtag('config', 'G-X6QMWQL048');`}</Script>
 
       <ToastContainer />
-
+      <StudioNav />
       <section className="bg-white lg:grid lg:place-content-center min-h-screen">
-        <div className="mx-auto w-screen max-w-screen-xl px-4 py-16 sm:px-6 sm:py-16 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-16">
+        <div className="mx-auto w-screen max-w-screen-xl px-4 py-24 sm:px-6 sm:py-16 grid md:grid-cols-2 md:items-center gap-10 lg:px-8 lg:py-16">
           <div className="max-w-prose text-left">
             <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
-              Welcome to NiPlug Studios - Unlock Your
-              <strong className="text-teal-600"> Creative </strong> &{" "}
-              <strong className="text-teal-600"> Digital </strong>
-              Potential
+              NiPlug Studios & Academy.
+              <strong className="text-teal-600"> Create </strong> .{" "}
+              <strong className="text-teal-600"> Learn </strong> .{" "}
+              <strong className="text-teal-600"> Grow </strong>
             </h1>
 
             <p className="mt-4 text-base text-pretty text-gray-700 sm:text-lg/relaxed">
-              Welcome to NiPlug Studios & Academy—your all-in-one creative hub.
-              At NiPlug Studios, we offer professional services including
-              podcast production, photography and videography, audio and
-              voiceover recording, studio and content room rentals, as well as
-              drone and aerial coverage. Whether you&apos;re a brand, business,
-              or individual creator, our team is here to bring your vision to
-              life. Through NiPlug Academy, we equip creatives and aspiring
-              entrepreneurs with hands-on training in graphic design,
-              videography, digital marketing, dance, DJing, tech enablement (AI,
-              coding, and more), and essential business tools. Whether
-              you&apos;re producing, learning, or scaling your passion into a
-              profession, NiPlug is where creativity meets opportunity. Start
-              your journey with us today.
+              From content production to hands-on training in creative and tech
+              skills, we turn ideas into opportunities. Start today!
             </p>
 
             <div className="mt-4 flex gap-4 sm:mt-6">
-              <a
+              <Link
                 className="inline-block rounded border border-teal-600 bg-teal-600 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-teal-700"
-                href="#cats"
+                href="/services"
               >
                 Get Started
-              </a>
+              </Link>
 
               <a
                 className="inline-block rounded border border-gray-200 px-5 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-900"
@@ -111,15 +101,20 @@ function Academy() {
               </a>
             </div>
           </div>
-          <img
-            alt=""
-            src="/section_D.png"
-            className="mx-auto hidden text-gray-900 md:block"
-          />
+          <div>
+            <img
+              alt=""
+              src="/section_D.png"
+              className="mx-auto text-gray-900 h-96 aspect-auto md:block"
+            />
+          </div>
         </div>
       </section>
 
-      <div className="container relative flex flex-col justify-between max-w-6xl px-10 mx-auto xl:px-0 my-8">
+      <div
+        id="services"
+        className="container relative flex flex-col justify-between max-w-6xl px-10 mx-auto xl:px-0 my-8"
+      >
         <h2 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900">
           NiPlug Studios Services
         </h2>
@@ -169,7 +164,7 @@ function Academy() {
 
       <div
         className="container relative flex flex-col justify-between max-w-6xl px-10 mx-auto xl:px-0 my-8"
-        id="cats"
+        id="academy"
       >
         <h2 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900">
           NiPlug Academy Course Categories
@@ -555,6 +550,10 @@ function Academy() {
           </div>
         </div>
       </section>
+      <WhatsAppButton
+        phoneNumber="+254794403000" // Replace with your number (international format without +)
+        message="Hi, I would like to know more about your services!"
+      />
     </>
   );
 }

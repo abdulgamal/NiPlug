@@ -17,11 +17,13 @@ const initialBusiness = {
   businessEmail: "",
   businessPhone: "",
   businessWebsite: "",
+  hasBusiness: true,
 };
 
 function OnBoarding({ children }) {
+  const [service, setService] = useState(null);
   const [step, setStep] = useState(0);
-  const [totalSteps, setTotalSteps] = useState(businessPages.length || 0);
+  const [totalSteps, setTotalSteps] = useState(0);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [isDigital, setIsDigital] = useState(false);
@@ -32,13 +34,13 @@ function OnBoarding({ children }) {
       name: `${businessData.firstName} ${businessData.lastName}`,
       email: businessData.email,
       phone: businessData.phone,
-      businessName: businessData.businessName,
-      businessAddress: businessData.businessAddress,
-      industry: businessData.industry,
+      businessName: businessData.businessName || businessData.firstName,
+      businessAddress: businessData.businessAddress || "Nairobi CBD",
+      industry: businessData.industry || "Fashion",
       businessPremise: businessData.businessPremise,
-      toolToLearn: businessData.toolToLearn,
-      businessEmail: businessData.businessEmail,
-      businessPhone: businessData.businessPhone,
+      toolToLearn: service ?? businessData.toolToLearn,
+      businessEmail: businessData.businessEmail || businessData.email,
+      businessPhone: businessData.businessPhone || businessData.phone,
       website: businessData.businessWebsite
         ? businessData.businessWebsite.startsWith("http://") ||
           businessData.businessWebsite.startsWith("https://")
@@ -92,6 +94,8 @@ function OnBoarding({ children }) {
         businessData,
         setBusinessData,
         handleRegisterBusiness,
+        service,
+        setService,
       }}
     >
       {children}

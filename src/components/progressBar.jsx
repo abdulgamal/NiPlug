@@ -33,6 +33,7 @@ function ProgressBar() {
   useEffect(() => {
     setIsLastStep(step === totalSteps - 1);
   }, [step, totalSteps]);
+
   return (
     <div className="container mx-auto p-3.5 mb-5">
       <div className="sm:flex sm:items-center sm:gap-4 mb-4">

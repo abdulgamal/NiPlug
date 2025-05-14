@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { useOnBoardingContext } from "../../context/OnBoarding";
 
 function Business() {
-  const { businessData, setBusinessData, isDigital } = useOnBoardingContext();
+  const { businessData, setBusinessData, isDigital, service } =
+    useOnBoardingContext();
   const [businessName, setBusinessName] = useState(
     businessData?.businessName || ""
   );
@@ -206,7 +207,7 @@ function Business() {
           </select>
         </div>
 
-        {isDigital ? (
+        {service ? null : isDigital ? (
           <div className="mt-4">
             <label
               htmlFor="digital_tool"
