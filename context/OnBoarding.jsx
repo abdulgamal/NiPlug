@@ -1,5 +1,4 @@
 "use client";
-import { businessPages } from "@/app/onboarding/page";
 import axios from "axios";
 import React, { useContext, useState } from "react";
 
@@ -17,7 +16,7 @@ const initialBusiness = {
   businessEmail: "",
   businessPhone: "",
   businessWebsite: "",
-  hasBusiness: true,
+  hasBusiness: "Yes",
 };
 
 function OnBoarding({ children }) {

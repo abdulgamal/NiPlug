@@ -53,7 +53,10 @@ function ServicePage() {
           />
         </div>
       </div>
-      <WhatsAppButton />
+      <WhatsAppButton
+        phoneNumber="+254794403000" // Replace with your number (international format without +)
+        message="Hi, I would like to know more about your services!"
+      />
     </div>
   );
 }

@@ -17,7 +17,7 @@ function Onboarding() {
     useOnBoardingContext();
 
   useEffect(() => {
-    if (businessData.hasBusiness == true) {
+    if (businessData.hasBusiness == "Yes") {
       setTotalSteps(2);
     } else {
       setTotalSteps(1);
