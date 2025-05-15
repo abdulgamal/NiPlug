@@ -113,8 +113,8 @@ function Begin() {
               <option value="" selected>
                 Do you own a business?
               </option>
-              <option value={"Yes"}>Yes</option>
-              <option value={"No"}>No</option>
+              <option value={"1"}>Yes</option>
+              <option value={"0"}>No</option>
             </select>
           </div>
         )}

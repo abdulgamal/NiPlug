@@ -16,7 +16,7 @@ const initialBusiness = {
   businessEmail: "",
   businessPhone: "",
   businessWebsite: "",
-  hasBusiness: "Yes",
+  hasBusiness: "1",
 };
 
 function OnBoarding({ children }) {
