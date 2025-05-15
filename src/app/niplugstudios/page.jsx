@@ -70,7 +70,7 @@ function Academy() {
 
       <ToastContainer />
       <StudioNav />
-      <section className="bg-white lg:grid lg:place-content-center min-h-screen">
+      <section className="bg-[#FBF2B8] lg:grid lg:place-content-center min-h-screen">
         <div className="mx-auto w-screen max-w-screen-xl px-4 py-24 sm:px-6 sm:py-16 grid md:grid-cols-2 md:items-center gap-10 lg:px-8 lg:py-16">
           <div className="max-w-prose text-left">
             <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
@@ -162,172 +162,174 @@ function Academy() {
         </div>
       </div>
 
-      <div
-        className="container relative flex flex-col justify-between max-w-6xl px-10 mx-auto xl:px-0 my-8"
-        id="academy"
-      >
-        <h2 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900">
-          NiPlug Academy Course Categories
-        </h2>
-        <p className="mb-12 text-lg text-gray-500">
-          Here is a few of the awesome Course Categories we provide.
-        </p>
-        <div className="w-full">
-          <div className="flex flex-col w-full mb-10 sm:flex-row">
-            <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
-              <div className="relative h-full ml-0 md:mr-10">
-                <Link href="/onboarding" onClick={() => setIsDigital(true)}>
-                  <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
-                    <img
-                      alt=""
-                      src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGRpZ2l0YWwlMjBtYXJrZXRpbmd8ZW58MHx8MHx8fDA%3D"
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
+      <section className="bg-teal-700">
+        <div
+          className="container relative flex flex-col justify-between max-w-6xl px-10 mx-auto xl:px-0 py-8"
+          id="academy"
+        >
+          <h2 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900">
+            NiPlug Academy Course Categories
+          </h2>
+          <p className="mb-12 text-lg text-[#FBF2B8]">
+            Here is a few of the awesome Course Categories we provide.
+          </p>
+          <div className="w-full">
+            <div className="flex flex-col w-full mb-10 sm:flex-row">
+              <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
+                <div className="relative h-full ml-0 md:mr-10">
+                  <Link href="/onboarding" onClick={() => setIsDigital(true)}>
+                    <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
+                      <img
+                        alt=""
+                        src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGRpZ2l0YWwlMjBtYXJrZXRpbmd8ZW58MHx8MHx8fDA%3D"
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
 
-                    <div className="relative bg-gradient-to-t from-gray-900/50 to-gray-900/25 pt-32 sm:pt-48 lg:pt-64">
-                      <div className="p-4 sm:p-6">
-                        <h3 className="mt-0.5 text-lg text-white">
-                          Digital Transformation
-                        </h3>
+                      <div className="relative bg-gradient-to-t from-gray-900/50 to-gray-900/25 pt-32 sm:pt-48 lg:pt-64">
+                        <div className="p-4 sm:p-6">
+                          <h3 className="mt-0.5 text-lg text-white">
+                            Digital Transformation
+                          </h3>
 
-                        <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
-                          Gain hands-on experience and learn the benefits of
-                          POS, ERP and E-Commerce to transform your business and
-                          thrive in the digital world
-                        </p>
+                          <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
+                            Gain hands-on experience and learn the benefits of
+                            POS, ERP and E-Commerce to transform your business
+                            and thrive in the digital world
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </article>
-                </Link>
+                    </article>
+                  </Link>
+                </div>
+              </div>
+              <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
+                <div className="relative h-full ml-0 mr-0 sm:mr-10">
+                  <Link href="/onboarding" onClick={() => setIsDigital(false)}>
+                    <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
+                      <img
+                        alt=""
+                        src="https://images.unsplash.com/photo-1611241893603-3c359704e0ee?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGdyYXBoaWMlMjBkZXNpZ258ZW58MHx8MHx8fDA%3D"
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+
+                      <div className="relative bg-gradient-to-t from-gray-900/50 to-gray-900/25 pt-32 sm:pt-48 lg:pt-64">
+                        <div className="p-4 sm:p-6">
+                          <h3 className="mt-0.5 text-lg text-white">
+                            Graphic Design / Videography
+                          </h3>
+
+                          <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
+                            Master visual storytelling, from design principles
+                            to professional video editing.
+                          </p>
+                        </div>
+                      </div>
+                    </article>
+                  </Link>
+                </div>
               </div>
             </div>
-            <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
-              <div className="relative h-full ml-0 mr-0 sm:mr-10">
-                <Link href="/onboarding" onClick={() => setIsDigital(false)}>
-                  <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
-                    <img
-                      alt=""
-                      src="https://images.unsplash.com/photo-1611241893603-3c359704e0ee?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGdyYXBoaWMlMjBkZXNpZ258ZW58MHx8MHx8fDA%3D"
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
-
-                    <div className="relative bg-gradient-to-t from-gray-900/50 to-gray-900/25 pt-32 sm:pt-48 lg:pt-64">
-                      <div className="p-4 sm:p-6">
-                        <h3 className="mt-0.5 text-lg text-white">
-                          Graphic Design / Videography
-                        </h3>
-
-                        <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
-                          Master visual storytelling, from design principles to
-                          professional video editing.
+            <div className="flex flex-col w-full mb-5 sm:flex-row">
+              <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
+                <div className="relative h-full ml-0 mr-0 sm:mr-10">
+                  <a
+                    href="#contacts"
+                    // onClick={() => setCurrentPackage(packagesArray[2])}
+                  >
+                    <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
+                      <img
+                        alt=""
+                        src="https://images.unsplash.com/photo-1526979118433-63c7344f06f1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8REp8ZW58MHx8MHx8fDA%3D"
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0 h-full w-full object-cover bg-black/40 flex justify-center items-center">
+                        <p className="text-3xl font-bold text-white tracking-wider">
+                          Coming Soon
                         </p>
                       </div>
-                    </div>
-                  </article>
-                </Link>
+
+                      <div className="relative bg-gradient-to-t from-gray-900/50 to-gray-900/25 pt-32 sm:pt-48 lg:pt-64">
+                        <div className="p-4 sm:p-6">
+                          <h3 className="mt-0.5 text-lg text-white">DJ</h3>
+
+                          <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
+                            Gain hands-on training in mixing, sound production,
+                            and music curation.
+                          </p>
+                        </div>
+                      </div>
+                    </article>
+                  </a>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="flex flex-col w-full mb-5 sm:flex-row">
-            <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
-              <div className="relative h-full ml-0 mr-0 sm:mr-10">
-                <a
-                  href="#contacts"
-                  // onClick={() => setCurrentPackage(packagesArray[2])}
-                >
-                  <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
-                    <img
-                      alt=""
-                      src="https://images.unsplash.com/photo-1526979118433-63c7344f06f1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8REp8ZW58MHx8MHx8fDA%3D"
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
-                    <div className="absolute inset-0 h-full w-full object-cover bg-black/40 flex justify-center items-center">
-                      <p className="text-3xl font-bold text-white tracking-wider">
-                        Coming Soon
-                      </p>
-                    </div>
-
-                    <div className="relative bg-gradient-to-t from-gray-900/50 to-gray-900/25 pt-32 sm:pt-48 lg:pt-64">
-                      <div className="p-4 sm:p-6">
-                        <h3 className="mt-0.5 text-lg text-white">DJ</h3>
-
-                        <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
-                          Gain hands-on training in mixing, sound production,
-                          and music curation.
+              <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
+                <div className="relative h-full ml-0 mr-0 sm:mr-10">
+                  <a
+                    href="#contacts"
+                    // onClick={() => setCurrentPackage(packagesArray[3])}
+                  >
+                    <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
+                      <img
+                        alt=""
+                        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHRlY2h8ZW58MHx8MHx8fDA%3D"
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0 h-full w-full object-cover bg-black/40 flex justify-center items-center">
+                        <p className="text-3xl font-bold text-white tracking-wider">
+                          Coming Soon
                         </p>
                       </div>
-                    </div>
-                  </article>
-                </a>
+
+                      <div className="relative bg-gradient-to-t from-gray-900/50 to-gray-900/25 pt-32 sm:pt-48 lg:pt-64">
+                        <div className="p-4 sm:p-6">
+                          <h3 className="mt-0.5 text-lg text-white">
+                            Tech Enablement
+                          </h3>
+
+                          <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
+                            Explore AI, coding, and digital solutions designed
+                            to enhance creativity.
+                          </p>
+                        </div>
+                      </div>
+                    </article>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
-              <div className="relative h-full ml-0 mr-0 sm:mr-10">
-                <a
-                  href="#contacts"
-                  // onClick={() => setCurrentPackage(packagesArray[3])}
-                >
-                  <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
-                    <img
-                      alt=""
-                      src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHRlY2h8ZW58MHx8MHx8fDA%3D"
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
-                    <div className="absolute inset-0 h-full w-full object-cover bg-black/40 flex justify-center items-center">
-                      <p className="text-3xl font-bold text-white tracking-wider">
-                        Coming Soon
-                      </p>
-                    </div>
-
-                    <div className="relative bg-gradient-to-t from-gray-900/50 to-gray-900/25 pt-32 sm:pt-48 lg:pt-64">
-                      <div className="p-4 sm:p-6">
-                        <h3 className="mt-0.5 text-lg text-white">
-                          Tech Enablement
-                        </h3>
-
-                        <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
-                          Explore AI, coding, and digital solutions designed to
-                          enhance creativity.
+              <div className="w-full sm:w-1/2">
+                <div className="relative h-full ml-0 md:mr-10">
+                  <a href="#contacts">
+                    <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
+                      <img
+                        alt=""
+                        src="https://images.unsplash.com/photo-1546427660-eb346c344ba5?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGRhbmNlfGVufDB8fDB8fHww"
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0 h-full w-full object-cover bg-black/40 flex justify-center items-center">
+                        <p className="text-3xl font-bold text-white tracking-wider">
+                          Coming Soon
                         </p>
                       </div>
-                    </div>
-                  </article>
-                </a>
-              </div>
-            </div>
-            <div className="w-full sm:w-1/2">
-              <div className="relative h-full ml-0 md:mr-10">
-                <a href="#contacts">
-                  <article className="relative overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
-                    <img
-                      alt=""
-                      src="https://images.unsplash.com/photo-1546427660-eb346c344ba5?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGRhbmNlfGVufDB8fDB8fHww"
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
-                    <div className="absolute inset-0 h-full w-full object-cover bg-black/40 flex justify-center items-center">
-                      <p className="text-3xl font-bold text-white tracking-wider">
-                        Coming Soon
-                      </p>
-                    </div>
 
-                    <div className="relative bg-gradient-to-t from-gray-900/50 to-gray-900/25 pt-32 sm:pt-48 lg:pt-64">
-                      <div className="p-4 sm:p-6">
-                        <h3 className="mt-0.5 text-lg text-white">Dance</h3>
+                      <div className="relative bg-gradient-to-t from-gray-900/50 to-gray-900/25 pt-32 sm:pt-48 lg:pt-64">
+                        <div className="p-4 sm:p-6">
+                          <h3 className="mt-0.5 text-lg text-white">Dance</h3>
 
-                        <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
-                          Learn various dance styles and enhance your movement
-                          techniques with expert choreography
-                        </p>
+                          <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
+                            Learn various dance styles and enhance your movement
+                            techniques with expert choreography
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </article>
-                </a>
+                    </article>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <section className="bg-white" id="contacts">
+      </section>
+      <section className="bg-[#FBF2B8]" id="contacts">
         <div className="container px-6 py-12 mx-auto">
           <div>
             <p className="font-medium text-teal-500">Contact us</p>

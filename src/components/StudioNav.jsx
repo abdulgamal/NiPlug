@@ -10,7 +10,7 @@ function StudioNav() {
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <a
             href="#contacts"
-            className="text-white bg-teal-600 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
+            className="text-teal-600 bg-[#FBF2B8] hover:bg-[#FBF2B8] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
           >
             Contact Us
           </a>
