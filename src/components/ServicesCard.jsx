@@ -18,7 +18,7 @@ function ServicesCard({ imageUrl, title }) {
       />
 
       <div class="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
-        <strong class="font-medium">{title}</strong>
+        <strong class="font-medium text-white">{title}</strong>
       </div>
     </Link>
   );

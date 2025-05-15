@@ -4,12 +4,12 @@ import React from "react";
 
 function ServicePage() {
   return (
-    <div>
-      <div className="container relative flex flex-col justify-between max-w-6xl px-10 mx-auto xl:px-0 my-8">
-        <h2 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900">
+    <div className="bg-teal-600">
+      <div className="container relative flex flex-col justify-between max-w-6xl px-10 mx-auto xl:px-0 py-8">
+        <h2 className="mb-1 text-3xl font-extrabold leading-tight text-white">
           NiPlug Studios Services
         </h2>
-        <p className="mb-12 text-lg text-gray-500">
+        <p className="mb-12 text-lg text-white">
           Choose the service you are interested in or reach out to us through
           our WhatsApp button
         </p>
