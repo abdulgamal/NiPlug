@@ -8,7 +8,7 @@ function Wrapper({ children }) {
           <img
             alt=""
             src="/section_D.png"
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-contain hidden lg:block"
           />
         </aside>
 

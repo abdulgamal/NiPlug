@@ -40,7 +40,7 @@ function ProgressBar() {
         <div className="flex items-center gap-4">
           {step > 0 && (
             <button
-              className="inline-block shrink-0 rounded-md border border-[#04AA66] bg-[#04AA66] px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-[#509478] focus:ring-3 focus:outline-hidden cursor-pointer"
+              className="inline-block shrink-0 rounded-md border border-teal-600 bg-teal-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-[#509478] focus:ring-3 focus:outline-hidden cursor-pointer"
               onClick={() => setStep(step - 1)}
             >
               Previous
@@ -60,7 +60,7 @@ function ProgressBar() {
                 }
               }
             }}
-            className="inline-block shrink-0 rounded-md border border-[#04AA66] bg-[#04AA66] px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-[#509478] focus:ring-3 focus:outline-hidden cursor-pointer"
+            className="inline-block shrink-0 rounded-md border border-teal-600 bg-teal-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-[#509478] focus:ring-3 focus:outline-hidden cursor-pointer"
             disabled={loading}
           >
             {loading ? "Loading..." : isLastStep ? "Submit" : "Continue"}
@@ -72,7 +72,7 @@ function ProgressBar() {
       </div>
       <div className="w-full bg-gray-200 rounded-full h-2.5">
         <div
-          className="bg-[#04AA66] h-2.5 rounded-full"
+          className="bg-teal-600 h-2.5 rounded-full"
           style={{ width: `${((step + 1) / totalSteps) * 100}%` }}
         ></div>
         <h1 className="text-gray-400 text-xs my-1">
