@@ -55,7 +55,7 @@ function ProgressBar() {
                 // setIsModalOpen(true);
                 const status = await handleRegisterBusiness();
                 if (status) {
-                  router.push("/niplugacademy");
+                  router.push("/niplugstudios");
                   notify("Registration successful. We will be in touch");
                 }
               }
