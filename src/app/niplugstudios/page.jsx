@@ -74,15 +74,16 @@ function Academy() {
         <div className="mx-auto w-screen max-w-screen-xl px-4 py-24 sm:px-6 sm:py-16 grid md:grid-cols-2 md:items-center gap-10 lg:px-8 lg:py-16">
           <div className="max-w-prose text-left">
             <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
-              NiPlug Studios & Academy.
-              <strong className="text-teal-600"> Create </strong> .{" "}
-              <strong className="text-teal-600"> Learn </strong> .{" "}
-              <strong className="text-teal-600"> Grow </strong>
+              NiPlug Studios
+              <br />
+              <strong className="text-teal-600">Create</strong> .{" "}
+              <strong className="text-teal-600"> Grow</strong> .{" "}
+              <strong className="text-teal-600"> Profit </strong>
             </h1>
 
             <p className="mt-4 text-base text-pretty text-gray-700 sm:text-lg/relaxed">
-              From content production to hands-on training in creative and tech
-              skills, we turn ideas into opportunities. Start today!
+              Creator economy meets enterpreneural platform. Build your brand
+              with us.For entrepreneurs, businesses and influencers
             </p>
 
             <div className="mt-4 flex gap-4 sm:mt-6">
@@ -164,7 +165,7 @@ function Academy() {
         </div>
       </section>
 
-      <section className="bg-teal-700">
+      {/* <section className="bg-teal-700">
         <div
           className="container relative flex flex-col justify-between max-w-6xl px-10 mx-auto xl:px-0 py-8"
           id="academy"
@@ -330,7 +331,7 @@ function Academy() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="bg-[#FBF2B8]" id="contacts">
         <div className="container px-6 py-12 mx-auto">
           <div>
