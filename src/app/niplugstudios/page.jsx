@@ -76,14 +76,16 @@ function Academy() {
             <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
               NiPlug Studios
               <br />
-              <strong className="text-teal-600">Create</strong> .{" "}
-              <strong className="text-teal-600"> Grow</strong> .{" "}
-              <strong className="text-teal-600"> Profit </strong>
+              <strong className="text-teal-600">Capture</strong> .{" "}
+              <strong className="text-teal-600"> Connect</strong> .{" "}
+              <strong className="text-teal-600"> Convert </strong>
             </h1>
 
-            <p className="mt-4 text-base text-pretty text-gray-700 sm:text-lg/relaxed">
-              Creator economy meets enterpreneural platform. Build your brand
-              with us.For entrepreneurs, businesses and influencers
+            <p className="mt-4 text-base text-pretty text-gray-700 sm:text-lg/relaxed text-justify">
+              Creator economy meets entrepreneurial platform 🎥 Build your brand
+              with content that converts: 📸 Videos | 📷 Photography | 🎙️
+              Voice-over | 🎧 Podcasts | 🚁 Drone & 🎟️ Event Coverage For
+              entrepreneurs, businesses & influencers
             </p>
 
             <div className="mt-4 flex gap-4 sm:mt-6">
@@ -105,8 +107,8 @@ function Academy() {
           <div>
             <img
               alt=""
-              src="/section_D.png"
-              className="mx-auto text-gray-900 h-96 aspect-auto md:block"
+              src="/logo.png"
+              className="mx-auto text-gray-900 h-32 aspect-auto md:block"
             />
           </div>
         </div>
