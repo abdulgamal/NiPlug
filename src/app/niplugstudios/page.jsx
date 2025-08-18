@@ -82,10 +82,10 @@ function Academy() {
             </h1>
 
             <p className="mt-4 text-base text-pretty text-gray-700 sm:text-lg/relaxed text-justify">
-              Creator economy meets entrepreneurial platform 🎥 Build your brand
-              with content that converts: 📸 Videos | 📷 Photography | 🎙️
-              Voice-over | 🎧 Podcasts | 🚁 Drone & 🎟️ Event Coverage For
-              entrepreneurs, businesses & influencers
+              Creator economy meets entrepreneurial platform.Build your brand
+              with content that converts: Videos | Photography | Voice-over |
+              Podcasts | Drone & Event Coverage For entrepreneurs, businesses &
+              influencers
             </p>
 
             <div className="mt-4 flex gap-4 sm:mt-6">
