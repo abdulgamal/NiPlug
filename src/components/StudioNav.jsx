@@ -50,14 +50,14 @@ function StudioNav() {
             >
               <FaYoutube className="w-6 h-6" />
             </a>
-            <a
+            {/* <a
               href="https://www.tiktok.com/@ni.plug?_t=ZM-8yoOUgOu6OT&_r=1"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-teal-700"
             >
               <FaTiktok className="w-6 h-6" />
-            </a>
+            </a> */}
           </div>
           {/* <a
             href="#contacts"
